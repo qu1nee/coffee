@@ -1,0 +1,240 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "YWRtaW4xMjM=",
+      "email": "admin@coffee.com",
+      "role": "admin",
+      "loyaltyPoints": 500,
+      "discountLevel": 15,
+      "purchaseHistory": [
+        {
+          "date": "2024-01-15",
+          "amount": 1500,
+          "pointsAdded": 150
+        },
+        {
+          "date": "2024-01-20",
+          "amount": 800,
+          "pointsAdded": 80
+        }
+      ],
+      "registrationDate": "2024-01-01"
+    },
+    {
+      "id": 2,
+      "username": "user1",
+      "password": "dXNlcjEyMw==",
+      "email": "user1@mail.com",
+      "role": "user",
+      "loyaltyPoints": 120,
+      "discountLevel": 5,
+      "purchaseHistory": [
+        {
+          "date": "2024-01-18",
+          "amount": 450,
+          "pointsAdded": 45
+        }
+      ],
+      "registrationDate": "2024-01-10"
+    },
+    {
+      "id": 3,
+      "username": "Егор",
+      "email": "egor@yandex.ru",
+      "password": "cXdlMTIz",
+      "role": "user",
+      "loyaltyPoints": 0,
+      "discountLevel": 0,
+      "purchaseHistory": [],
+      "registrationDate": "2025-12-03"
+    },
+    {
+      "id": 4,
+      "username": "Настя",
+      "email": "nast@yandex.ru",
+      "password": "cXdlMTIz",
+      "role": "user",
+      "loyaltyPoints": 0,
+      "discountLevel": 0,
+      "purchaseHistory": [],
+      "registrationDate": "2025-12-03"
+    },
+    {
+      "id": 5,
+      "username": "Катя",
+      "email": "kat@yandex.ru",
+      "password": "cXdlMTIz",
+      "role": "user",
+      "loyaltyPoints": 0,
+      "discountLevel": 0,
+      "purchaseHistory": [],
+      "registrationDate": "2025-12-03"
+    },
+    {
+      "id": 6,
+      "username": "Илья",
+      "email": "ilka@yandex.ru",
+      "password": "cXdlMTIz",
+      "role": "user",
+      "loyaltyPoints": 0,
+      "discountLevel": 0,
+      "purchaseHistory": [],
+      "registrationDate": "2025-12-03"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Эспрессо",
+      "category": "coffee",
+      "price": 180,
+      "description": "Крепкий и насыщенный кофе из свежеобжаренных зерен арабики",
+      "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 100,
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Капучино",
+      "category": "coffee",
+      "price": 250,
+      "description": "Кофе с нежной молочной пенкой и легким ароматом ванили",
+      "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 85,
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Латте",
+      "category": "coffee",
+      "price": 280,
+      "description": "Нежный кофе с большим количеством вспененного молока",
+      "image": "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 70,
+      "available": true
+    },
+    {
+      "id": 4,
+      "name": "Американо",
+      "category": "coffee",
+      "price": 200,
+      "description": "Классический черный кофе с горячей водой",
+      "image": "https://images.unsplash.com/photo-1551966786-c6e15354b8a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 95,
+      "available": true
+    },
+    {
+      "id": 5,
+      "name": "Черный чай",
+      "category": "tea",
+      "price": 150,
+      "description": "Ароматный черный чай с бергамотом (Эрл Грей)",
+      "image": "https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 120,
+      "available": true
+    },
+    {
+      "id": 6,
+      "name": "Зеленый чай",
+      "category": "tea",
+      "price": 160,
+      "description": "Освежающий зеленый чай с жасмином",
+      "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 110,
+      "available": true
+    },
+    {
+      "id": 7,
+      "name": "Чизкейк Нью-Йорк",
+      "category": "desserts",
+      "price": 320,
+      "description": "Нежный сырный десерт с ягодным соусом и крошкой печенья",
+      "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 15,
+      "available": true
+    },
+    {
+      "id": 8,
+      "name": "Круассан",
+      "category": "desserts",
+      "price": 180,
+      "description": "Свежая французская выпечка с шоколадом или сливочным кремом",
+      "image": "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 25,
+      "available": true
+    },
+    {
+      "id": 9,
+      "name": "Тирамису",
+      "category": "desserts",
+      "price": 350,
+      "description": "Итальянский десерт из печенья савоярди, кофе и сыра маскарпоне",
+      "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 12,
+      "available": true
+    },
+    {
+      "id": 10,
+      "name": "Свежевыжатый сок",
+      "category": "other",
+      "price": 220,
+      "description": "Апельсиновый, яблочный или морковный сок, приготовленный при вас",
+      "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+      "stock": 40,
+      "available": true
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 2,
+      "date": "2024-01-18",
+      "items": [
+        {
+          "productId": 2,
+          "quantity": 1,
+          "price": 250
+        },
+        {
+          "productId": 7,
+          "quantity": 1,
+          "price": 320
+        }
+      ],
+      "total": 570,
+      "status": "completed"
+    }
+  ],
+  "loyaltySettings": {
+    "pointsPerPurchase": 10,
+    "discountLevels": [
+      {
+        "points": 0,
+        "discount": 0,
+        "name": "Новичок"
+      },
+      {
+        "points": 100,
+        "discount": 5,
+        "name": "Любитель"
+      },
+      {
+        "points": 300,
+        "discount": 10,
+        "name": "Знаток"
+      },
+      {
+        "points": 500,
+        "discount": 15,
+        "name": "Гурман"
+      },
+      {
+        "points": 1000,
+        "discount": 20,
+        "name": "Ветеран"
+      }
+    ]
+  }
+}
