@@ -10,17 +10,59 @@
       "discountLevel": 15,
       "purchaseHistory": [
         {
-          "date": "2024-01-15",
+          "id": 1,
+          "date": "2024-01-15T10:30:00.000Z",
           "amount": 1500,
-          "pointsAdded": 150
+          "pointsAdded": 150,
+          "items": [
+            {
+              "productId": 1,
+              "productName": "Эспрессо",
+              "quantity": 3,
+              "price": 180,
+              "total": 540
+            },
+            {
+              "productId": 2,
+              "productName": "Капучино",
+              "quantity": 2,
+              "price": 250,
+              "total": 500
+            },
+            {
+              "productId": 7,
+              "productName": "Чизкейк Нью-Йорк",
+              "quantity": 1,
+              "price": 320,
+              "total": 320
+            }
+          ]
         },
         {
-          "date": "2024-01-20",
+          "id": 2,
+          "date": "2024-01-20T14:45:00.000Z",
           "amount": 800,
-          "pointsAdded": 80
+          "pointsAdded": 80,
+          "items": [
+            {
+              "productId": 3,
+              "productName": "Латте",
+              "quantity": 2,
+              "price": 280,
+              "total": 560
+            },
+            {
+              "productId": 8,
+              "productName": "Круассан",
+              "quantity": 1,
+              "price": 180,
+              "total": 180
+            }
+          ]
         }
       ],
-      "registrationDate": "2024-01-01"
+      "registrationDate": "2024-01-01T00:00:00.000Z",
+      "lastLogin": "2025-12-17T15:30:00.000Z"
     },
     {
       "id": 2,
@@ -32,12 +74,30 @@
       "discountLevel": 5,
       "purchaseHistory": [
         {
-          "date": "2024-01-18",
-          "amount": 450,
-          "pointsAdded": 45
+          "id": 3,
+          "date": "2024-01-18T12:15:00.000Z",
+          "amount": 570,
+          "pointsAdded": 57,
+          "items": [
+            {
+              "productId": 2,
+              "productName": "Капучино",
+              "quantity": 1,
+              "price": 250,
+              "total": 250
+            },
+            {
+              "productId": 7,
+              "productName": "Чизкейк Нью-Йорк",
+              "quantity": 1,
+              "price": 320,
+              "total": 320
+            }
+          ]
         }
       ],
-      "registrationDate": "2024-01-10"
+      "registrationDate": "2024-01-10T09:00:00.000Z",
+      "lastLogin": "2025-12-16T11:20:00.000Z"
     },
     {
       "id": 3,
@@ -48,7 +108,8 @@
       "loyaltyPoints": 0,
       "discountLevel": 0,
       "purchaseHistory": [],
-      "registrationDate": "2025-12-03"
+      "registrationDate": "2025-12-03T10:00:00.000Z",
+      "lastLogin": null
     },
     {
       "id": 4,
@@ -59,7 +120,8 @@
       "loyaltyPoints": 0,
       "discountLevel": 0,
       "purchaseHistory": [],
-      "registrationDate": "2025-12-03"
+      "registrationDate": "2025-12-03T11:30:00.000Z",
+      "lastLogin": null
     },
     {
       "id": 5,
@@ -70,7 +132,8 @@
       "loyaltyPoints": 0,
       "discountLevel": 0,
       "purchaseHistory": [],
-      "registrationDate": "2025-12-03"
+      "registrationDate": "2025-12-03T14:15:00.000Z",
+      "lastLogin": null
     },
     {
       "id": 6,
@@ -81,7 +144,8 @@
       "loyaltyPoints": 0,
       "discountLevel": 0,
       "purchaseHistory": [],
-      "registrationDate": "2025-12-03"
+      "registrationDate": "2025-12-03T16:45:00.000Z",
+      "lastLogin": null
     }
   ],
   "products": [
@@ -93,7 +157,8 @@
       "description": "Крепкий и насыщенный кофе из свежеобжаренных зерен арабики",
       "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 100,
-      "available": true
+      "available": true,
+      "popularity": 95
     },
     {
       "id": 2,
@@ -103,7 +168,8 @@
       "description": "Кофе с нежной молочной пенкой и легким ароматом ванили",
       "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 85,
-      "available": true
+      "available": true,
+      "popularity": 98
     },
     {
       "id": 3,
@@ -113,7 +179,8 @@
       "description": "Нежный кофе с большим количеством вспененного молока",
       "image": "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 70,
-      "available": true
+      "available": true,
+      "popularity": 92
     },
     {
       "id": 4,
@@ -123,7 +190,8 @@
       "description": "Классический черный кофе с горячей водой",
       "image": "https://images.unsplash.com/photo-1551966786-c6e15354b8a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 95,
-      "available": true
+      "available": true,
+      "popularity": 88
     },
     {
       "id": 5,
@@ -133,7 +201,8 @@
       "description": "Ароматный черный чай с бергамотом (Эрл Грей)",
       "image": "https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 120,
-      "available": true
+      "available": true,
+      "popularity": 75
     },
     {
       "id": 6,
@@ -143,7 +212,8 @@
       "description": "Освежающий зеленый чай с жасмином",
       "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 110,
-      "available": true
+      "available": true,
+      "popularity": 78
     },
     {
       "id": 7,
@@ -153,7 +223,8 @@
       "description": "Нежный сырный десерт с ягодным соусом и крошкой печенья",
       "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 15,
-      "available": true
+      "available": true,
+      "popularity": 96
     },
     {
       "id": 8,
@@ -163,7 +234,8 @@
       "description": "Свежая французская выпечка с шоколадом или сливочным кремом",
       "image": "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 25,
-      "available": true
+      "available": true,
+      "popularity": 82
     },
     {
       "id": 9,
@@ -173,7 +245,8 @@
       "description": "Итальянский десерт из печенья савоярди, кофе и сыра маскарпоне",
       "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 12,
-      "available": true
+      "available": true,
+      "popularity": 90
     },
     {
       "id": 10,
@@ -183,28 +256,89 @@
       "description": "Апельсиновый, яблочный или морковный сок, приготовленный при вас",
       "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
       "stock": 40,
-      "available": true
+      "available": true,
+      "popularity": 70
     }
   ],
   "orders": [
     {
       "id": 1,
       "userId": 2,
-      "date": "2024-01-18",
+      "date": "2024-01-18T12:15:00.000Z",
       "items": [
         {
           "productId": 2,
+          "productName": "Капучино",
           "quantity": 1,
-          "price": 250
+          "price": 250,
+          "total": 250
         },
         {
           "productId": 7,
+          "productName": "Чизкейк Нью-Йорк",
           "quantity": 1,
-          "price": 320
+          "price": 320,
+          "total": 320
         }
       ],
       "total": 570,
-      "status": "completed"
+      "status": "completed",
+      "pointsAdded": 57
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "date": "2024-01-15T10:30:00.000Z",
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Эспрессо",
+          "quantity": 3,
+          "price": 180,
+          "total": 540
+        },
+        {
+          "productId": 2,
+          "productName": "Капучино",
+          "quantity": 2,
+          "price": 250,
+          "total": 500
+        },
+        {
+          "productId": 7,
+          "productName": "Чизкейк Нью-Йорк",
+          "quantity": 1,
+          "price": 320,
+          "total": 320
+        }
+      ],
+      "total": 1360,
+      "status": "completed",
+      "pointsAdded": 136
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "date": "2024-01-20T14:45:00.000Z",
+      "items": [
+        {
+          "productId": 3,
+          "productName": "Латте",
+          "quantity": 2,
+          "price": 280,
+          "total": 560
+        },
+        {
+          "productId": 8,
+          "productName": "Круассан",
+          "quantity": 1,
+          "price": 180,
+          "total": 180
+        }
+      ],
+      "total": 740,
+      "status": "completed",
+      "pointsAdded": 74
     }
   ],
   "loyaltySettings": {
@@ -213,28 +347,60 @@
       {
         "points": 0,
         "discount": 0,
-        "name": "Новичок"
+        "name": "Новичок",
+        "description": "Начальный уровень"
       },
       {
         "points": 100,
         "discount": 5,
-        "name": "Любитель"
+        "name": "Любитель",
+        "description": "Постоянный клиент"
       },
       {
         "points": 300,
         "discount": 10,
-        "name": "Знаток"
+        "name": "Знаток",
+        "description": "Опытный ценитель кофе"
       },
       {
         "points": 500,
         "discount": 15,
-        "name": "Гурман"
+        "name": "Гурман",
+        "description": "Истинный кофеман"
       },
       {
         "points": 1000,
         "discount": 20,
-        "name": "Ветеран"
+        "name": "Ветеран",
+        "description": "Легенда кофейни"
       }
-    ]
+    ],
+    "pointValue": 1,
+    "minPurchaseForPoints": 100
+  },
+  "appSettings": {
+    "appName": "Уютная Чашка",
+    "version": "2.0.0",
+    "currency": "₽",
+    "taxRate": 0.1,
+    "freeShippingThreshold": 1000,
+    "businessHours": {
+      "weekdays": "8:00-22:00",
+      "weekends": "9:00-23:00"
+    },
+    "contactInfo": {
+      "phone": "+7 (999) 123-45-67",
+      "email": "info@coffee-shop.ru",
+      "address": "ул. Кофейная, д. 15, Центральный район"
+    }
+  },
+  "statistics": {
+    "totalRevenue": 2670,
+    "totalOrders": 3,
+    "averageOrderValue": 890,
+    "mostPopularProduct": 2,
+    "registeredUsers": 6,
+    "activeUsers": 2,
+    "lastUpdated": "2025-12-17T15:30:00.000Z"
   }
 }
