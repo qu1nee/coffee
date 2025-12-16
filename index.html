@@ -8,17 +8,17 @@
     <style>
         /* Основные стили */
         :root {
-            --primary-brown: #8B4513; /* Классический коричневый седла */
-            --secondary-brown: #A0522D; /* Коричневый сиена */
-            --light-brown: #D2B48C; /* Тановый */
-            --cream: #FFF8DC; /* Миндальный крем */
-            --coffee: #6F4E37; /* Кофейный */
-            --gold: #DAA520; /* Золотой */
-            --light-cream: #FAF3E0; /* Светлый крем */
-            --dark-brown: #5D4037; /* Темный коричневый */
-            --success: #2E7D32; /* Зеленый */
-            --error: #C62828; /* Красный */
-            --cart-color: #4CAF50; /* Цвет корзины */
+            --primary-brown: #8B4513;
+            --secondary-brown: #A0522D;
+            --light-brown: #D2B48C;
+            --cream: #FFF8DC;
+            --coffee: #6F4E37;
+            --gold: #DAA520;
+            --light-cream: #FAF3E0;
+            --dark-brown: #5D4037;
+            --success: #2E7D32;
+            --error: #C62828;
+            --cart-color: #4CAF50;
         }
 
         * {
@@ -1660,6 +1660,7 @@
                         <button class="btn" id="generateReportBtn"><i class="fas fa-file-alt"></i> <span>Сгенерировать отчет</span></button>
                         <button class="btn" id="downloadDataBtn"><i class="fas fa-download"></i> <span>Скачать базу данных</span></button>
                         <button class="btn" id="resetDataBtn" style="background: linear-gradient(45deg, #f44336, #d32f2f);"><i class="fas fa-redo"></i> <span>Сбросить данные</span></button>
+                        <button class="btn" id="uploadToGitHubBtn" style="background: linear-gradient(45deg, #2196F3, #1976D2);"><i class="fab fa-github"></i> <span>Загрузить на GitHub</span></button>
                     </div>
                 </div>
                 
@@ -1723,12 +1724,15 @@
     <script>
         // Константы
         const GITHUB_DATA_URL = 'https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/data.json'; // Замените на свой URL
+        const GITHUB_API_URL = 'https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/contents/data.json'; // Замените на свой URL
+        const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN'; // Замените на свой GitHub токен
         const CART_STORAGE_KEY = 'coffeeShopCart_v2';
         const USER_STORAGE_KEY = 'currentUser';
 
         // Глобальные переменные
         let coffeeShopData = null;
         let currentUser = null;
+        let gitHubSha = null; // Для отслеживания версии файла на GitHub
 
         // Утилиты
         class Utils {
@@ -1826,6 +1830,35 @@
                     return false;
                 }
             }
+
+            static async uploadToGitHub(data, commitMessage = 'Update data.json') {
+                try {
+                    const response = await fetch(GITHUB_API_URL, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${GITHUB_TOKEN}`,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            message: commitMessage,
+                            content: btoa(JSON.stringify(data, null, 2)),
+                            sha: gitHubSha,
+                            branch: 'main'
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`GitHub API error: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    gitHubSha = result.content.sha; // Обновляем SHA
+                    return true;
+                } catch (error) {
+                    console.error('Ошибка при загрузке на GitHub:', error);
+                    return false;
+                }
+            }
         }
 
         // Менеджер данных
@@ -1837,7 +1870,6 @@
 
             static async loadData() {
                 try {
-                    // Пробуем загрузить с GitHub
                     console.log('Попытка загрузить данные с GitHub...');
                     const response = await fetch(GITHUB_DATA_URL);
                     
@@ -1845,29 +1877,35 @@
                         coffeeShopData = await response.json();
                         console.log('Данные успешно загружены с GitHub');
                         
-                        // Сохраняем в localStorage как резервную копию
-                        localStorage.setItem('coffeeShopData_backup', JSON.stringify(coffeeShopData));
+                        // Получаем SHA файла для будущих обновлений
+                        await this.getFileSHA();
                     } else {
                         throw new Error('Ошибка загрузки с GitHub');
                     }
                     
                 } catch (error) {
                     console.warn('Не удалось загрузить данные с GitHub:', error.message);
-                    
-                    // Пробуем загрузить из localStorage
-                    const savedData = localStorage.getItem('coffeeShopData_backup');
-                    
-                    if (savedData) {
-                        coffeeShopData = JSON.parse(savedData);
-                        console.log('Данные загружены из резервной копии localStorage');
-                    } else {
-                        // Используем начальные данные
-                        coffeeShopData = this.getDefaultData();
-                        console.log('Используются начальные данные');
-                    }
+                    Utils.showNotification('Не удалось загрузить данные. Проверьте подключение к интернету.', 'error');
                 }
                 
                 this.validateDataStructure();
+            }
+
+            static async getFileSHA() {
+                try {
+                    const response = await fetch(GITHUB_API_URL, {
+                        headers: {
+                            'Authorization': `token ${GITHUB_TOKEN}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const fileInfo = await response.json();
+                        gitHubSha = fileInfo.sha;
+                    }
+                } catch (error) {
+                    console.warn('Не удалось получить SHA файла:', error.message);
+                }
             }
 
             static getDefaultData() {
@@ -1886,19 +1924,6 @@
                                 { date: "2024-01-20", amount: 800, pointsAdded: 80 }
                             ],
                             registrationDate: "2024-01-01"
-                        },
-                        {
-                            id: 2,
-                            username: "user1",
-                            password: "dXNlcjEyMw==",
-                            email: "user1@mail.com",
-                            role: "user",
-                            loyaltyPoints: 120,
-                            discountLevel: 5,
-                            purchaseHistory: [
-                                { date: "2024-01-18", amount: 450, pointsAdded: 45 }
-                            ],
-                            registrationDate: "2024-01-10"
                         }
                     ],
                     products: [
@@ -1911,111 +1936,9 @@
                             image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
                             stock: 100,
                             available: true
-                        },
-                        {
-                            id: 2,
-                            name: "Капучино",
-                            category: "coffee",
-                            price: 250,
-                            description: "Кофе с нежной молочной пенкой и легким ароматом ванили",
-                            image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 85,
-                            available: true
-                        },
-                        {
-                            id: 3,
-                            name: "Латте",
-                            category: "coffee",
-                            price: 280,
-                            description: "Нежный кофе с большим количеством вспененного молока",
-                            image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 70,
-                            available: true
-                        },
-                        {
-                            id: 4,
-                            name: "Американо",
-                            category: "coffee",
-                            price: 200,
-                            description: "Классический черный кофе с горячей водой",
-                            image: "https://images.unsplash.com/photo-1551966786-c6e15354b8a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 95,
-                            available: true
-                        },
-                        {
-                            id: 5,
-                            name: "Черный чай",
-                            category: "tea",
-                            price: 150,
-                            description: "Ароматный черный чай с бергамотом (Эрл Грей)",
-                            image: "https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 120,
-                            available: true
-                        },
-                        {
-                            id: 6,
-                            name: "Зеленый чай",
-                            category: "tea",
-                            price: 160,
-                            description: "Освежающий зеленый чай с жасмином",
-                            image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 110,
-                            available: true
-                        },
-                        {
-                            id: 7,
-                            name: "Чизкейк Нью-Йорк",
-                            category: "desserts",
-                            price: 320,
-                            description: "Нежный сырный десерт с ягодным соусом и крошкой печенья",
-                            image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 15,
-                            available: true
-                        },
-                        {
-                            id: 8,
-                            name: "Круассан",
-                            category: "desserts",
-                            price: 180,
-                            description: "Свежая французская выпечка с шоколадом или сливочным кремом",
-                            image: "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 25,
-                            available: true
-                        },
-                        {
-                            id: 9,
-                            name: "Тирамису",
-                            category: "desserts",
-                            price: 350,
-                            description: "Итальянский десерт из печенья савоярди, кофе и сыра маскарпоне",
-                            image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 12,
-                            available: true
-                        },
-                        {
-                            id: 10,
-                            name: "Свежевыжатый сок",
-                            category: "other",
-                            price: 220,
-                            description: "Апельсиновый, яблочный или морковный сок, приготовленный при вас",
-                            image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-                            stock: 40,
-                            available: true
                         }
                     ],
-                    orders: [
-                        {
-                            id: 1,
-                            userId: 2,
-                            date: "2024-01-18",
-                            items: [
-                                { productId: 2, quantity: 1, price: 250 },
-                                { productId: 7, quantity: 1, price: 320 }
-                            ],
-                            total: 570,
-                            status: "completed"
-                        }
-                    ],
+                    orders: [],
                     loyaltySettings: {
                         pointsPerPurchase: 10,
                         discountLevels: [
@@ -2030,6 +1953,10 @@
             }
 
             static validateDataStructure() {
+                if (!coffeeShopData) {
+                    coffeeShopData = this.getDefaultData();
+                }
+                
                 if (!coffeeShopData.users) coffeeShopData.users = [];
                 if (!coffeeShopData.products) coffeeShopData.products = [];
                 if (!coffeeShopData.orders) coffeeShopData.orders = [];
@@ -2039,32 +1966,37 @@
                 }
             }
 
-            static saveData() {
+            static async saveData(commitMessage = 'Update data.json') {
                 try {
-                    localStorage.setItem('coffeeShopData_backup', JSON.stringify(coffeeShopData));
-                    localStorage.setItem('coffeeShopLastUpdate', new Date().toISOString());
+                    this.validateDataStructure();
                     
-                    this.updateLastUpdateDisplay();
-                    Utils.showNotification('Данные сохранены в локальное хранилище');
-                    console.log('Данные сохранены в localStorage');
+                    // Добавляем метаданные
+                    coffeeShopData.lastUpdate = new Date().toISOString();
+                    coffeeShopData.lastUpdatedBy = currentUser ? currentUser.username : 'system';
                     
-                    return true;
+                    const success = await Utils.uploadToGitHub(coffeeShopData, commitMessage);
+                    
+                    if (success) {
+                        Utils.showNotification('Данные успешно сохранены на GitHub');
+                        console.log('Данные сохранены на GitHub');
+                        return true;
+                    } else {
+                        throw new Error('Ошибка загрузки на GitHub');
+                    }
+                    
                 } catch (error) {
                     console.error('Ошибка при сохранении данных:', error);
-                    Utils.showNotification('Ошибка при сохранении данных', 'error');
+                    Utils.showNotification('Ошибка при сохранении данных на GitHub', 'error');
                     return false;
                 }
             }
 
             static updateLastUpdateDisplay() {
                 const lastUpdateElement = document.getElementById('lastUpdate');
-                if (lastUpdateElement) {
-                    const lastUpdate = localStorage.getItem('coffeeShopLastUpdate');
-                    if (lastUpdate) {
-                        lastUpdateElement.textContent = Utils.formatDate(lastUpdate);
-                    } else {
-                        lastUpdateElement.textContent = 'Нет данных';
-                    }
+                if (lastUpdateElement && coffeeShopData && coffeeShopData.lastUpdate) {
+                    lastUpdateElement.textContent = Utils.formatDate(coffeeShopData.lastUpdate);
+                } else {
+                    lastUpdateElement.textContent = 'Нет данных';
                 }
             }
 
@@ -2149,18 +2081,44 @@
                 }
             }
 
-            static resetData() {
+            static async resetData() {
                 if (confirm('Вы уверены, что хотите сбросить все данные? Это действие нельзя отменить.')) {
                     coffeeShopData = this.getDefaultData();
-                    this.saveData();
-                    Utils.showNotification('Данные сброшены до начальных значений');
+                    const success = await this.saveData('Reset data to default');
                     
-                    // Перезагружаем страницы, если они открыты
-                    if (document.getElementById('menu')) MenuManager.loadMenu();
-                    if (document.getElementById('loyalty')) LoyaltyManager.loadLoyaltyData();
-                    if (document.getElementById('admin')) AdminManager.loadAdminPanel();
-                    
-                    Navigation.updateUserUI();
+                    if (success) {
+                        Utils.showNotification('Данные сброшены до начальных значений');
+                        
+                        // Перезагружаем страницы, если они открыты
+                        if (document.getElementById('menu')) MenuManager.loadMenu();
+                        if (document.getElementById('loyalty')) LoyaltyManager.loadLoyaltyData();
+                        if (document.getElementById('admin')) AdminManager.loadAdminPanel();
+                        
+                        Navigation.updateUserUI();
+                    }
+                }
+            }
+
+            static async uploadToGitHub() {
+                if (!currentUser || currentUser.role !== 'admin') {
+                    Utils.showNotification('Только администратор может загружать данные на GitHub', 'error');
+                    return;
+                }
+
+                if (!coffeeShopData) {
+                    Utils.showNotification('Нет данных для загрузки', 'error');
+                    return;
+                }
+
+                const commitMessage = prompt('Введите сообщение коммита:', 'Update data from admin panel');
+                if (!commitMessage) return;
+
+                const success = await this.saveData(commitMessage);
+                
+                if (success) {
+                    // Перезагружаем данные
+                    await this.loadData();
+                    Utils.showNotification('Данные успешно загружены на GitHub');
                 }
             }
         }
@@ -2392,8 +2350,8 @@
                 
                 coffeeShopData.orders.push(order);
                 
-                // Сохраняем изменения
-                DataManager.saveData();
+                // Сохраняем изменения на GitHub
+                await DataManager.saveData(`New order #${orderId} by ${currentUser.username}`);
                 
                 // Очищаем корзину
                 this.clearCart();
@@ -2553,8 +2511,8 @@
 
                     coffeeShopData.users.push(newUser);
                     
-                    // Сохраняем данные
-                    DataManager.saveData();
+                    // Сохраняем данные на GitHub
+                    await DataManager.saveData(`New user registration: ${username}`);
                     
                     // Автоматический вход
                     localStorage.setItem(USER_STORAGE_KEY, JSON.stringify({
@@ -2753,12 +2711,16 @@
             }
 
             static loadStatistics() {
+                if (!coffeeShopData) return;
+                
                 document.getElementById('totalUsers').textContent = coffeeShopData.users ? coffeeShopData.users.length : 0;
                 document.getElementById('totalProducts').textContent = coffeeShopData.products ? coffeeShopData.products.length : 0;
                 document.getElementById('totalOrders').textContent = coffeeShopData.orders ? coffeeShopData.orders.length : 0;
                 
                 const totalRevenue = coffeeShopData.orders ? coffeeShopData.orders.reduce((sum, order) => sum + order.total, 0) : 0;
                 document.getElementById('totalRevenue').textContent = `${totalRevenue} ₽`;
+                
+                DataManager.updateLastUpdateDisplay();
             }
 
             static loadProducts() {
@@ -2826,39 +2788,39 @@
                 });
             }
 
-            static updateStock(productId, newStock) {
+            static async updateStock(productId, newStock) {
                 const product = coffeeShopData.products.find(p => p.id === productId);
                 if (product) {
                     product.stock = parseInt(newStock) || 0;
-                    DataManager.saveData();
+                    await DataManager.saveData(`Update stock for product: ${product.name}`);
                     this.loadProducts();
                     Utils.showNotification('Количество обновлено');
                 }
             }
 
-            static increaseStock(productId) {
+            static async increaseStock(productId) {
                 const product = coffeeShopData.products.find(p => p.id === productId);
                 if (product) {
                     product.stock += 1;
-                    DataManager.saveData();
+                    await DataManager.saveData(`Increase stock for product: ${product.name}`);
                     this.loadProducts();
                 }
             }
 
-            static decreaseStock(productId) {
+            static async decreaseStock(productId) {
                 const product = coffeeShopData.products.find(p => p.id === productId);
                 if (product && product.stock > 0) {
                     product.stock -= 1;
-                    DataManager.saveData();
+                    await DataManager.saveData(`Decrease stock for product: ${product.name}`);
                     this.loadProducts();
                 }
             }
 
-            static toggleAvailability(productId) {
+            static async toggleAvailability(productId) {
                 const product = coffeeShopData.products.find(p => p.id === productId);
                 if (product) {
                     product.available = !product.available;
-                    DataManager.saveData();
+                    await DataManager.saveData(`Toggle availability for product: ${product.name}`);
                     this.loadProducts();
                     Utils.showNotification(
                         `Продукт "${product.name}" ${product.available ? 'доступен' : 'скрыт'}`
@@ -2866,7 +2828,7 @@
                 }
             }
 
-            static addProduct() {
+            static async addProduct() {
                 const name = prompt('Введите название продукта:');
                 if (!name) return;
                 
@@ -2896,7 +2858,7 @@
                 if (!coffeeShopData.products) coffeeShopData.products = [];
                 coffeeShopData.products.push(newProduct);
                 
-                DataManager.saveData();
+                await DataManager.saveData(`Add new product: ${name}`);
                 this.loadProducts();
                 this.loadStatistics();
                 Utils.showNotification('Продукт добавлен');
@@ -2958,6 +2920,11 @@
             // Кнопка сброса данных
             document.getElementById('resetDataBtn')?.addEventListener('click', () => {
                 DataManager.resetData();
+            });
+            
+            // Кнопка загрузки на GitHub
+            document.getElementById('uploadToGitHubBtn')?.addEventListener('click', () => {
+                DataManager.uploadToGitHub();
             });
             
             // Кнопка оформления заказа
