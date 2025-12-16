@@ -5,20 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кофейня "Уютная Чашка"</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Основные стили (остаются без изменений) */
+        /* Обновленные переменные цветов в кофейных тонах */
         :root {
-            --primary-brown: #8B4513;
-            --secondary-brown: #A0522D;
-            --light-brown: #D2B48C;
-            --cream: #FFF8DC;
-            --coffee: #6F4E37;
-            --gold: #DAA520;
-            --light-cream: #FAF3E0;
-            --dark-brown: #5D4037;
-            --success: #2E7D32;
-            --error: #C62828;
-            --cart-color: #4CAF50;
+            --primary-brown: #6B4F3D; /* Тёмный кофейный */
+            --secondary-brown: #8B6B4A; /* Средний кофейный */
+            --light-brown: #C4A484; /* Светлый кофейный */
+            --cream: #F5E9D9; /* Кремовый */
+            --coffee: #7D5C44; /* Кофейный */
+            --gold: #D4AF37; /* Тёплое золото */
+            --light-cream: #FFF8F0; /* Светлый крем */
+            --dark-brown: #4A3428; /* Очень тёмный кофейный */
+            --caramel: #B08968; /* Карамельный */
+            --latte: #E6D5B8; /* Цвет латте */
+            --espresso: #3D2B1F; /* Эспрессо */
+            --success: #8AA67A; /* Тёплый зелёный */
+            --error: #C85C5C; /* Тёплый красный */
+            --cart-color: #8AA67A;
         }
 
         * {
@@ -28,13 +32,14 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #5D4037;
-            background: linear-gradient(135deg, var(--light-cream) 0%, #f5f5f5 100%);
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-brown);
+            background: linear-gradient(135deg, var(--light-cream) 0%, var(--latte) 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-attachment: fixed;
         }
 
         .container {
@@ -48,63 +53,1034 @@
             padding: 2rem 0;
         }
 
-        /* Шапка и другие стили остаются без изменений */
-        /* ... (все стили остаются как в первом примере до конца CSS) ... */
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--espresso) 0%, var(--primary-brown) 100%);
+            box-shadow: 0 4px 20px rgba(77, 54, 36, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--gold);
+        }
 
-        /* Новые стили для улучшенной системы хранения */
-        .db-status {
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #e8f5e9;
-            border-radius: 6px;
+            gap: 15px;
+            color: var(--cream);
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Playfair Display', serif;
         }
 
-        .status-indicator {
-            width: 10px;
-            height: 10px;
+        .logo i {
+            color: var(--gold);
+            font-size: 2.2rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(196, 164, 132, 0.2) 100%);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--caramel) 100%);
+            color: var(--espresso);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cart-badge {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--caramel) 100%);
+            color: var(--espresso);
             border-radius: 50%;
-            background-color: #4caf50;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        .status-indicator.offline {
-            background-color: #f44336;
+        .menu-toggle {
+            display: none;
+            color: var(--cream);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        /* Индикатор администратора */
         .admin-indicator {
-            background-color: #d32f2f;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
+            background-color: var(--gold);
+            color: var(--espresso);
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 12px;
             margin-left: 10px;
             display: none;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
         }
 
-        .admin-mode-btn {
-            background-color: #d32f2f;
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(rgba(77, 54, 36, 0.85), rgba(77, 54, 36, 0.9)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 1400px;
+            box-shadow: 0 10px 40px rgba(77, 54, 36, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: var(--cream);
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        /* Кнопки */
+        .btn {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--caramel) 100%);
+            color: var(--espresso);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            color: var(--espresso);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Секция преимуществ */
+        .features {
+            padding: 5rem 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            color: var(--espresso);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .features h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--caramel));
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 8px 8px 25px rgba(139, 107, 74, 0.1),
+                       -5px -5px 20px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(196, 164, 132, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--caramel));
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 12px 12px 35px rgba(139, 107, 74, 0.15),
+                       -8px -8px 25px rgba(255, 255, 255, 0.9);
+        }
+
+        .feature i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(196, 164, 132, 0.1) 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature h3 {
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Меню */
+        .menu {
+            padding: 4rem 0;
+        }
+
+        .menu h1 {
+            text-align: center;
+            color: var(--espresso);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .menu h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--caramel));
+            border-radius: 2px;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            border: 2px solid rgba(196, 164, 132, 0.3);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--coffee);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--caramel) 100%);
+            color: var(--espresso);
+            border-color: var(--gold);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 8px 8px 25px rgba(139, 107, 74, 0.1),
+                       -5px -5px 20px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(196, 164, 132, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--caramel));
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 12px 12px 35px rgba(139, 107, 74, 0.15),
+                       -8px -8px 25px rgba(255, 255, 255, 0.9);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border: 3px solid var(--light-brown);
+        }
+
+        .menu-item-content h3 {
+            color: var(--espresso);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .menu-item .price {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item .description {
+            color: var(--coffee);
+            margin-bottom: 1rem;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .menu-item .stock {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--caramel);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--coffee) 100%);
             color: white;
             border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
             cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .add-to-cart-btn:hover {
+            background: linear-gradient(135deg, var(--coffee) 0%, var(--espresso) 100%);
+            transform: scale(1.05);
+        }
+
+        /* Корзина */
+        .cart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 2fr 1fr 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(139, 107, 74, 0.1);
+            border: 1px solid rgba(196, 164, 132, 0.3);
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid var(--light-brown);
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--espresso);
+            font-size: 1.2rem;
+        }
+
+        .cart-item-price {
+            color: var(--coffee);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--light-brown);
+            background: var(--cream);
+            color: var(--coffee);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background: var(--light-brown);
+            color: white;
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            border: 2px solid var(--light-brown);
+            border-radius: 10px;
+            background: var(--light-cream);
+            color: var(--dark-brown);
+        }
+
+        .cart-total {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--coffee) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(107, 79, 61, 0.2);
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 4rem;
+            color: var(--caramel);
+        }
+
+        .empty-cart i {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--light-brown);
+        }
+
+        /* Карта лояльности */
+        .loyalty-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .points-display {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--coffee) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(107, 79, 61, 0.3);
+        }
+
+        .points-display::before {
+            content: '☕';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .points-value {
+            font-size: 5rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            margin: 1rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        #discountLevel {
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            color: var(--cream);
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .level-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 5px 5px 15px rgba(139, 107, 74, 0.1);
+            border: 1px solid rgba(196, 164, 132, 0.3);
+        }
+
+        .level-card.active {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--caramel) 100%);
+            color: var(--espresso);
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .level-card.active::before {
+            content: '✓';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--success);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .level-card h3 {
+            color: var(--espresso);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .level-card .points {
+            color: var(--caramel);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .level-card .discount {
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Формы аутентификации */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 2rem;
+        }
+
+        .auth-form {
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 15px 15px 40px rgba(139, 107, 74, 0.1),
+                       -10px -10px 30px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(196, 164, 132, 0.2);
+        }
+
+        .auth-form h2 {
+            text-align: center;
+            color: var(--espresso);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .auth-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--caramel));
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--coffee);
             font-weight: 500;
-            transition: background-color 0.3s;
-            font-size: 14px;
-            margin-left: 10px;
         }
 
-        .admin-mode-btn:hover {
-            background-color: #c62828;
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(196, 164, 132, 0.3);
+            border-radius: 15px;
+            font-size: 1rem;
+            background: var(--light-cream);
+            transition: all 0.3s ease;
+            color: var(--dark-brown);
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .admin-mode-btn.active {
-            background-color: #4caf50;
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
         }
 
+        .form-btn {
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--coffee) 100%);
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(107, 79, 61, 0.3);
+        }
+
+        .form-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--coffee);
+        }
+
+        .form-link a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Админ панель */
+        .admin-container {
+            background: var(--light-cream);
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: inset 5px 5px 15px rgba(139, 107, 74, 0.1),
+                        inset -5px -5px 15px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(196, 164, 132, 0.2);
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            color: var(--espresso);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .admin-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .admin-card {
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px rgba(139, 107, 74, 0.1);
+            border: 1px solid rgba(196, 164, 132, 0.3);
+        }
+
+        .admin-card h3 {
+            color: var(--espresso);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .stats p {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(196, 164, 132, 0.2);
+        }
+
+        .stats span {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .product-list {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--light-cream);
+            border-radius: 10px;
+            border: 1px solid rgba(196, 164, 132, 0.2);
+        }
+
+        .stock-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stock-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            background: var(--light-brown);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .stock-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .stock-input {
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid var(--light-brown);
+            border-radius: 5px;
+            background: white;
+        }
+
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(61, 43, 31, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--gold);
+        }
+
+        /* Контакты */
+        .contact {
+            padding: 5rem 0;
+        }
+
+        .contact h2 {
+            text-align: center;
+            color: var(--espresso);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--caramel));
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(145deg, var(--cream) 0%, #fff 100%);
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px rgba(139, 107, 74, 0.1);
+            border: 1px solid rgba(196, 164, 132, 0.3);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            color: var(--espresso);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, var(--espresso) 0%, var(--primary-brown) 100%);
+            color: var(--cream);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 2px solid var(--gold);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        /* Уведомления */
+        #notificationContainer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+
+        .notification {
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 400px;
+            border-left: 5px solid var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, var(--success) 0%, #6B8E23 100%);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, var(--error) 0%, #8B0000 100%);
+        }
+
+        /* Анимации */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Анимация для элементов */
+        .feature, .menu-item, .level-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Индикаторы */
+        .db-status {
+            background: linear-gradient(135deg, rgba(138, 166, 122, 0.1) 0%, rgba(200, 92, 92, 0.1) 100%);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 5px solid var(--success);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8AA67A 0%, #6B8E23 100%);
+            box-shadow: 0 0 10px rgba(138, 166, 122, 0.5);
+        }
+
+        .status-indicator.offline {
+            background: linear-gradient(135deg, #C85C5C 0%, #8B0000 100%);
+        }
+
+        /* Алерты */
         .alert {
             padding: 15px;
             border-radius: 6px;
@@ -128,6 +1104,120 @@
             background-color: #d1ecf1;
             color: #0c5460;
             border: 1px solid #bee5eb;
+        }
+
+        /* Стили для режима админа */
+        .admin-mode-btn {
+            background: linear-gradient(135deg, var(--error) 0%, #8B0000 100%);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            font-size: 14px;
+            margin-left: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .admin-mode-btn:hover {
+            background: linear-gradient(135deg, #c62828 0%, #8B0000 100%);
+        }
+
+        .admin-mode-btn.active {
+            background: linear-gradient(135deg, var(--success) 0%, #6B8E23 100%);
+        }
+
+        /* Страницы */
+        .page {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, var(--espresso) 0%, var(--primary-brown) 100%);
+                flex-direction: column;
+                padding: 2rem;
+                border-top: 2px solid var(--gold);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cart-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .admin-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .cart-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cart-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Стили для скроллбара */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-cream);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--gold), var(--caramel));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--caramel), var(--gold));
         }
     </style>
 </head>
@@ -172,7 +1262,7 @@
                 <div class="hero-content">
                     <h1>Лучший кофе в городе</h1>
                     <p>Наслаждайтесь ароматом свежеобжаренных зерен и уютной атмосферой нашей кофейни. Идеальное место для встреч, работы и отдыха.</p>
-                    <a href="#" data-page="menu" class="btn"><span>Посмотреть меню</span></a>
+                    <a href="#" data-page="menu" class="btn"><i class="fas fa-mug-hot"></i> <span>Посмотреть меню</span></a>
                 </div>
             </section>
 
@@ -254,7 +1344,7 @@
         <!-- Корзина -->
         <section id="cart" class="page">
             <div class="cart-container">
-                <h1 style="text-align: center; margin-bottom: 2rem; color: var(--dark-brown);">
+                <h1 style="text-align: center; margin-bottom: 2rem; color: var(--espresso); font-family: 'Playfair Display', serif;">
                     <i class="fas fa-shopping-cart"></i> Ваша корзина
                 </h1>
                 
@@ -265,14 +1355,14 @@
                 <div id="cartTotal" style="display: none;">
                     <div class="cart-total">
                         Итого: <span id="totalAmount">0</span> ₽
-                        <div style="font-size: 1rem; color: #666; margin-top: 0.5rem;">
+                        <div style="font-size: 1rem; color: var(--cream); margin-top: 0.5rem;">
                             Будет начислено баллов: <span id="pointsToAdd">0</span>
                         </div>
                     </div>
                     
                     <div class="cart-actions">
                         <button class="btn" onclick="CoffeeShopManager.clearCart()" 
-                                style="background: linear-gradient(45deg, #f44336, #d32f2f);">
+                                style="background: linear-gradient(45deg, var(--error), #8B0000);">
                             <i class="fas fa-trash"></i> Очистить корзину
                         </button>
                         <button class="btn" id="checkoutBtn">
@@ -299,14 +1389,14 @@
                     <div id="discountLevel">Текущая скидка: <span id="currentDiscount">0%</span></div>
                 </div>
 
-                <h2 style="text-align: center; color: var(--dark-brown); margin: 2rem 0;">Уровни лояльности</h2>
+                <h2 style="text-align: center; color: var(--espresso); margin: 2rem 0; font-family: 'Playfair Display', serif;">Уровни лояльности</h2>
                 <div class="levels-grid" id="levelsGrid">
                     <!-- Уровни будут загружены через JavaScript -->
                 </div>
 
                 <div class="admin-card" style="margin-top: 3rem;">
                     <h3>Как работают бонусы?</h3>
-                    <div style="line-height: 1.8;">
+                    <div style="line-height: 1.8; color: var(--coffee);">
                         <p><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> За каждые 100 рублей покупки вы получаете 10 бонусных баллов</p>
                         <p><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> 1 балл = 1 рубль скидки на следующую покупку</p>
                         <p><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> Бонусы начисляются автоматически после каждой покупки</p>
@@ -366,18 +1456,17 @@
             </div>
         </section>
 
-        <!-- Админ панель с улучшенной системой хранения -->
+        <!-- Админ панель -->
         <section id="admin" class="page">
             <div class="admin-container">
                 <div class="admin-header">
                     <h1>Панель администратора</h1>
                     <div class="admin-buttons">
-                        <button class="btn" id="addProductBtn"><span>Добавить продукт</span></button>
+                        <button class="btn" id="addProductBtn"><i class="fas fa-plus"></i> <span>Добавить продукт</span></button>
                         <button class="btn" id="generateReportBtn"><i class="fas fa-file-alt"></i> <span>Сгенерировать отчет</span></button>
                         <button class="btn" id="exportDataBtn"><i class="fas fa-download"></i> <span>Скачать data.json</span></button>
                         <button class="btn" id="importDataBtn"><i class="fas fa-upload"></i> <span>Импорт данных</span></button>
-                        <button class="btn" id="resetDataBtn" style="background: linear-gradient(45deg, #f44336, #d32f2f);"><i class="fas fa-redo"></i> <span>Сбросить данные</span></button>
-                        <button class="btn" id="uploadToGitHubBtn" style="background: linear-gradient(45deg, #2196F3, #1976D2);"><i class="fab fa-github"></i> <span>Загрузить на GitHub</span></button>
+                        <button class="btn" id="resetDataBtn" style="background: linear-gradient(45deg, var(--error), #8B0000);"><i class="fas fa-redo"></i> <span>Сбросить данные</span></button>
                     </div>
                 </div>
                 
@@ -420,11 +1509,10 @@
         </section>
     </main>
 
-    <!-- Модальные окна остаются без изменений -->
     <!-- Модальное окно оформления заказа -->
     <div id="checkoutModal" class="modal">
         <div class="modal-content">
-            <h2 style="margin-bottom: 1.5rem; color: var(--dark-brown);">
+            <h2 style="margin-bottom: 1.5rem; color: var(--espresso); font-family: 'Playfair Display', serif;">
                 <i class="fas fa-check-circle"></i> Заказ оформлен!
             </h2>
             <div id="checkoutResult"></div>
@@ -557,7 +1645,7 @@
             }
         }
 
-        // Менеджер данных (переделан по примеру чайного магазина)
+        // Менеджер данных
         class DataManager {
             static async init() {
                 // Пытаемся загрузить данные из data.json
@@ -687,6 +1775,56 @@
                             description: "Нежный кофе с большим количеством вспененного молока",
                             image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
                             stock: 67,
+                            available: true
+                        },
+                        {
+                            id: 4,
+                            name: "Американо",
+                            category: "coffee",
+                            price: 200,
+                            description: "Классический черный кофе с добавлением горячей воды",
+                            image: "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+                            stock: 92,
+                            available: true
+                        },
+                        {
+                            id: 5,
+                            name: "Раф кофе",
+                            category: "coffee",
+                            price: 320,
+                            description: "Кофе со сливками и ванильным сиропом, взбитый в капучинаторе",
+                            image: "https://images.unsplash.com/photo-1570196911496-66bd58a5b7b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+                            stock: 45,
+                            available: true
+                        },
+                        {
+                            id: 6,
+                            name: "Черный чай",
+                            category: "tea",
+                            price: 150,
+                            description: "Классический черный чай с насыщенным вкусом",
+                            image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+                            stock: 120,
+                            available: true
+                        },
+                        {
+                            id: 7,
+                            name: "Тирамису",
+                            category: "desserts",
+                            price: 350,
+                            description: "Классический итальянский десерт с кофе и сыром маскарпоне",
+                            image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+                            stock: 25,
+                            available: true
+                        },
+                        {
+                            id: 8,
+                            name: "Круассан",
+                            category: "desserts",
+                            price: 180,
+                            description: "Свежий французский круассан с масляной начинкой",
+                            image: "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
+                            stock: 38,
                             available: true
                         }
                     ],
@@ -904,24 +2042,9 @@
                     localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(currentUser));
                 }
             }
-
-            static async uploadToGitHub() {
-                if (!currentUser || currentUser.role !== 'admin') {
-                    Utils.showAlert('Только администратор может загружать данные на GitHub', 'error');
-                    return;
-                }
-
-                if (!coffeeShopDatabase) {
-                    Utils.showAlert('Нет данных для загрузки', 'error');
-                    return;
-                }
-
-                // Эту функцию можно реализовать при необходимости
-                Utils.showAlert('Функция загрузки на GitHub требует настройки GitHub API', 'info');
-            }
         }
 
-        // Менеджер корзины (адаптирован)
+        // Менеджер корзины
         class CartManager {
             static getCart() {
                 return cart;
@@ -976,7 +2099,7 @@
                 
                 const item = cart.find(item => item.productId === productId);
                 if (item) {
-                    item.quantity = quantity;
+                    item.quantity = parseInt(quantity) || 1;
                     this.saveCart();
                 }
             }
@@ -1026,22 +2149,23 @@
                     
                     html += `
                         <div class="cart-item">
-                            <img src="${product.image}" alt="${product.name}">
+                            <img src="${product.image}" alt="${product.name}" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80'">
                             <div class="cart-item-info">
                                 <div class="cart-item-name">${product.name}</div>
                                 <div class="cart-item-price">${product.price} ₽</div>
                             </div>
                             <div class="quantity-controls">
                                 <button class="quantity-btn" onclick="CartManager.updateQuantity(${product.id}, ${item.quantity - 1})">-</button>
-                                <input type="number" class="quantity-input" value="${item.quantity}" 
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1"
                                        onchange="CartManager.updateQuantity(${product.id}, this.value)">
                                 <button class="quantity-btn" onclick="CartManager.updateQuantity(${product.id}, ${item.quantity + 1})">+</button>
                             </div>
-                            <div style="color: var(--primary-brown); font-weight: bold;">
+                            <div style="color: var(--primary-brown); font-weight: bold; font-size: 1.2rem;">
                                 ${itemTotal} ₽
                             </div>
                             <button class="btn" onclick="CartManager.removeFromCart(${product.id})" 
-                                    style="padding: 0.5rem 1rem; background: linear-gradient(45deg, #f44336, #d32f2f);">
+                                    style="padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--error), #8B0000);">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -1157,15 +2281,15 @@
                 const resultDiv = document.getElementById('checkoutResult');
                 
                 resultDiv.innerHTML = `
-                    <div style="background: rgba(46, 125, 50, 0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem;">
+                    <div style="background: rgba(138, 166, 122, 0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem; border: 1px solid rgba(138, 166, 122, 0.3);">
                         <p style="margin-bottom: 0.5rem;"><strong>Номер заказа:</strong> ${order.id}</p>
                         <p style="margin-bottom: 0.5rem;"><strong>Дата:</strong> ${new Date(order.date).toLocaleString('ru-RU')}</p>
                         <p style="margin-bottom: 0.5rem;"><strong>Сумма заказа:</strong> ${order.total} ₽</p>
                         <p style="margin-bottom: 0.5rem;"><strong>Начислено баллов:</strong> ${pointsAdded}</p>
-                        <p><strong>Статус:</strong> <span style="color: var(--success);">Выполнен</span></p>
+                        <p><strong>Статус:</strong> <span style="color: var(--success); font-weight: bold;">Выполнен</span></p>
                     </div>
                     <div style="margin-top: 1rem;">
-                        <h4 style="color: var(--dark-brown); margin-bottom: 0.5rem;">Состав заказа:</h4>
+                        <h4 style="color: var(--dark-brown); margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">Состав заказа:</h4>
                         <ul style="list-style: none; padding: 0;">
                             ${order.items.map(item => {
                                 const product = coffeeShopDatabase.products.find(p => p.id === item.productId);
@@ -1181,7 +2305,7 @@
             }
         }
 
-        // Навигация (остается без изменений)
+        // Навигация
         class Navigation {
             static init() {
                 document.querySelectorAll('[data-page]').forEach(link => {
@@ -1200,8 +2324,12 @@
                     navLinks.classList.toggle('active');
                 });
 
+                document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    AuthManager.logout();
+                });
+
                 this.updateUserUI();
-                Utils.animateOnScroll();
             }
 
             static navigateTo(page) {
@@ -1227,8 +2355,6 @@
                             AdminManager.loadAdminPanel();
                             break;
                     }
-                    
-                    setTimeout(() => Utils.animateOnScroll(), 100);
                 }
             }
 
@@ -1247,6 +2373,7 @@
                         userInfoItem.innerHTML = `
                             <span style="color: var(--gold); padding: 1rem; display: block; font-weight: 600;">
                                 <i class="fas fa-user-circle"></i> ${currentUser.username}
+                                ${currentUser.role === 'admin' ? ' <i class="fas fa-crown" style="color: var(--gold);"></i>' : ''}
                             </span>
                         `;
                     }
@@ -1270,7 +2397,7 @@
             }
         }
 
-        // Менеджер аутентификации (адаптирован)
+        // Менеджер аутентификации
         class AuthManager {
             static async register(username, email, password, confirmPassword) {
                 try {
@@ -1372,7 +2499,7 @@
             }
         }
 
-        // Менеджер меню (остается без изменений)
+        // Менеджер меню
         class MenuManager {
             static loadMenu() {
                 const menuGrid = document.getElementById('menuGrid');
@@ -1381,7 +2508,7 @@
                 menuGrid.innerHTML = '';
                 
                 if (!coffeeShopDatabase.products || coffeeShopDatabase.products.length === 0) {
-                    menuGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #666; font-size: 1.2rem;">Нет доступных продуктов</p>';
+                    menuGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: var(--caramel); font-size: 1.2rem; padding: 2rem;">Нет доступных продуктов</p>';
                     return;
                 }
                 
@@ -1394,7 +2521,7 @@
                                  onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80'">
                             <div class="menu-item-content">
                                 <h3>${product.name}</h3>
-                                <div class="price">${product.price}</div>
+                                <div class="price">${product.price} ₽</div>
                                 <p class="description">${product.description}</p>
                                 <span class="stock"><i class="fas fa-box"></i> В наличии: ${product.stock}</span>
                                 <button class="add-to-cart-btn" onclick="CartManager.addToCart(${product.id}, 1)">
@@ -1407,7 +2534,6 @@
                 });
 
                 this.setupFilters();
-                setTimeout(() => Utils.animateOnScroll(), 100);
             }
 
             static setupFilters() {
@@ -1432,7 +2558,7 @@
             }
         }
 
-        // Менеджер лояльности (остается без изменений)
+        // Менеджер лояльности
         class LoyaltyManager {
             static loadLoyaltyData() {
                 const pointsValue = document.getElementById('pointsValue');
@@ -1467,12 +2593,10 @@
                         });
                     }
                 }
-                
-                setTimeout(() => Utils.animateOnScroll(), 100);
             }
         }
 
-        // Менеджер админки (адаптирован)
+        // Менеджер админки
         class AdminManager {
             static async loadAdminPanel() {
                 if (!currentUser || currentUser.role !== 'admin') {
@@ -1484,7 +2608,6 @@
                 this.loadStatistics();
                 this.loadProducts();
                 this.loadUsers();
-                setTimeout(() => Utils.animateOnScroll(), 100);
             }
 
             static loadStatistics() {
@@ -1507,7 +2630,7 @@
                 productsList.innerHTML = '';
                 
                 if (!coffeeShopDatabase.products || coffeeShopDatabase.products.length === 0) {
-                    productsList.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Нет продуктов</p>';
+                    productsList.innerHTML = '<p style="text-align: center; color: var(--caramel); padding: 2rem;">Нет продуктов</p>';
                     return;
                 }
                 
@@ -1522,9 +2645,9 @@
                         <div class="stock-controls">
                             <button class="stock-btn" onclick="AdminManager.decreaseStock(${product.id})" title="Уменьшить">-</button>
                             <input type="number" class="stock-input" value="${product.stock}" 
-                                   id="stock-${product.id}" onchange="AdminManager.updateStock(${product.id}, this.value)">
+                                   id="stock-${product.id}" onchange="AdminManager.updateStock(${product.id}, this.value)" min="0">
                             <button class="stock-btn" onclick="AdminManager.increaseStock(${product.id})" title="Увеличить">+</button>
-                            <button class="stock-btn" style="background: ${product.available ? 'linear-gradient(45deg, #f44336, #d32f2f)' : 'linear-gradient(45deg, #4CAF50, #2E7D32)'}"
+                            <button class="stock-btn" style="background: ${product.available ? 'linear-gradient(45deg, var(--error), #8B0000)' : 'linear-gradient(45deg, var(--success), #2E7D32)'}"
                                     onclick="AdminManager.toggleAvailability(${product.id})" title="${product.available ? 'Скрыть продукт' : 'Показать продукт'}">
                                 ${product.available ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>'}
                             </button>
@@ -1541,7 +2664,7 @@
                 usersList.innerHTML = '';
                 
                 if (!coffeeShopDatabase.users || coffeeShopDatabase.users.length === 0) {
-                    usersList.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Нет пользователей</p>';
+                    usersList.innerHTML = '<p style="text-align: center; color: var(--caramel); padding: 2rem;">Нет пользователей</p>';
                     return;
                 }
                 
@@ -1550,7 +2673,7 @@
                     userItem.className = 'product-item';
                     userItem.innerHTML = `
                         <div>
-                            <strong>${user.username} ${user.role === 'admin' ? '(Админ)' : ''}</strong>
+                            <strong>${user.username} ${user.role === 'admin' ? '<span style="color: var(--gold);">(Админ)</span>' : ''}</strong>
                             <div style="color: var(--coffee); font-size: 0.9rem; margin-top: 5px;">Email: ${user.email}</div>
                             <div style="display: flex; gap: 1rem; margin-top: 5px;">
                                 <span style="color: var(--gold);"><i class="fas fa-coins"></i> ${user.loyaltyPoints}</span>
@@ -1638,15 +2761,15 @@
                 DataManager.saveToLocalStorage();
                 this.loadProducts();
                 this.loadStatistics();
+                MenuManager.loadMenu();
                 Utils.showNotification('Продукт добавлен');
             }
 
             static toggleAdminMode() {
-                const adminControls = document.querySelectorAll('.admin-controls');
                 const adminModeBtn = document.getElementById('adminModeBtn');
                 
-                if (!currentUser || !currentUser.isAdmin) {
-                    Utils.showAlert('Только администраторы могут управлять магазином', 'error');
+                if (!currentUser || currentUser.role !== 'admin') {
+                    Utils.showNotification('Только администраторы могут включать режим управления', 'error');
                     return;
                 }
                 
@@ -1655,22 +2778,12 @@
                     isAdminModeActive = true;
                     adminModeBtn.classList.add('active');
                     adminModeBtn.textContent = 'Режим админа (вкл)';
-                    
-                    adminControls.forEach(control => {
-                        control.style.display = 'block';
-                    });
-                    
                     Utils.showNotification('Режим управления включен', 'success');
                 } else {
                     // Выключаем режим администратора
                     isAdminModeActive = false;
                     adminModeBtn.classList.remove('active');
                     adminModeBtn.textContent = 'Режим админа';
-                    
-                    adminControls.forEach(control => {
-                        control.style.display = 'none';
-                    });
-                    
                     Utils.showNotification('Режим управления выключен', 'success');
                 }
             }
@@ -1720,12 +2833,6 @@
                     AuthManager.login(username, password);
                 });
                 
-                // Кнопка выхода
-                document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    AuthManager.logout();
-                });
-                
                 // Кнопка добавления продукта
                 document.getElementById('addProductBtn')?.addEventListener('click', () => {
                     AdminManager.addProduct();
@@ -1765,11 +2872,6 @@
                     DataManager.resetData();
                 });
                 
-                // Кнопка загрузки на GitHub
-                document.getElementById('uploadToGitHubBtn')?.addEventListener('click', () => {
-                    DataManager.uploadToGitHub();
-                });
-                
                 // Кнопка оформления заказа
                 document.getElementById('checkoutBtn')?.addEventListener('click', () => {
                     CartManager.checkout();
@@ -1778,23 +2880,6 @@
                 // Кнопка режима администратора
                 document.getElementById('adminModeBtn')?.addEventListener('click', () => {
                     AdminManager.toggleAdminMode();
-                });
-                
-                // Горячие клавиши
-                document.addEventListener('keydown', (e) => {
-                    // Ctrl+Shift+A для включения/выключения режима администратора
-                    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-                        e.preventDefault();
-                        AdminManager.toggleAdminMode();
-                    }
-                    
-                    // Alt+A для быстрого входа как администратор
-                    if (e.altKey && e.key === 'a') {
-                        e.preventDefault();
-                        if (!currentUser) {
-                            AuthManager.login('admin', ADMIN_PASSWORD);
-                        }
-                    }
                 });
             }
 
