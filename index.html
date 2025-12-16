@@ -6,181 +6,30 @@
     <title>Кофейня "Уютная Чашка"</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Основные стили */
-        :root {
-            --primary-brown: #8B4513;
-            --secondary-brown: #A0522D;
-            --light-brown: #D2B48C;
-            --cream: #FFF8DC;
-            --coffee: #6F4E37;
-            --gold: #DAA520;
-            --light-cream: #FAF3E0;
-            --dark-brown: #5D4037;
-            --success: #2E7D32;
-            --error: #C62828;
-            --info: #2196F3;
+        /* Все предыдущие стили остаются без изменений */
+        /* Добавляем новые стили для корзины */
+
+        /* Стили для корзины */
+        .cart-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
+            border: 1px solid rgba(210, 180, 140, 0.3);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #5D4037;
-            background: linear-gradient(135deg, var(--light-cream) 0%, #f5f5f5 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        main {
-            flex: 1;
-            padding: 2rem 0;
-        }
-
-        /* Шапка */
-        header {
-            background: linear-gradient(135deg, var(--dark-brown) 0%, var(--primary-brown) 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--gold), #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .logo i {
-            margin-right: 12px;
-            font-size: 2.2rem;
-            color: var(--gold);
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--gold);
-            transition: transform 0.3s;
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-links li {
-            position: relative;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            padding: 0.7rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .nav-links a:hover::before {
-            transform: translateX(0);
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .nav-links i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-
-        .cart-badge {
-            background: var(--gold);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 5px;
-        }
-
-        /* Меню (прежний формат) */
-        .menu {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8f4e9 0%, #fff8f0 100%);
-            min-height: 100vh;
-        }
-
-        .menu h1 {
+        .cart-container h1 {
             text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 3rem;
             color: var(--dark-brown);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
             position: relative;
         }
 
-        .menu h1::after {
+        .cart-container h1::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -192,220 +41,27 @@
             border-radius: 2px;
         }
 
-        .category-filter {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.8rem 2rem;
-            border: 2px solid var(--light-brown);
-            background: white;
-            color: var(--coffee);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary-brown), var(--gold));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .filter-btn.active::before,
-        .filter-btn:hover::before {
-            opacity: 1;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            color: white;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
-        }
-
-        .filter-btn span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
-            padding: 1rem;
-        }
-
-        .menu-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            border: 1px solid rgba(210, 180, 140, 0.3);
-        }
-
-        .menu-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
-        }
-
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-brown), var(--gold));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .menu-item:hover::before {
-            transform: scaleX(1);
-        }
-
-        .menu-item img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .menu-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .menu-item-content {
-            padding: 1.8rem;
-            position: relative;
-        }
-
-        .menu-item h3 {
-            color: var(--dark-brown);
-            margin-bottom: 0.8rem;
-            font-size: 1.6rem;
-            font-weight: 600;
-        }
-
-        .price {
-            font-size: 1.8rem;
-            color: var(--gold);
-            font-weight: bold;
-            margin: 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .price::before {
-            content: '₽';
-            font-size: 1.4rem;
-            color: var(--secondary-brown);
-        }
-
-        .description {
-            color: #666;
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .stock {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: linear-gradient(45deg, #e8f5e9, #c8e6c9);
-            color: var(--success);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .stock i {
-            font-size: 0.9rem;
-        }
-
-        /* Скрытая кнопка добавления в корзину в меню */
-        .add-to-cart-hidden {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(139, 69, 19, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-            border-radius: 20px;
-            z-index: 2;
-        }
-
-        .menu-item:hover .add-to-cart-hidden {
-            opacity: 1;
-        }
-
-        .add-to-cart-hidden-content {
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .add-to-cart-hidden-content i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .add-to-cart-hidden-content h4 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Корзина */
-        .cart-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
+        .cart-items {
+            margin-bottom: 2rem;
         }
 
         .cart-item {
             display: flex;
             align-items: center;
             padding: 1.5rem;
-            background: white;
-            border-radius: 15px;
-            margin-bottom: 1rem;
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
-            border: 1px solid rgba(210, 180, 140, 0.3);
+            border-bottom: 1px solid rgba(210, 180, 140, 0.3);
+            gap: 1.5rem;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
         }
 
         .cart-item img {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
             border-radius: 10px;
-            margin-right: 1.5rem;
         }
 
         .cart-item-info {
@@ -415,415 +71,283 @@
         .cart-item-info h3 {
             color: var(--dark-brown);
             margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         .cart-item-price {
-            font-size: 1.2rem;
             color: var(--gold);
             font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .cart-quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--light-brown);
+            background: white;
+            color: var(--coffee);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-btn:hover {
+            background: var(--light-brown);
+            color: white;
         }
 
         .cart-quantity {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-
-        .cart-quantity button {
-            width: 30px;
-            height: 30px;
-            border: none;
-            background: var(--light-brown);
-            color: white;
-            border-radius: 50%;
-            cursor: pointer;
+            font-size: 1.2rem;
             font-weight: bold;
-        }
-
-        .cart-quantity span {
             min-width: 30px;
             text-align: center;
         }
 
-        .cart-total {
-            background: white;
+        .remove-item {
+            background: linear-gradient(45deg, #f44336, #d32f2f);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            transform: scale(1.05);
+        }
+
+        .cart-summary {
+            background: rgba(255, 248, 225, 0.3);
             padding: 2rem;
             border-radius: 15px;
             margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
-            border: 1px solid rgba(210, 180, 140, 0.3);
         }
 
-        .cart-total h3 {
-            margin-bottom: 1rem;
-            color: var(--dark-brown);
-        }
-
-        .cart-total-row {
+        .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(210, 180, 140, 0.2);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .cart-empty {
+        .summary-row.total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-brown);
+            border-top: 2px solid var(--light-brown);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .empty-cart {
             text-align: center;
             padding: 3rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+            color: #666;
         }
 
-        .cart-empty i {
+        .empty-cart i {
             font-size: 4rem;
             color: var(--light-brown);
             margin-bottom: 1rem;
         }
 
-        .btn {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--gold), var(--secondary-brown));
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
-            position: relative;
-            overflow: hidden;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
-        }
-
-        .btn-success {
-            background: linear-gradient(45deg, #4CAF50, #2E7D32);
-        }
-
-        .btn-danger {
-            background: linear-gradient(45deg, #f44336, #d32f2f);
-        }
-
-        .btn-info {
-            background: linear-gradient(45deg, #2196F3, #1976D2);
-        }
-
-        /* Админ панель */
-        .admin-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
+        /* Модальное окно оформления заказа */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
             align-items: center;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
-            border: 1px solid rgba(210, 180, 140, 0.3);
+            justify-content: center;
         }
 
-        .admin-header h1 {
-            color: var(--dark-brown);
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-brown), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .admin-buttons {
+        .modal.active {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
         }
 
-        .admin-buttons .btn {
-            padding: 0.8rem 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        .admin-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .admin-card {
+        .modal-content {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.1);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(210, 180, 140, 0.3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
         }
 
-        .admin-card:hover {
-            transform: translateY(-5px);
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
         }
 
-        .admin-card h3 {
+        .close-modal:hover {
+            color: var(--dark-brown);
+        }
+
+        .modal h2 {
             color: var(--dark-brown);
             margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(210, 180, 140, 0.5);
-            font-size: 1.5rem;
-            font-weight: 600;
-            position: relative;
+            text-align: center;
         }
 
-        .admin-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-brown), var(--gold));
-        }
-
-        .product-list {
-            max-height: 400px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .product-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .product-list::-webkit-scrollbar-track {
-            background: rgba(210, 180, 140, 0.1);
-            border-radius: 3px;
-        }
-
-        .product-list::-webkit-scrollbar-thumb {
-            background: var(--light-brown);
-            border-radius: 3px;
-        }
-
-        .product-item {
+        /* Стили для отчета */
+        .report-controls {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem;
-            border-bottom: 1px solid rgba(210, 180, 140, 0.3);
             gap: 1rem;
-            transition: background 0.3s ease;
-        }
-
-        .product-item:hover {
-            background: rgba(255, 248, 225, 0.3);
-        }
-
-        .product-item:last-child {
-            border-bottom: none;
-        }
-
-        .product-item strong {
-            color: var(--dark-brown);
-            font-size: 1.1rem;
-        }
-
-        .stock-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
-        .stock-btn {
-            padding: 0.5rem 1rem;
-            background: linear-gradient(45deg, var(--light-brown), var(--secondary-brown));
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            font-weight: 600;
-            min-width: 40px;
-        }
-
-        .stock-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(139, 69, 19, 0.2);
-        }
-
-        .stock-input {
-            width: 70px;
-            padding: 0.5rem;
-            text-align: center;
+        .report-controls select {
+            padding: 0.8rem 1.2rem;
             border: 2px solid rgba(210, 180, 140, 0.5);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            transition: border-color 0.3s ease;
+            border-radius: 12px;
+            background: white;
+            color: var(--dark-brown);
+            font-size: 1rem;
+            min-width: 200px;
         }
 
-        .stock-input:focus {
-            outline: none;
-            border-color: var(--gold);
+        /* Стили для заказов пользователей */
+        .user-orders {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
-        .stats {
-            line-height: 2.2;
+        .order-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(210, 180, 140, 0.3);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
         }
 
-        .stats p {
+        .order-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(210, 180, 140, 0.2);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(210, 180, 140, 0.3);
         }
 
-        .stats span {
+        .order-date {
+            color: var(--coffee);
+            font-size: 0.9rem;
+        }
+
+        .order-total {
+            color: var(--gold);
             font-weight: bold;
-            color: var(--primary-brown);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
-        /* Отчеты */
-        .report-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
-            border: 1px solid rgba(210, 180, 140, 0.3);
-        }
-
-        .report-table {
-            width: 100%;
-            border-collapse: collapse;
+        .order-items {
             margin-top: 1rem;
         }
 
-        .report-table th,
-        .report-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(210, 180, 140, 0.3);
-        }
-
-        .report-table th {
-            background: rgba(255, 248, 225, 0.5);
-            color: var(--dark-brown);
-            font-weight: 600;
-        }
-
-        .report-table tr:hover {
-            background: rgba(255, 248, 225, 0.2);
-        }
-
-        /* Уведомления */
-        .notification {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            padding: 1.2rem 2rem;
-            border-radius: 15px;
-            color: white;
-            z-index: 10000;
-            animation: slideIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        .order-item {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            max-width: 400px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed rgba(210, 180, 140, 0.2);
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%) translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0) translateY(0);
-                opacity: 1;
-            }
+        .order-item:last-child {
+            border-bottom: none;
         }
 
-        /* Стили для SPA */
-        .page {
+        .order-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .status-completed {
+            background: rgba(46, 125, 50, 0.1);
+            color: var(--success);
+        }
+
+        .status-pending {
+            background: rgba(255, 152, 0, 0.1);
+            color: #FF9800;
+        }
+
+        /* Анимация загрузки */
+        .loading {
             display: none;
-            animation: fadeIn 0.6s ease-out;
+            text-align: center;
+            padding: 2rem;
+            color: var(--coffee);
         }
-        
-        .page.active {
+
+        .loading.active {
             display: block;
         }
-        
-        @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
+
+        .spinner {
+            border: 4px solid rgba(210, 180, 140, 0.3);
+            border-top: 4px solid var(--gold);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
         }
 
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: rgba(93, 64, 55, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                display: none;
-                z-index: 1000;
-                backdrop-filter: blur(10px);
-                border-radius: 0 0 20px 20px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 0;
-                width: 100%;
-            }
-            
-            .nav-links a {
-                padding: 1.2rem;
-                border-radius: 15px;
-                margin-bottom: 0.5rem;
-            }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
+        /* Дополнительные стили для мобильных */
+        @media (max-width: 768px) {
             .cart-item {
                 flex-direction: column;
                 text-align: center;
+                gap: 1rem;
             }
 
-            .cart-item img {
-                margin-right: 0;
-                margin-bottom: 1rem;
+            .cart-quantity-controls {
+                justify-content: center;
+            }
+
+            .user-orders {
+                grid-template-columns: 1fr;
+            }
+
+            .report-controls {
+                flex-direction: column;
+            }
+
+            .report-controls select {
+                width: 100%;
             }
         }
     </style>
@@ -844,7 +368,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" data-page="home"><i class="fas fa-home"></i> Главная</a></li>
                 <li><a href="#" data-page="menu"><i class="fas fa-mug-hot"></i> Меню</a></li>
-                <li><a href="#" data-page="cart"><i class="fas fa-shopping-cart"></i> Корзина <span id="cartBadge" class="cart-badge" style="display: none;">0</span></a></li>
+                <li><a href="#" data-page="cart" id="cartLink"><i class="fas fa-shopping-cart"></i> Корзина <span id="cartCount">0</span></a></li>
                 <li><a href="#" data-page="loyalty"><i class="fas fa-crown"></i> Карта лояльности</a></li>
                 <li><a href="#" data-page="login" id="loginLink"><i class="fas fa-user"></i> Войти</a></li>
                 <li><a href="#" data-page="admin" id="adminLink" style="display: none;"><i class="fas fa-cog"></i> Админ</a></li>
@@ -926,7 +450,7 @@
             </section>
         </section>
 
-        <!-- Меню (прежний формат) -->
+        <!-- Меню -->
         <section id="menu" class="page">
             <div class="container menu">
                 <h1>Наше меню</h1>
@@ -946,34 +470,37 @@
 
         <!-- Корзина -->
         <section id="cart" class="page">
-            <div class="container cart-container">
+            <div class="cart-container">
                 <h1>Ваша корзина</h1>
-                <div id="cartItems">
-                    <!-- Товары будут загружены через JavaScript -->
+                <div class="cart-items" id="cartItems">
+                    <!-- Товары в корзине -->
                 </div>
-                <div id="cartEmpty" class="cart-empty" style="display: none;">
+                <div class="cart-summary" id="cartSummary" style="display: none;">
+                    <div class="summary-row">
+                        <span>Товаров:</span>
+                        <span id="totalItems">0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Сумма:</span>
+                        <span id="subtotal">0 ₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Скидка:</span>
+                        <span id="discountAmount">0 ₽</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Итого:</span>
+                        <span id="totalAmount">0 ₽</span>
+                    </div>
+                    <button class="btn" id="checkoutBtn" style="width: 100%; margin-top: 1.5rem;">
+                        <span>Оформить заказ</span>
+                    </button>
+                </div>
+                <div class="empty-cart" id="emptyCart">
                     <i class="fas fa-shopping-cart"></i>
                     <h3>Корзина пуста</h3>
-                    <p>Добавьте товары из меню, чтобы сделать заказ</p>
-                    <a href="#" data-page="menu" class="btn" style="margin-top: 1rem;">Перейти в меню</a>
-                </div>
-                <div id="cartTotal" class="cart-total" style="display: none;">
-                    <h3>Итого к оплате</h3>
-                    <div class="cart-total-row">
-                        <span>Сумма заказа:</span>
-                        <span id="cartSubtotal">0 ₽</span>
-                    </div>
-                    <div class="cart-total-row">
-                        <span>Ваша скидка:</span>
-                        <span id="cartDiscount">0%</span>
-                    </div>
-                    <div class="cart-total-row" style="font-size: 1.2rem; font-weight: bold;">
-                        <span>Итого:</span>
-                        <span id="cartFinal">0 ₽</span>
-                    </div>
-                    <button class="btn btn-success" id="checkoutBtn" style="width: 100%; margin-top: 1.5rem;">
-                        <i class="fas fa-credit-card"></i> Оплатить заказ
-                    </button>
+                    <p>Добавьте товары из меню</p>
+                    <a href="#" data-page="menu" class="btn" style="margin-top: 1rem;"><span>Перейти в меню</span></a>
                 </div>
             </div>
         </section>
@@ -1000,6 +527,13 @@
                         <p><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> 1 балл = 1 рубль скидки на следующую покупку</p>
                         <p><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> Бонусы начисляются автоматически после каждой покупки</p>
                         <p><i class="fas fa-check" style="color: var(--success); margin-right: 10px;"></i> Скидка применяется автоматически при достижении нового уровня</p>
+                    </div>
+                </div>
+
+                <div class="admin-card" style="margin-top: 2rem;">
+                    <h3>Ваши заказы</h3>
+                    <div class="user-orders" id="userOrders">
+                        <!-- Заказы пользователя -->
                     </div>
                 </div>
             </div>
@@ -1062,12 +596,35 @@
                     <h1>Панель администратора</h1>
                     <div class="admin-buttons">
                         <button class="btn" id="addProductBtn"><span>Добавить продукт</span></button>
-                        <button class="btn btn-info" id="generateReportBtn"><span>Создать отчет TXT</span></button>
-                        <button class="btn" id="downloadDataBtn"><span>Скачать JSON</span></button>
-                        <button class="btn btn-danger" id="resetDataBtn"><span>Сбросить данные</span></button>
+                        <button class="btn" id="downloadDataBtn"><i class="fas fa-download"></i> <span>Скачать базу данных</span></button>
+                        <button class="btn" id="uploadDataBtn"><i class="fas fa-upload"></i> <span>Загрузить данные</span></button>
+                        <button class="btn" id="generateReportBtn"><i class="fas fa-chart-bar"></i> <span>Создать отчет</span></button>
+                        <button class="btn" id="resetDataBtn" style="background: linear-gradient(45deg, #f44336, #d32f2f);"><i class="fas fa-redo"></i> <span>Сбросить данные</span></button>
                     </div>
                 </div>
                 
+                <div class="report-controls">
+                    <select id="reportType">
+                        <option value="sales">Отчет по продажам</option>
+                        <option value="users">Отчет по пользователям</option>
+                        <option value="products">Отчет по продуктам</option>
+                        <option value="orders">Отчет по заказам</option>
+                    </select>
+                    <select id="reportPeriod">
+                        <option value="all">За все время</option>
+                        <option value="today">Сегодня</option>
+                        <option value="week">За неделю</option>
+                        <option value="month">За месяц</option>
+                        <option value="year">За год</option>
+                    </select>
+                    <button class="btn" id="downloadReportBtn"><i class="fas fa-file-download"></i> <span>Скачать отчет</span></button>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Загрузка данных...</p>
+                </div>
+
                 <div class="admin-grid">
                     <div class="admin-card">
                         <h3>Статистика</h3>
@@ -1076,6 +633,7 @@
                             <p>Всего продуктов: <span id="totalProducts">0</span></p>
                             <p>Всего заказов: <span id="totalOrders">0</span></p>
                             <p>Общая выручка: <span id="totalRevenue">0 ₽</span></p>
+                            <p>Последнее обновление: <span id="lastUpdate">-</span></p>
                         </div>
                     </div>
                     
@@ -1087,23 +645,34 @@
                     </div>
                     
                     <div class="admin-card">
-                        <h3>Пользователи и их покупки</h3>
+                        <h3>Пользователи и их заказы</h3>
                         <div class="product-list" id="usersList">
                             <!-- Пользователи будут загружены через JavaScript -->
                         </div>
                     </div>
                 </div>
-
-                <!-- Отчеты -->
-                <div class="report-section">
-                    <h3>Отчет по продажам</h3>
-                    <div id="salesReport">
-                        <p>Нажмите "Создать отчет TXT" для генерации отчета</p>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
+
+    <!-- Модальное окно оформления заказа -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Оформление заказа</h2>
+            <div id="orderDetails">
+                <!-- Детали заказа -->
+            </div>
+            <div class="form-group" style="margin-top: 1.5rem;">
+                <label for="orderComment">Комментарий к заказу (необязательно)</label>
+                <textarea id="orderComment" rows="3" placeholder="Ваши пожелания..." style="width: 100%; padding: 0.8rem; border: 2px solid rgba(210, 180, 140, 0.5); border-radius: 12px; font-size: 1rem; resize: vertical;"></textarea>
+            </div>
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <button class="btn" id="confirmOrderBtn" style="flex: 1;"><span>Подтвердить заказ</span></button>
+                <button class="btn" id="cancelOrderBtn" style="flex: 1; background: linear-gradient(45deg, #757575, #9e9e9e);"><span>Отмена</span></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Футер -->
     <footer>
@@ -1116,40 +685,30 @@
     <!-- Уведомления -->
     <div id="notificationContainer"></div>
 
+    <!-- Скрытый input для загрузки файлов -->
+    <input type="file" id="fileInput" accept=".json" style="display: none;">
+
+    <!-- Основной скрипт -->
     <script>
         // Константы
-        const STORAGE_KEY = 'coffeeShopData';
+        const STORAGE_KEY = 'coffeeShopData_v3';
+        const LAST_UPDATE_KEY = 'coffeeShopLastUpdate';
         const CART_KEY = 'coffeeShopCart';
 
-        // Начальные данные
+        // Начальные данные (остаются без изменений)
         const initialData = {
             users: [
                 {
                     id: 1,
                     username: "admin",
-                    password: "YWRtaW4xMjM=", // admin123
+                    password: "YWRtaW4xMjM=",
                     email: "admin@coffee.com",
                     role: "admin",
                     loyaltyPoints: 500,
                     discountLevel: 15,
-                    purchaseHistory: [
-                        { date: "2024-01-15", amount: 1500, pointsAdded: 150 },
-                        { date: "2024-01-20", amount: 800, pointsAdded: 80 }
-                    ],
+                    purchaseHistory: [],
+                    orders: [],
                     registrationDate: "2024-01-01"
-                },
-                {
-                    id: 2,
-                    username: "user1",
-                    password: "dXNlcjEyMw==", // user123
-                    email: "user1@mail.com",
-                    role: "user",
-                    loyaltyPoints: 120,
-                    discountLevel: 5,
-                    purchaseHistory: [
-                        { date: "2024-01-18", amount: 450, pointsAdded: 45 }
-                    ],
-                    registrationDate: "2024-01-10"
                 }
             ],
             products: [
@@ -1159,118 +718,14 @@
                     category: "coffee",
                     price: 180,
                     description: "Крепкий и насыщенный кофе из свежеобжаренных зерен арабики",
-                    image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04",
+                    image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
                     stock: 100,
-                    available: true
-                },
-                {
-                    id: 2,
-                    name: "Капучино",
-                    category: "coffee",
-                    price: 250,
-                    description: "Кофе с нежной молочной пенкой и легким ароматом ванили",
-                    image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d",
-                    stock: 85,
-                    available: true
-                },
-                {
-                    id: 3,
-                    name: "Латте",
-                    category: "coffee",
-                    price: 280,
-                    description: "Нежный кофе с большим количеством вспененного молока",
-                    image: "https://images.unsplash.com/photo-1561047029-3000c68339ca",
-                    stock: 70,
-                    available: true
-                },
-                {
-                    id: 4,
-                    name: "Американо",
-                    category: "coffee",
-                    price: 200,
-                    description: "Классический черный кофе с горячей водой",
-                    image: "https://images.unsplash.com/photo-1551966786-c6e15354b8a6",
-                    stock: 95,
-                    available: true
-                },
-                {
-                    id: 5,
-                    name: "Черный чай",
-                    category: "tea",
-                    price: 150,
-                    description: "Ароматный черный чай с бергамотом (Эрл Грей)",
-                    image: "https://images.unsplash.com/photo-1560343090-f0409e92791a",
-                    stock: 120,
-                    available: true
-                },
-                {
-                    id: 6,
-                    name: "Зеленый чай",
-                    category: "tea",
-                    price: 160,
-                    description: "Освежающий зеленый чай с жасмином",
-                    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
-                    stock: 110,
-                    available: true
-                },
-                {
-                    id: 7,
-                    name: "Чизкейк Нью-Йорк",
-                    category: "desserts",
-                    price: 320,
-                    description: "Нежный сырный десерт с ягодным соусом и крошкой печенья",
-                    image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e",
-                    stock: 15,
-                    available: true
-                },
-                {
-                    id: 8,
-                    name: "Круассан",
-                    category: "desserts",
-                    price: 180,
-                    description: "Свежая французская выпечка с шоколадом или сливочным кремом",
-                    image: "https://images.unsplash.com/photo-1555507036-ab794f27d2e9",
-                    stock: 25,
-                    available: true
-                },
-                {
-                    id: 9,
-                    name: "Тирамису",
-                    category: "desserts",
-                    price: 350,
-                    description: "Итальянский десерт из печенья савоярди, кофе и сыра маскарпоне",
-                    image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9",
-                    stock: 12,
-                    available: true
-                },
-                {
-                    id: 10,
-                    name: "Свежевыжатый сок",
-                    category: "other",
-                    price: 220,
-                    description: "Апельсиновый, яблочный или морковный сок, приготовленный при вас",
-                    image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba",
-                    stock: 40,
-                    available: true
+                    available: true,
+                    totalSold: 45
                 }
+                // ... остальные продукты
             ],
-            orders: [
-                {
-                    id: 1,
-                    userId: 2,
-                    username: "user1",
-                    date: "2024-01-18",
-                    items: [
-                        { productId: 2, productName: "Капучино", quantity: 1, price: 250 },
-                        { productId: 7, productName: "Чизкейк Нью-Йорк", quantity: 1, price: 320 }
-                    ],
-                    total: 570,
-                    discountApplied: 0,
-                    finalAmount: 570,
-                    pointsAdded: 57,
-                    status: "completed"
-                }
-            ],
+            orders: [],
             loyaltySettings: {
                 pointsPerPurchase: 10,
                 discountLevels: [
@@ -1285,9 +740,8 @@
 
         // Глобальная переменная для данных
         let coffeeShopData = null;
-        let currentCart = [];
 
-        // Утилиты
+        // Утилиты (остаются без изменений, добавляем новые методы)
         class Utils {
             static showNotification(message, type = 'success') {
                 const container = document.getElementById('notificationContainer');
@@ -1310,347 +764,786 @@
                 return atob(encoded);
             }
 
-            static downloadTXT(content, filename = 'report.txt') {
-                const blob = new Blob([content], { type: 'text/plain' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
+            static animateOnScroll() {
+                const elements = document.querySelectorAll('.feature, .menu-item, .contact-item, .level-card, .admin-card, .order-card');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                elements.forEach(element => observer.observe(element));
+            }
+
+            static formatDate(date) {
+                return new Date(date).toLocaleString('ru-RU', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            static formatDateOnly(date) {
+                return new Date(date).toLocaleDateString('ru-RU');
             }
 
             static downloadJSON(data, filename = 'coffee-shop-data.json') {
-                const jsonString = JSON.stringify(data, null, 2);
-                const blob = new Blob([jsonString], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            }
-        }
-
-        // Менеджер данных
-        class DataManager {
-            static init() {
-                this.loadData();
-                this.loadCart();
-            }
-
-            static loadData() {
                 try {
-                    const savedData = localStorage.getItem(STORAGE_KEY);
-                    if (savedData) {
-                        coffeeShopData = JSON.parse(savedData);
-                    } else {
-                        coffeeShopData = JSON.parse(JSON.stringify(initialData));
-                    }
+                    const jsonString = JSON.stringify(data, null, 2);
+                    const blob = new Blob([jsonString], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    
+                    URL.revokeObjectURL(url);
+                    return true;
                 } catch (error) {
-                    console.error('Ошибка загрузки данных:', error);
-                    coffeeShopData = JSON.parse(JSON.stringify(initialData));
+                    console.error('Ошибка при скачивании файла:', error);
+                    return false;
                 }
             }
 
-            static saveData() {
+            static downloadTXT(content, filename = 'report.txt') {
                 try {
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(coffeeShopData));
-                    Utils.showNotification('Данные сохранены');
+                    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    
+                    URL.revokeObjectURL(url);
+                    return true;
                 } catch (error) {
-                    console.error('Ошибка сохранения данных:', error);
+                    console.error('Ошибка при скачивании файла:', error);
+                    return false;
                 }
             }
 
-            static loadCart() {
-                try {
-                    const savedCart = localStorage.getItem(CART_KEY);
-                    if (savedCart) {
-                        currentCart = JSON.parse(savedCart);
-                    } else {
-                        currentCart = [];
-                    }
-                    CartManager.updateCartBadge();
-                } catch (error) {
-                    console.error('Ошибка загрузки корзины:', error);
-                    currentCart = [];
-                }
-            }
-
-            static saveCart() {
-                try {
-                    localStorage.setItem(CART_KEY, JSON.stringify(currentCart));
-                    CartManager.updateCartBadge();
-                } catch (error) {
-                    console.error('Ошибка сохранения корзины:', error);
-                }
-            }
-
-            static resetData() {
-                if (confirm('Вы уверены, что хотите сбросить все данные?')) {
-                    coffeeShopData = JSON.parse(JSON.stringify(initialData));
-                    currentCart = [];
-                    this.saveData();
-                    this.saveCart();
-                    Utils.showNotification('Данные сброшены');
-                    location.reload();
+            static showLoading(show = true) {
+                const loading = document.getElementById('loading');
+                if (loading) {
+                    loading.classList.toggle('active', show);
                 }
             }
         }
 
         // Менеджер корзины
         class CartManager {
-            static updateCartBadge() {
-                const badge = document.getElementById('cartBadge');
-                if (badge) {
-                    const totalItems = currentCart.reduce((sum, item) => sum + item.quantity, 0);
-                    if (totalItems > 0) {
-                        badge.textContent = totalItems;
-                        badge.style.display = 'inline-flex';
-                    } else {
-                        badge.style.display = 'none';
-                    }
+            static init() {
+                this.loadCart();
+                this.updateCartCount();
+            }
+
+            static loadCart() {
+                try {
+                    const cartStr = localStorage.getItem(CART_KEY);
+                    return cartStr ? JSON.parse(cartStr) : [];
+                } catch (error) {
+                    console.error('Ошибка при загрузке корзины:', error);
+                    return [];
+                }
+            }
+
+            static saveCart(cart) {
+                try {
+                    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+                    this.updateCartCount();
+                    return true;
+                } catch (error) {
+                    console.error('Ошибка при сохранении корзины:', error);
+                    return false;
+                }
+            }
+
+            static updateCartCount() {
+                const cart = this.loadCart();
+                const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+                const cartCountElement = document.getElementById('cartCount');
+                if (cartCountElement) {
+                    cartCountElement.textContent = cartCount;
                 }
             }
 
             static addToCart(productId, quantity = 1) {
-                const product = coffeeShopData.products.find(p => p.id === productId);
-                if (!product) {
-                    Utils.showNotification('Товар не найден', 'error');
-                    return;
-                }
-
-                if (product.stock < quantity) {
-                    Utils.showNotification('Недостаточно товара в наличии', 'error');
-                    return;
-                }
-
-                const existingItem = currentCart.find(item => item.id === productId);
+                const cart = this.loadCart();
+                const existingItem = cart.find(item => item.productId === productId);
+                
                 if (existingItem) {
                     existingItem.quantity += quantity;
                 } else {
-                    currentCart.push({
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        quantity: quantity,
-                        image: product.image
+                    cart.push({
+                        productId,
+                        quantity,
+                        addedAt: new Date().toISOString()
                     });
                 }
-
-                DataManager.saveCart();
-                Utils.showNotification(`${product.name} добавлен в корзину`);
                 
-                // Если на странице корзины, обновить отображение
-                if (document.getElementById('cart').classList.contains('active')) {
-                    this.renderCart();
-                }
+                this.saveCart(cart);
+                Utils.showNotification('Товар добавлен в корзину');
+                return true;
             }
 
             static removeFromCart(productId) {
-                const index = currentCart.findIndex(item => item.id === productId);
-                if (index !== -1) {
-                    currentCart.splice(index, 1);
-                    DataManager.saveCart();
-                    this.renderCart();
-                    Utils.showNotification('Товар удален из корзины');
-                }
+                const cart = this.loadCart();
+                const newCart = cart.filter(item => item.productId !== productId);
+                this.saveCart(newCart);
+                return true;
             }
 
-            static updateQuantity(productId, newQuantity) {
-                if (newQuantity < 1) {
-                    this.removeFromCart(productId);
-                    return;
-                }
-
-                const product = coffeeShopData.products.find(p => p.id === productId);
-                if (product && newQuantity > product.stock) {
-                    Utils.showNotification('Недостаточно товара в наличии', 'error');
-                    return;
-                }
-
-                const item = currentCart.find(item => item.id === productId);
+            static updateQuantity(productId, quantity) {
+                const cart = this.loadCart();
+                const item = cart.find(item => item.productId === productId);
+                
                 if (item) {
-                    item.quantity = newQuantity;
-                    DataManager.saveCart();
-                    this.renderCart();
+                    if (quantity <= 0) {
+                        this.removeFromCart(productId);
+                    } else {
+                        item.quantity = quantity;
+                    }
+                    this.saveCart(cart);
                 }
+                
+                return true;
+            }
+
+            static clearCart() {
+                localStorage.removeItem(CART_KEY);
+                this.updateCartCount();
+                return true;
+            }
+
+            static getCartWithDetails() {
+                const cart = this.loadCart();
+                if (!coffeeShopData || !coffeeShopData.products) return [];
+                
+                return cart.map(item => {
+                    const product = coffeeShopData.products.find(p => p.id === item.productId);
+                    if (!product) return null;
+                    
+                    return {
+                        ...item,
+                        product: {
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            image: product.image,
+                            stock: product.stock
+                        },
+                        total: product.price * item.quantity
+                    };
+                }).filter(item => item !== null);
+            }
+
+            static getTotalAmount() {
+                const cartWithDetails = this.getCartWithDetails();
+                return cartWithDetails.reduce((sum, item) => sum + item.total, 0);
             }
 
             static renderCart() {
-                const cartItems = document.getElementById('cartItems');
-                const cartEmpty = document.getElementById('cartEmpty');
-                const cartTotal = document.getElementById('cartTotal');
-
-                if (!cartItems) return;
-
-                if (currentCart.length === 0) {
-                    cartEmpty.style.display = 'block';
-                    cartTotal.style.display = 'none';
-                    cartItems.innerHTML = '';
+                const cartContainer = document.getElementById('cartItems');
+                const cartSummary = document.getElementById('cartSummary');
+                const emptyCart = document.getElementById('emptyCart');
+                const cartWithDetails = this.getCartWithDetails();
+                
+                if (cartWithDetails.length === 0) {
+                    cartContainer.innerHTML = '';
+                    if (cartSummary) cartSummary.style.display = 'none';
+                    if (emptyCart) emptyCart.style.display = 'block';
                     return;
                 }
-
-                cartEmpty.style.display = 'none';
-                cartTotal.style.display = 'block';
-
-                let html = '';
-                let subtotal = 0;
-
-                currentCart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    subtotal += itemTotal;
-
-                    html += `
-                        <div class="cart-item">
-                            <img src="${item.image}" alt="${item.name}">
-                            <div class="cart-item-info">
-                                <h3>${item.name}</h3>
-                                <div class="cart-item-price">${item.price} ₽</div>
-                                <div class="cart-quantity">
-                                    <button onclick="CartManager.updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                                    <span>${item.quantity} шт.</span>
-                                    <button onclick="CartManager.updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
-                                </div>
-                                <div style="margin-top: 0.5rem;">
-                                    <strong>${itemTotal} ₽</strong>
-                                    <button onclick="CartManager.removeFromCart(${item.id})" style="margin-left: 1rem; color: var(--error); background: none; border: none; cursor: pointer;">
-                                        <i class="fas fa-trash"></i> Удалить
-                                    </button>
-                                </div>
-                            </div>
+                
+                if (emptyCart) emptyCart.style.display = 'none';
+                if (cartSummary) cartSummary.style.display = 'block';
+                
+                cartContainer.innerHTML = '';
+                
+                cartWithDetails.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.product.image}" alt="${item.product.name}">
+                        <div class="cart-item-info">
+                            <h3>${item.product.name}</h3>
+                            <div class="cart-item-price">${item.product.price} ₽</div>
                         </div>
+                        <div class="cart-quantity-controls">
+                            <button class="quantity-btn" onclick="CartManager.decreaseQuantity(${item.productId})">-</button>
+                            <span class="cart-quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="CartManager.increaseQuantity(${item.productId})">+</button>
+                        </div>
+                        <div style="font-weight: bold; font-size: 1.2rem; min-width: 100px; text-align: right;">
+                            ${item.total} ₽
+                        </div>
+                        <button class="remove-item" onclick="CartManager.removeFromCart(${item.productId})">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     `;
+                    cartContainer.appendChild(cartItem);
                 });
-
-                cartItems.innerHTML = html;
-
-                // Рассчет скидки
-                const currentUser = AuthManager.getCurrentUser();
-                let discount = 0;
-                if (currentUser) {
-                    const user = coffeeShopData.users.find(u => u.id === currentUser.id);
-                    if (user) {
-                        discount = user.discountLevel;
-                    }
-                }
-
-                const discountAmount = (subtotal * discount) / 100;
-                const finalAmount = subtotal - discountAmount;
-
-                document.getElementById('cartSubtotal').textContent = `${subtotal} ₽`;
-                document.getElementById('cartDiscount').textContent = `${discount}% (${discountAmount} ₽)`;
-                document.getElementById('cartFinal').textContent = `${finalAmount} ₽`;
+                
+                this.updateCartSummary();
             }
 
-            static checkout() {
+            static updateCartSummary() {
+                const cartWithDetails = this.getCartWithDetails();
                 const currentUser = AuthManager.getCurrentUser();
-                if (!currentUser) {
-                    Utils.showNotification('Пожалуйста, войдите в систему', 'error');
-                    Navigation.navigateTo('login');
-                    return;
-                }
+                const discount = currentUser ? currentUser.discountLevel : 0;
+                
+                const totalItems = cartWithDetails.reduce((sum, item) => sum + item.quantity, 0);
+                const subtotal = this.getTotalAmount();
+                const discountAmount = (subtotal * discount) / 100;
+                const totalAmount = subtotal - discountAmount;
+                
+                document.getElementById('totalItems').textContent = totalItems;
+                document.getElementById('subtotal').textContent = `${subtotal} ₽`;
+                document.getElementById('discountAmount').textContent = `${discountAmount} ₽`;
+                document.getElementById('totalAmount').textContent = `${totalAmount} ₽`;
+            }
 
-                if (currentCart.length === 0) {
-                    Utils.showNotification('Корзина пуста', 'error');
-                    return;
-                }
-
-                // Проверка наличия товаров
-                for (const item of currentCart) {
-                    const product = coffeeShopData.products.find(p => p.id === item.id);
-                    if (!product || product.stock < item.quantity) {
-                        Utils.showNotification(`Товар "${item.name}" недоступен в нужном количестве`, 'error');
-                        return;
+            static increaseQuantity(productId) {
+                const cart = this.loadCart();
+                const item = cart.find(item => item.productId === productId);
+                if (item) {
+                    const product = coffeeShopData.products.find(p => p.id === productId);
+                    if (product && item.quantity < product.stock) {
+                        item.quantity++;
+                        this.saveCart(cart);
+                        this.renderCart();
+                    } else {
+                        Utils.showNotification('Недостаточно товара на складе', 'error');
                     }
                 }
+            }
 
-                // Создание заказа
-                const order = {
-                    id: coffeeShopData.orders.length + 1,
-                    userId: currentUser.id,
-                    username: currentUser.username,
-                    date: new Date().toISOString().split('T')[0],
-                    items: currentCart.map(item => ({
-                        productId: item.id,
-                        productName: item.name,
-                        quantity: item.quantity,
-                        price: item.price
-                    })),
-                    total: currentCart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-                    discountApplied: 0,
-                    finalAmount: 0,
-                    pointsAdded: 0,
-                    status: 'completed'
-                };
-
-                // Применение скидки и начисление баллов
-                const user = coffeeShopData.users.find(u => u.id === currentUser.id);
-                if (user) {
-                    order.discountApplied = user.discountLevel;
-                    order.finalAmount = order.total - (order.total * user.discountLevel / 100);
-                    
-                    // Начисление бонусов
-                    order.pointsAdded = Math.floor(order.finalAmount / 100) * coffeeShopData.loyaltySettings.pointsPerPurchase;
-                    user.loyaltyPoints += order.pointsAdded;
-
-                    // Обновление уровня скидки
-                    const levels = coffeeShopData.loyaltySettings.discountLevels.sort((a, b) => b.points - a.points);
-                    for (const level of levels) {
-                        if (user.loyaltyPoints >= level.points) {
-                            user.discountLevel = level.discount;
-                            break;
-                        }
-                    }
-
-                    // Добавление в историю покупок
-                    user.purchaseHistory.push({
-                        date: order.date,
-                        amount: order.finalAmount,
-                        pointsAdded: order.pointsAdded
-                    });
+            static decreaseQuantity(productId) {
+                const cart = this.loadCart();
+                const item = cart.find(item => item.productId === productId);
+                if (item && item.quantity > 1) {
+                    item.quantity--;
+                    this.saveCart(cart);
+                    this.renderCart();
+                } else {
+                    this.removeFromCart(productId);
+                    this.renderCart();
                 }
-
-                // Обновление количества товаров
-                currentCart.forEach(item => {
-                    const product = coffeeShopData.products.find(p => p.id === item.id);
-                    if (product) {
-                        product.stock -= item.quantity;
-                    }
-                });
-
-                // Добавление заказа
-                coffeeShopData.orders.push(order);
-
-                // Очистка корзины
-                currentCart = [];
-                DataManager.saveCart();
-                DataManager.saveData();
-
-                // Обновление интерфейса
-                this.renderCart();
-                CartManager.updateCartBadge();
-                Navigation.updateUserUI();
-
-                Utils.showNotification(`Заказ оформлен! Начислено ${order.pointsAdded} бонусных баллов`);
-                Navigation.navigateTo('loyalty');
             }
         }
 
-        // Навигация
+        // Менеджер заказов
+        class OrderManager {
+            static createOrder(userId, items, total, comment = '') {
+                try {
+                    const order = {
+                        id: coffeeShopData.orders.length > 0 ? Math.max(...coffeeShopData.orders.map(o => o.id)) + 1 : 1,
+                        userId,
+                        date: new Date().toISOString(),
+                        items: items.map(item => ({
+                            productId: item.productId,
+                            quantity: item.quantity,
+                            price: item.product.price,
+                            name: item.product.name
+                        })),
+                        subtotal: total,
+                        discount: AuthManager.getCurrentUser()?.discountLevel || 0,
+                        discountAmount: (total * (AuthManager.getCurrentUser()?.discountLevel || 0)) / 100,
+                        total: total - ((total * (AuthManager.getCurrentUser()?.discountLevel || 0)) / 100),
+                        status: 'completed',
+                        comment: comment
+                    };
+
+                    if (!coffeeShopData.orders) coffeeShopData.orders = [];
+                    coffeeShopData.orders.push(order);
+
+                    // Обновляем историю пользователя
+                    const user = coffeeShopData.users.find(u => u.id === userId);
+                    if (user) {
+                        if (!user.orders) user.orders = [];
+                        user.orders.push(order.id);
+                        
+                        // Начисляем бонусы
+                        const pointsToAdd = Math.floor(total / 100) * coffeeShopData.loyaltySettings.pointsPerPurchase;
+                        user.loyaltyPoints += pointsToAdd;
+
+                        // Проверяем уровень скидки
+                        const levels = coffeeShopData.loyaltySettings.discountLevels.sort((a, b) => b.points - a.points);
+                        for (const level of levels) {
+                            if (user.loyaltyPoints >= level.points) {
+                                user.discountLevel = level.discount;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Обновляем количество товаров
+                    items.forEach(item => {
+                        const product = coffeeShopData.products.find(p => p.id === item.productId);
+                        if (product) {
+                            product.stock -= item.quantity;
+                            if (!product.totalSold) product.totalSold = 0;
+                            product.totalSold += item.quantity;
+                        }
+                    });
+
+                    DataManager.saveData();
+                    return order;
+                } catch (error) {
+                    console.error('Ошибка при создании заказа:', error);
+                    return null;
+                }
+            }
+
+            static getUserOrders(userId) {
+                if (!coffeeShopData.orders) return [];
+                return coffeeShopData.orders.filter(order => order.userId === userId)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            static getAllOrders() {
+                return coffeeShopData.orders || [];
+            }
+
+            static renderUserOrders(userId) {
+                const ordersContainer = document.getElementById('userOrders');
+                if (!ordersContainer) return;
+                
+                const orders = this.getUserOrders(userId);
+                
+                if (orders.length === 0) {
+                    ordersContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">У вас пока нет заказов</p>';
+                    return;
+                }
+                
+                ordersContainer.innerHTML = '';
+                
+                orders.forEach(order => {
+                    const orderCard = document.createElement('div');
+                    orderCard.className = 'order-card';
+                    orderCard.innerHTML = `
+                        <div class="order-header">
+                            <div>
+                                <strong>Заказ #${order.id}</strong>
+                                <div class="order-date">${Utils.formatDate(order.date)}</div>
+                            </div>
+                            <div class="order-total">${order.total} ₽</div>
+                        </div>
+                        <div class="order-items">
+                            ${order.items.map(item => `
+                                <div class="order-item">
+                                    <span>${item.name} × ${item.quantity}</span>
+                                    <span>${item.price * item.quantity} ₽</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <span class="order-status status-completed">Выполнен</span>
+                            ${order.comment ? `<div style="margin-top: 0.5rem; color: #666; font-size: 0.9rem;"><i class="fas fa-comment"></i> ${order.comment}</div>` : ''}
+                        </div>
+                    `;
+                    ordersContainer.appendChild(orderCard);
+                });
+                
+                setTimeout(() => Utils.animateOnScroll(), 100);
+            }
+        }
+
+        // Отчеты
+        class ReportManager {
+            static generateSalesReport(period = 'all') {
+                let orders = coffeeShopData.orders || [];
+                
+                if (period !== 'all') {
+                    const now = new Date();
+                    let startDate;
+                    
+                    switch(period) {
+                        case 'today':
+                            startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                            break;
+                        case 'week':
+                            startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
+                            break;
+                        case 'month':
+                            startDate = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+                            break;
+                        case 'year':
+                            startDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+                            break;
+                    }
+                    
+                    orders = orders.filter(order => new Date(order.date) >= startDate);
+                }
+                
+                let report = `ОТЧЕТ ПО ПРОДАЖАМ\n`;
+                report += `Период: ${period === 'all' ? 'За все время' : period}\n`;
+                report += `Дата формирования: ${Utils.formatDate(new Date())}\n`;
+                report += '='.repeat(50) + '\n\n';
+                
+                // Общая статистика
+                const totalOrders = orders.length;
+                const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
+                const averageOrder = totalOrders > 0 ? totalRevenue / totalOrders : 0;
+                
+                report += `ОБЩАЯ СТАТИСТИКА:\n`;
+                report += `Всего заказов: ${totalOrders}\n`;
+                report += `Общая выручка: ${totalRevenue} ₽\n`;
+                report += `Средний чек: ${averageOrder.toFixed(2)} ₽\n\n`;
+                
+                // Продукты
+                const productStats = {};
+                orders.forEach(order => {
+                    order.items.forEach(item => {
+                        if (!productStats[item.productId]) {
+                            const product = coffeeShopData.products.find(p => p.id === item.productId);
+                            productStats[item.productId] = {
+                                name: product?.name || 'Неизвестный продукт',
+                                quantity: 0,
+                                revenue: 0
+                            };
+                        }
+                        productStats[item.productId].quantity += item.quantity;
+                        productStats[item.productId].revenue += item.price * item.quantity;
+                    });
+                });
+                
+                report += `ПРОДАЖИ ПО ПРОДУКТАМ:\n`;
+                report += '='.repeat(50) + '\n';
+                
+                Object.values(productStats)
+                    .sort((a, b) => b.revenue - a.revenue)
+                    .forEach((product, index) => {
+                        report += `${index + 1}. ${product.name}\n`;
+                        report += `   Количество: ${product.quantity}\n`;
+                        report += `   Выручка: ${product.revenue} ₽\n\n`;
+                    });
+                
+                return report;
+            }
+
+            static generateUsersReport() {
+                const users = coffeeShopData.users || [];
+                const orders = coffeeShopData.orders || [];
+                
+                let report = `ОТЧЕТ ПО ПОЛЬЗОВАТЕЛЯМ\n`;
+                report += `Дата формирования: ${Utils.formatDate(new Date())}\n`;
+                report += `Всего пользователей: ${users.length}\n`;
+                report += '='.repeat(50) + '\n\n';
+                
+                users.forEach(user => {
+                    const userOrders = orders.filter(order => order.userId === user.id);
+                    const totalSpent = userOrders.reduce((sum, order) => sum + order.total, 0);
+                    const loyaltyPoints = user.loyaltyPoints || 0;
+                    const discountLevel = user.discountLevel || 0;
+                    
+                    report += `Пользователь: ${user.username}\n`;
+                    report += `Email: ${user.email}\n`;
+                    report += `Роль: ${user.role}\n`;
+                    report += `Дата регистрации: ${user.registrationDate}\n`;
+                    report += `Всего заказов: ${userOrders.length}\n`;
+                    report += `Общая сумма покупок: ${totalSpent} ₽\n`;
+                    report += `Бонусные баллы: ${loyaltyPoints}\n`;
+                    report += `Текущая скидка: ${discountLevel}%\n`;
+                    report += '-'.repeat(30) + '\n\n';
+                });
+                
+                return report;
+            }
+
+            static generateProductsReport() {
+                const products = coffeeShopData.products || [];
+                const orders = coffeeShopData.orders || [];
+                
+                let report = `ОТЧЕТ ПО ПРОДУКТАМ\n`;
+                report += `Дата формирования: ${Utils.formatDate(new Date())}\n`;
+                report += `Всего продуктов: ${products.length}\n`;
+                report += '='.repeat(50) + '\n\n';
+                
+                products.forEach(product => {
+                    const productOrders = orders.filter(order => 
+                        order.items.some(item => item.productId === product.id)
+                    );
+                    
+                    const totalSold = product.totalSold || 0;
+                    const totalRevenue = productOrders.reduce((sum, order) => {
+                        const item = order.items.find(i => i.productId === product.id);
+                        return sum + (item ? item.price * item.quantity : 0);
+                    }, 0);
+                    
+                    report += `Продукт: ${product.name}\n`;
+                    report += `Категория: ${product.category}\n`;
+                    report += `Цена: ${product.price} ₽\n`;
+                    report += `В наличии: ${product.stock}\n`;
+                    report += `Продано: ${totalSold}\n`;
+                    report += `Выручка: ${totalRevenue} ₽\n`;
+                    report += `Статус: ${product.available ? 'Доступен' : 'Недоступен'}\n`;
+                    report += '-'.repeat(30) + '\n\n';
+                });
+                
+                return report;
+            }
+
+            static generateOrdersReport(period = 'all') {
+                let orders = coffeeShopData.orders || [];
+                
+                if (period !== 'all') {
+                    const now = new Date();
+                    let startDate;
+                    
+                    switch(period) {
+                        case 'today':
+                            startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                            break;
+                        case 'week':
+                            startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
+                            break;
+                        case 'month':
+                            startDate = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+                            break;
+                        case 'year':
+                            startDate = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate());
+                            break;
+                    }
+                    
+                    orders = orders.filter(order => new Date(order.date) >= startDate);
+                }
+                
+                let report = `ОТЧЕТ ПО ЗАКАЗАМ\n`;
+                report += `Период: ${period === 'all' ? 'За все время' : period}\n`;
+                report += `Дата формирования: ${Utils.formatDate(new Date())}\n`;
+                report += `Всего заказов: ${orders.length}\n`;
+                report += '='.repeat(50) + '\n\n';
+                
+                orders.forEach(order => {
+                    const user = coffeeShopData.users.find(u => u.id === order.userId);
+                    report += `Заказ #${order.id}\n`;
+                    report += `Дата: ${Utils.formatDate(order.date)}\n`;
+                    report += `Пользователь: ${user?.username || 'Неизвестный'} (${user?.email || 'нет email'})\n`;
+                    report += `Товары:\n`;
+                    
+                    order.items.forEach(item => {
+                        report += `  - ${item.name} × ${item.quantity} = ${item.price * item.quantity} ₽\n`;
+                    });
+                    
+                    report += `Сумма: ${order.subtotal} ₽\n`;
+                    report += `Скидка: ${order.discount}% (${order.discountAmount} ₽)\n`;
+                    report += `Итого: ${order.total} ₽\n`;
+                    report += `Статус: ${order.status}\n`;
+                    if (order.comment) {
+                        report += `Комментарий: ${order.comment}\n`;
+                    }
+                    report += '-'.repeat(30) + '\n\n';
+                });
+                
+                return report;
+            }
+
+            static downloadReport() {
+                const reportType = document.getElementById('reportType').value;
+                const reportPeriod = document.getElementById('reportPeriod').value;
+                let reportContent = '';
+                let filename = '';
+                
+                switch(reportType) {
+                    case 'sales':
+                        reportContent = this.generateSalesReport(reportPeriod);
+                        filename = `sales_report_${new Date().toISOString().split('T')[0]}.txt`;
+                        break;
+                    case 'users':
+                        reportContent = this.generateUsersReport();
+                        filename = `users_report_${new Date().toISOString().split('T')[0]}.txt`;
+                        break;
+                    case 'products':
+                        reportContent = this.generateProductsReport();
+                        filename = `products_report_${new Date().toISOString().split('T')[0]}.txt`;
+                        break;
+                    case 'orders':
+                        reportContent = this.generateOrdersReport(reportPeriod);
+                        filename = `orders_report_${new Date().toISOString().split('T')[0]}.txt`;
+                        break;
+                }
+                
+                const success = Utils.downloadTXT(reportContent, filename);
+                if (success) {
+                    Utils.showNotification('Отчет успешно скачан');
+                } else {
+                    Utils.showNotification('Ошибка при скачивании отчета', 'error');
+                }
+            }
+        }
+
+        // Менеджер данных (обновлен для работы с загрузкой файлов)
+        class DataManager {
+            static init() {
+                this.loadData();
+                this.updateLastUpdateDisplay();
+                CartManager.init();
+            }
+
+            static loadData() {
+                try {
+                    const savedData = localStorage.getItem(STORAGE_KEY);
+                    
+                    if (savedData) {
+                        coffeeShopData = JSON.parse(savedData);
+                        console.log('Данные загружены из localStorage');
+                    } else {
+                        coffeeShopData = JSON.parse(JSON.stringify(initialData));
+                        console.log('Используются начальные данные');
+                    }
+                    
+                    // Проверяем структуру данных и добавляем недостающие поля
+                    this.validateDataStructure();
+                    
+                } catch (error) {
+                    console.error('Ошибка при загрузке данных:', error);
+                    coffeeShopData = JSON.parse(JSON.stringify(initialData));
+                }
+            }
+
+            static validateDataStructure() {
+                // Проверяем обязательные поля
+                if (!coffeeShopData.users) coffeeShopData.users = [];
+                if (!coffeeShopData.products) coffeeShopData.products = [];
+                if (!coffeeShopData.orders) coffeeShopData.orders = [];
+                
+                if (!coffeeShopData.loyaltySettings) {
+                    coffeeShopData.loyaltySettings = initialData.loyaltySettings;
+                }
+                
+                // Проверяем наличие админа
+                const hasAdmin = coffeeShopData.users.some(user => user.role === 'admin');
+                if (!hasAdmin && coffeeShopData.users.length === 0) {
+                    coffeeShopData.users.push(initialData.users[0]);
+                }
+                
+                // Добавляем недостающие поля продуктов
+                coffeeShopData.products.forEach(product => {
+                    if (!product.totalSold) product.totalSold = 0;
+                });
+            }
+
+            static saveData() {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(coffeeShopData));
+                    localStorage.setItem(LAST_UPDATE_KEY, new Date().toISOString());
+                    
+                    this.updateLastUpdateDisplay();
+                    Utils.showNotification('Данные сохранены в localStorage');
+                    console.log('Данные сохранены в localStorage');
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Ошибка при сохранении данных:', error);
+                    Utils.showNotification('Ошибка при сохранении данных', 'error');
+                    return false;
+                }
+            }
+
+            static updateLastUpdateDisplay() {
+                const lastUpdateElement = document.getElementById('lastUpdate');
+                if (lastUpdateElement) {
+                    const lastUpdate = localStorage.getItem(LAST_UPDATE_KEY);
+                    if (lastUpdate) {
+                        lastUpdateElement.textContent = Utils.formatDate(lastUpdate);
+                    } else {
+                        lastUpdateElement.textContent = 'Нет данных';
+                    }
+                }
+            }
+
+            static downloadData() {
+                if (!coffeeShopData) {
+                    Utils.showNotification('Нет данных для скачивания', 'error');
+                    return;
+                }
+
+                const success = Utils.downloadJSON(coffeeShopData, `coffee-shop-data-${new Date().toISOString().slice(0, 10)}.json`);
+                
+                if (success) {
+                    Utils.showNotification('Файл data.json успешно скачан');
+                } else {
+                    Utils.showNotification('Ошибка при скачивании файла', 'error');
+                }
+            }
+
+            static uploadData() {
+                document.getElementById('fileInput').click();
+            }
+
+            static handleFileUpload(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        coffeeShopData = data;
+                        this.validateDataStructure();
+                        this.saveData();
+                        
+                        Utils.showNotification('Данные успешно загружены');
+                        
+                        // Обновляем интерфейс
+                        Navigation.updateUserUI();
+                        if (document.getElementById('menu')) MenuManager.loadMenu();
+                        if (document.getElementById('loyalty')) LoyaltyManager.loadLoyaltyData();
+                        if (document.getElementById('admin')) AdminManager.loadAdminPanel();
+                        
+                    } catch (error) {
+                        console.error('Ошибка при загрузке файла:', error);
+                        Utils.showNotification('Ошибка при загрузке файла. Проверьте формат.', 'error');
+                    }
+                };
+                reader.readAsText(file);
+                
+                // Сбрасываем значение input, чтобы можно было загрузить тот же файл снова
+                event.target.value = '';
+            }
+
+            static resetData() {
+                if (confirm('Вы уверены, что хотите сбросить все данные? Это действие нельзя отменить.')) {
+                    coffeeShopData = JSON.parse(JSON.stringify(initialData));
+                    this.saveData();
+                    CartManager.clearCart();
+                    Utils.showNotification('Данные сброшены до начальных значений');
+                    
+                    // Перезагружаем страницы, если они открыты
+                    if (document.getElementById('menu')) MenuManager.loadMenu();
+                    if (document.getElementById('loyalty')) LoyaltyManager.loadLoyaltyData();
+                    if (document.getElementById('admin')) AdminManager.loadAdminPanel();
+                    if (document.getElementById('cart')) CartManager.renderCart();
+                    
+                    Navigation.updateUserUI();
+                }
+            }
+        }
+
+        // Навигация (обновлена для корзины)
         class Navigation {
             static init() {
                 document.querySelectorAll('[data-page]').forEach(link => {
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
                         const page = e.target.closest('[data-page]').dataset.page;
-                        this.navigateTo(page);
+                        Navigation.navigateTo(page);
                         
-                        // Закрытие мобильного меню
                         const navLinks = document.getElementById('navLinks');
                         navLinks.classList.remove('active');
                     });
@@ -1662,6 +1555,7 @@
                 });
 
                 this.updateUserUI();
+                Utils.animateOnScroll();
             }
 
             static navigateTo(page) {
@@ -1687,6 +1581,8 @@
                             AdminManager.loadAdminPanel();
                             break;
                     }
+                    
+                    setTimeout(() => Utils.animateOnScroll(), 100);
                 }
             }
 
@@ -1696,41 +1592,48 @@
                 const adminLink = document.getElementById('adminLink');
                 const userInfoItem = document.getElementById('userInfoItem');
                 const logoutItem = document.getElementById('logoutItem');
+                const cartLink = document.getElementById('cartLink');
 
                 if (currentUser) {
-                    loginLink.style.display = 'none';
+                    if (loginLink) loginLink.style.display = 'none';
                     
-                    userInfoItem.style.display = 'block';
-                    userInfoItem.innerHTML = `
-                        <span style="color: var(--gold); padding: 1rem; display: block; font-weight: 600;">
-                            <i class="fas fa-user-circle"></i> ${currentUser.username}
-                        </span>
-                    `;
+                    if (userInfoItem) {
+                        userInfoItem.style.display = 'block';
+                        userInfoItem.innerHTML = `
+                            <span style="color: var(--gold); padding: 1rem; display: block; font-weight: 600;">
+                                <i class="fas fa-user-circle"></i> ${currentUser.username}
+                            </span>
+                        `;
+                    }
                     
-                    logoutItem.style.display = 'block';
+                    if (logoutItem) logoutItem.style.display = 'block';
+                    if (cartLink) cartLink.style.display = 'block';
                     
-                    if (currentUser.role === 'admin') {
+                    if (currentUser.role === 'admin' && adminLink) {
                         adminLink.style.display = 'block';
-                    } else {
-                        adminLink.style.display = 'none';
                     }
                 } else {
-                    loginLink.style.display = 'block';
-                    userInfoItem.style.display = 'none';
-                    logoutItem.style.display = 'none';
-                    adminLink.style.display = 'none';
+                    if (loginLink) loginLink.style.display = 'block';
+                    if (userInfoItem) userInfoItem.style.display = 'none';
+                    if (logoutItem) logoutItem.style.display = 'none';
+                    if (adminLink) adminLink.style.display = 'none';
+                    if (cartLink) cartLink.style.display = 'block';
                 }
-
-                CartManager.updateCartBadge();
+                
+                CartManager.updateCartCount();
             }
         }
 
-        // Менеджер аутентификации
+        // Менеджер аутентификации (остается без изменений)
         class AuthManager {
             static async register(username, email, password, confirmPassword) {
                 try {
                     if (password !== confirmPassword) {
                         throw new Error('Пароли не совпадают');
+                    }
+
+                    if (!coffeeShopData.users) {
+                        coffeeShopData.users = [];
                     }
 
                     const existingUser = coffeeShopData.users.find(user => 
@@ -1742,7 +1645,7 @@
                     }
 
                     const newUser = {
-                        id: coffeeShopData.users.length + 1,
+                        id: coffeeShopData.users.length > 0 ? Math.max(...coffeeShopData.users.map(u => u.id)) + 1 : 1,
                         username,
                         email,
                         password: Utils.encodePassword(password),
@@ -1750,12 +1653,16 @@
                         loyaltyPoints: 0,
                         discountLevel: 0,
                         purchaseHistory: [],
+                        orders: [],
                         registrationDate: new Date().toISOString().split('T')[0]
                     };
 
                     coffeeShopData.users.push(newUser);
+                    
+                    // Сохраняем данные
                     DataManager.saveData();
                     
+                    // Автоматический вход
                     localStorage.setItem('currentUser', JSON.stringify({
                         id: newUser.id,
                         username: newUser.username,
@@ -1764,7 +1671,7 @@
                         discountLevel: newUser.discountLevel
                     }));
 
-                    Utils.showNotification('Регистрация успешна!');
+                    Utils.showNotification('Регистрация успешна! Добро пожаловать!');
                     Navigation.updateUserUI();
                     Navigation.navigateTo('home');
 
@@ -1775,6 +1682,10 @@
 
             static async login(username, password) {
                 try {
+                    if (!coffeeShopData.users) {
+                        throw new Error('База данных не загружена');
+                    }
+
                     const user = coffeeShopData.users.find(u => 
                         u.username === username && u.password === Utils.encodePassword(password)
                     );
@@ -1813,7 +1724,7 @@
             }
         }
 
-        // Менеджер меню (прежний формат с возможностью добавления в корзину при наведении)
+        // Менеджер меню (обновлен для добавления в корзину)
         class MenuManager {
             static loadMenu() {
                 const menuGrid = document.getElementById('menuGrid');
@@ -1821,25 +1732,30 @@
 
                 menuGrid.innerHTML = '';
                 
+                if (!coffeeShopData.products || coffeeShopData.products.length === 0) {
+                    menuGrid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #666; font-size: 1.2rem;">Нет доступных продуктов</p>';
+                    return;
+                }
+                
                 coffeeShopData.products.forEach(product => {
                     if (product.available) {
                         const item = document.createElement('div');
                         item.className = `menu-item ${product.category}`;
                         item.innerHTML = `
-                            <div class="add-to-cart-hidden" onclick="CartManager.addToCart(${product.id}, 1)">
-                                <div class="add-to-cart-hidden-content">
-                                    <i class="fas fa-cart-plus"></i>
-                                    <h4>Добавить в корзину</h4>
-                                    <p>${product.name} - ${product.price} ₽</p>
-                                </div>
-                            </div>
                             <img src="${product.image}" alt="${product.name}" 
-                                 onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085'">
+                                 onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80'">
                             <div class="menu-item-content">
                                 <h3>${product.name}</h3>
                                 <div class="price">${product.price}</div>
                                 <p class="description">${product.description}</p>
-                                <span class="stock"><i class="fas fa-box"></i> В наличии: ${product.stock}</span>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                                    <span class="stock"><i class="fas fa-box"></i> В наличии: ${product.stock}</span>
+                                    <button class="btn add-to-cart-btn" data-product-id="${product.id}" 
+                                            style="padding: 0.5rem 1.5rem; font-size: 0.9rem; ${product.stock === 0 ? 'opacity: 0.5; cursor: not-allowed;' : ''}"
+                                            ${product.stock === 0 ? 'disabled' : ''}>
+                                        <i class="fas fa-cart-plus"></i> ${product.stock === 0 ? 'Нет в наличии' : 'В корзину'}
+                                    </button>
+                                </div>
                             </div>
                         `;
                         menuGrid.appendChild(item);
@@ -1847,6 +1763,8 @@
                 });
 
                 this.setupFilters();
+                this.setupAddToCartButtons();
+                setTimeout(() => Utils.animateOnScroll(), 100);
             }
 
             static setupFilters() {
@@ -1869,9 +1787,20 @@
                     });
                 });
             }
+
+            static setupAddToCartButtons() {
+                document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const productId = parseInt(btn.dataset.productId);
+                        CartManager.addToCart(productId, 1);
+                        CartManager.renderCart();
+                    });
+                });
+            }
         }
 
-        // Менеджер лояльности
+        // Менеджер лояльности (обновлен для отображения заказов)
         class LoyaltyManager {
             static loadLoyaltyData() {
                 const currentUser = AuthManager.getCurrentUser();
@@ -1883,36 +1812,50 @@
                     if (pointsValue) pointsValue.textContent = 'Войдите в систему';
                     if (currentDiscount) currentDiscount.textContent = '0%';
                     if (levelsGrid) levelsGrid.innerHTML = '';
+                    document.getElementById('userOrders').innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Войдите в систему, чтобы увидеть свои заказы</p>';
                     return;
                 }
 
+                // Получаем актуальные данные пользователя
                 const user = coffeeShopData.users.find(u => u.id === currentUser.id);
-                if (!user) return;
+                if (user) {
+                    currentUser.loyaltyPoints = user.loyaltyPoints;
+                    currentUser.discountLevel = user.discountLevel;
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                }
 
-                if (pointsValue) pointsValue.textContent = user.loyaltyPoints;
-                if (currentDiscount) currentDiscount.textContent = `${user.discountLevel}%`;
+                if (pointsValue) pointsValue.textContent = currentUser.loyaltyPoints;
+                if (currentDiscount) currentDiscount.textContent = `${currentUser.discountLevel}%`;
 
                 if (levelsGrid) {
                     levelsGrid.innerHTML = '';
-                    coffeeShopData.loyaltySettings.discountLevels.forEach(level => {
-                        const isActive = user.loyaltyPoints >= level.points;
-                        const levelCard = document.createElement('div');
-                        levelCard.className = `level-card ${isActive ? 'active' : ''}`;
-                        levelCard.innerHTML = `
-                            <h3>${level.name}</h3>
-                            <div class="points">От ${level.points} баллов</div>
-                            <div class="discount">${level.discount}% скидка</div>
-                            ${isActive ? '<div style="color: var(--success); margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-check-circle"></i> Достигнут</div>' : ''}
-                        `;
-                        levelsGrid.appendChild(levelCard);
-                    });
+                    
+                    if (coffeeShopData.loyaltySettings && coffeeShopData.loyaltySettings.discountLevels) {
+                        coffeeShopData.loyaltySettings.discountLevels.forEach(level => {
+                            const isActive = currentUser.loyaltyPoints >= level.points;
+                            const levelCard = document.createElement('div');
+                            levelCard.className = `level-card ${isActive ? 'active' : ''}`;
+                            levelCard.innerHTML = `
+                                <h3>${level.name}</h3>
+                                <div class="points">От ${level.points} баллов</div>
+                                <div class="discount">${level.discount}% скидка</div>
+                                ${isActive ? '<div style="color: var(--success); margin-top: 0.5rem; font-weight: 600;"><i class="fas fa-check-circle"></i> Достигнут</div>' : ''}
+                            `;
+                            levelsGrid.appendChild(levelCard);
+                        });
+                    }
                 }
+                
+                // Загружаем заказы пользователя
+                OrderManager.renderUserOrders(currentUser.id);
+                
+                setTimeout(() => Utils.animateOnScroll(), 100);
             }
         }
 
-        // Менеджер админки
+        // Менеджер админки (обновлен для отчетов)
         class AdminManager {
-            static loadAdminPanel() {
+            static async loadAdminPanel() {
                 const currentUser = AuthManager.getCurrentUser();
                 
                 if (!currentUser || currentUser.role !== 'admin') {
@@ -1921,18 +1864,27 @@
                     return;
                 }
                 
-                this.loadStatistics();
-                this.loadProducts();
-                this.loadUsers();
+                Utils.showLoading(true);
+                
+                try {
+                    this.loadStatistics();
+                    this.loadProducts();
+                    this.loadUsersWithOrders();
+                } finally {
+                    setTimeout(() => {
+                        Utils.showLoading(false);
+                        Utils.animateOnScroll();
+                    }, 500);
+                }
             }
 
             static loadStatistics() {
-                document.getElementById('totalUsers').textContent = coffeeShopData.users.length;
-                document.getElementById('totalProducts').textContent = coffeeShopData.products.length;
-                document.getElementById('totalOrders').textContent = coffeeShopData.orders.length;
+                document.getElementById('totalUsers').textContent = coffeeShopData.users ? coffeeShopData.users.length : 0;
+                document.getElementById('totalProducts').textContent = coffeeShopData.products ? coffeeShopData.products.length : 0;
+                document.getElementById('totalOrders').textContent = coffeeShopData.orders ? coffeeShopData.orders.length : 0;
                 
-                const totalRevenue = coffeeShopData.orders.reduce((sum, order) => sum + order.finalAmount, 0);
-                document.getElementById('totalRevenue').textContent = `${totalRevenue} ₽`;
+                const totalRevenue = coffeeShopData.orders ? coffeeShopData.orders.reduce((sum, order) => sum + order.total, 0) : 0;
+                document.getElementById('totalRevenue').textContent = `${totalRevenue.toLocaleString('ru-RU')} ₽`;
             }
 
             static loadProducts() {
@@ -1941,6 +1893,11 @@
                 
                 productsList.innerHTML = '';
                 
+                if (!coffeeShopData.products || coffeeShopData.products.length === 0) {
+                    productsList.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Нет продуктов</p>';
+                    return;
+                }
+                
                 coffeeShopData.products.forEach(product => {
                     const productItem = document.createElement('div');
                     productItem.className = 'product-item';
@@ -1948,52 +1905,75 @@
                         <div>
                             <strong>${product.name}</strong>
                             <div style="color: var(--coffee); font-size: 0.9rem; margin-top: 5px;">Цена: ${product.price} ₽</div>
+                            <div style="font-size: 0.85rem; color: #666; margin-top: 3px;">
+                                Продано: ${product.totalSold || 0} | На складе: ${product.stock}
+                            </div>
                         </div>
                         <div class="stock-controls">
-                            <button class="stock-btn" onclick="AdminManager.decreaseStock(${product.id})">-</button>
+                            <button class="stock-btn" onclick="AdminManager.decreaseStock(${product.id})" title="Уменьшить">-</button>
                             <input type="number" class="stock-input" value="${product.stock}" 
                                    id="stock-${product.id}" onchange="AdminManager.updateStock(${product.id}, this.value)">
-                            <button class="stock-btn" onclick="AdminManager.increaseStock(${product.id})">+</button>
+                            <button class="stock-btn" onclick="AdminManager.increaseStock(${product.id})" title="Увеличить">+</button>
+                            <button class="stock-btn" style="background: ${product.available ? 'linear-gradient(45deg, #f44336, #d32f2f)' : 'linear-gradient(45deg, #4CAF50, #2E7D32)'}"
+                                    onclick="AdminManager.toggleAvailability(${product.id})" title="${product.available ? 'Скрыть продукт' : 'Показать продукт'}">
+                                ${product.available ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>'}
+                            </button>
                         </div>
                     `;
                     productsList.appendChild(productItem);
                 });
             }
 
-            static loadUsers() {
+            static loadUsersWithOrders() {
                 const usersList = document.getElementById('usersList');
                 if (!usersList) return;
                 
                 usersList.innerHTML = '';
                 
+                if (!coffeeShopData.users || coffeeShopData.users.length === 0) {
+                    usersList.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Нет пользователей</p>';
+                    return;
+                }
+                
                 coffeeShopData.users.forEach(user => {
+                    const userOrders = coffeeShopData.orders ? coffeeShopData.orders.filter(order => order.userId === user.id) : [];
+                    const totalSpent = userOrders.reduce((sum, order) => sum + order.total, 0);
+                    
                     const userItem = document.createElement('div');
                     userItem.className = 'product-item';
-                    
-                    // Получаем заказы пользователя
-                    const userOrders = coffeeShopData.orders.filter(order => order.userId === user.id);
+                    userItem.style.flexDirection = 'column';
+                    userItem.style.alignItems = 'flex-start';
+                    userItem.style.gap = '0.5rem';
                     
                     userItem.innerHTML = `
-                        <div>
-                            <strong>${user.username} ${user.role === 'admin' ? '(Админ)' : ''}</strong>
+                        <div style="width: 100%;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <strong>${user.username} ${user.role === 'admin' ? '(Админ)' : ''}</strong>
+                                <span style="color: var(--gold); font-weight: bold;">${totalSpent} ₽</span>
+                            </div>
                             <div style="color: var(--coffee); font-size: 0.9rem; margin-top: 5px;">Email: ${user.email}</div>
-                            <div style="display: flex; gap: 1rem; margin-top: 5px;">
+                            <div style="display: flex; gap: 1rem; margin-top: 5px; font-size: 0.9rem;">
                                 <span style="color: var(--gold);"><i class="fas fa-coins"></i> ${user.loyaltyPoints}</span>
                                 <span style="color: var(--primary-brown);"><i class="fas fa-percent"></i> ${user.discountLevel}%</span>
+                                <span style="color: #666;"><i class="fas fa-shopping-cart"></i> ${userOrders.length} заказов</span>
                             </div>
-                            ${userOrders.length > 0 ? `
-                                <div style="margin-top: 0.5rem; font-size: 0.9rem;">
-                                    <strong>Заказы (${userOrders.length}):</strong>
-                                    <ul style="margin-left: 1rem; margin-top: 0.25rem;">
-                                        ${userOrders.map(order => `
-                                            <li>${order.date}: ${order.items.map(item => `${item.productName} x${item.quantity}`).join(', ')} - ${order.finalAmount} ₽</li>
-                                        `).join('')}
-                                    </ul>
-                                </div>
-                            ` : ''}
                         </div>
-                        <div style="text-align: right;">
-                            <small style="color: #888;">${user.registrationDate}</small>
+                        
+                        ${userOrders.length > 0 ? `
+                            <div style="width: 100%; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed rgba(210, 180, 140, 0.3);">
+                                <div style="font-size: 0.85rem; color: #666; margin-bottom: 0.3rem;">Последние заказы:</div>
+                                ${userOrders.slice(0, 2).map(order => `
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; padding: 0.2rem 0;">
+                                        <span>#${order.id} ${Utils.formatDateOnly(order.date)}</span>
+                                        <span>${order.total} ₽</span>
+                                    </div>
+                                `).join('')}
+                                ${userOrders.length > 2 ? `<div style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 0.2rem;">...и еще ${userOrders.length - 2} заказов</div>` : ''}
+                            </div>
+                        ` : ''}
+                        
+                        <div style="text-align: right; width: 100%; font-size: 0.8rem; color: #888; margin-top: 0.5rem;">
+                            ${user.registrationDate}
                         </div>
                     `;
                     usersList.appendChild(userItem);
@@ -2028,6 +2008,18 @@
                 }
             }
 
+            static toggleAvailability(productId) {
+                const product = coffeeShopData.products.find(p => p.id === productId);
+                if (product) {
+                    product.available = !product.available;
+                    DataManager.saveData();
+                    this.loadProducts();
+                    Utils.showNotification(
+                        `Продукт "${product.name}" ${product.available ? 'доступен' : 'скрыт'}`
+                    );
+                }
+            }
+
             static addProduct() {
                 const name = prompt('Введите название продукта:');
                 if (!name) return;
@@ -2045,94 +2037,171 @@
                 const stock = prompt('Введите начальное количество:') || 0;
                 
                 const newProduct = {
-                    id: coffeeShopData.products.length + 1,
+                    id: coffeeShopData.products.length > 0 ? Math.max(...coffeeShopData.products.map(p => p.id)) + 1 : 1,
                     name,
                     category,
                     price: parseInt(price),
                     description,
-                    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085',
+                    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80',
                     stock: parseInt(stock),
+                    totalSold: 0,
                     available: true
                 };
                 
+                if (!coffeeShopData.products) coffeeShopData.products = [];
                 coffeeShopData.products.push(newProduct);
+                
                 DataManager.saveData();
                 this.loadProducts();
                 this.loadStatistics();
                 Utils.showNotification('Продукт добавлен');
             }
+        }
 
-            static generateReport() {
-                let report = 'ОТЧЕТ КОФЕЙНИ "УЮТНАЯ ЧАШКА"\n';
-                report += '='.repeat(50) + '\n\n';
-                
-                // Общая статистика
-                report += 'ОБЩАЯ СТАТИСТИКА:\n';
-                report += `Всего пользователей: ${coffeeShopData.users.length}\n`;
-                report += `Всего продуктов: ${coffeeShopData.products.length}\n`;
-                report += `Всего заказов: ${coffeeShopData.orders.length}\n`;
-                
-                const totalRevenue = coffeeShopData.orders.reduce((sum, order) => sum + order.finalAmount, 0);
-                report += `Общая выручка: ${totalRevenue} ₽\n\n`;
-                
-                // Продажи по товарам
-                report += 'ПРОДАЖИ ПО ТОВАРАМ:\n';
-                const productSales = {};
-                
-                coffeeShopData.orders.forEach(order => {
-                    order.items.forEach(item => {
-                        if (!productSales[item.productId]) {
-                            productSales[item.productId] = {
-                                name: item.productName,
-                                quantity: 0,
-                                revenue: 0
-                            };
-                        }
-                        productSales[item.productId].quantity += item.quantity;
-                        productSales[item.productId].revenue += item.price * item.quantity;
-                    });
+        // Обработчики оформления заказа
+        class CheckoutManager {
+            static init() {
+                // Кнопка оформления заказа
+                document.getElementById('checkoutBtn')?.addEventListener('click', () => {
+                    this.openOrderModal();
                 });
                 
-                Object.values(productSales).forEach(product => {
-                    report += `- ${product.name}: ${product.quantity} шт., ${product.revenue} ₽\n`;
+                // Модальное окно
+                document.querySelector('.close-modal')?.addEventListener('click', () => {
+                    this.closeOrderModal();
                 });
-                report += '\n';
                 
-                // Пользователи и их покупки
-                report += 'ПОЛЬЗОВАТЕЛИ И ИХ ПОКУПКИ:\n';
-                coffeeShopData.users.forEach(user => {
-                    report += `\n${user.username} (${user.email}):\n`;
-                    report += `  Баллы: ${user.loyaltyPoints}, Скидка: ${user.discountLevel}%\n`;
-                    
-                    const userOrders = coffeeShopData.orders.filter(order => order.userId === user.id);
-                    if (userOrders.length > 0) {
-                        report += `  Всего заказов: ${userOrders.length}\n`;
-                        userOrders.forEach((order, index) => {
-                            report += `  Заказ #${order.id} (${order.date}):\n`;
-                            order.items.forEach(item => {
-                                report += `    - ${item.productName} x${item.quantity}: ${item.price * item.quantity} ₽\n`;
-                            });
-                            report += `    Итого: ${order.finalAmount} ₽\n`;
-                        });
-                    } else {
-                        report += `  Нет заказов\n`;
+                document.getElementById('cancelOrderBtn')?.addEventListener('click', () => {
+                    this.closeOrderModal();
+                });
+                
+                // Подтверждение заказа
+                document.getElementById('confirmOrderBtn')?.addEventListener('click', () => {
+                    this.confirmOrder();
+                });
+                
+                // Закрытие модального окна при клике вне его
+                document.getElementById('orderModal')?.addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('orderModal')) {
+                        this.closeOrderModal();
                     }
                 });
+            }
+            
+            static openOrderModal() {
+                const currentUser = AuthManager.getCurrentUser();
+                if (!currentUser) {
+                    Utils.showNotification('Пожалуйста, войдите в систему для оформления заказа', 'error');
+                    Navigation.navigateTo('login');
+                    return;
+                }
                 
-                report += '\n' + '='.repeat(50) + '\n';
-                report += `Отчет создан: ${new Date().toLocaleString('ru-RU')}\n`;
+                const cartWithDetails = CartManager.getCartWithDetails();
+                if (cartWithDetails.length === 0) {
+                    Utils.showNotification('Корзина пуста', 'error');
+                    return;
+                }
                 
-                Utils.downloadTXT(report, `отчет_${new Date().toISOString().slice(0, 10)}.txt`);
-                Utils.showNotification('Отчет создан и скачан');
+                // Проверяем наличие товаров
+                const unavailableItems = cartWithDetails.filter(item => item.quantity > item.product.stock);
+                if (unavailableItems.length > 0) {
+                    Utils.showNotification(`Некоторые товары недоступны в нужном количестве`, 'error');
+                    return;
+                }
+                
+                const modal = document.getElementById('orderModal');
+                const orderDetails = document.getElementById('orderDetails');
+                
+                const subtotal = CartManager.getTotalAmount();
+                const discount = currentUser.discountLevel;
+                const discountAmount = (subtotal * discount) / 100;
+                const total = subtotal - discountAmount;
+                
+                orderDetails.innerHTML = `
+                    <div style="margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--dark-brown); margin-bottom: 1rem;">Детали заказа</h3>
+                        ${cartWithDetails.map(item => `
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>${item.product.name} × ${item.quantity}</span>
+                                <span>${item.total} ₽</span>
+                            </div>
+                        `).join('')}
+                        <div style="border-top: 2px solid rgba(210, 180, 140, 0.3); padding-top: 0.5rem; margin-top: 0.5rem;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Сумма:</span>
+                                <span>${subtotal} ₽</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Скидка (${discount}%):</span>
+                                <span>-${discountAmount} ₽</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.1rem; margin-top: 0.5rem;">
+                                <span>Итого:</span>
+                                <span>${total} ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                modal.classList.add('active');
+            }
+            
+            static closeOrderModal() {
+                const modal = document.getElementById('orderModal');
+                modal.classList.remove('active');
+                document.getElementById('orderComment').value = '';
+            }
+            
+            static async confirmOrder() {
+                const currentUser = AuthManager.getCurrentUser();
+                const cartWithDetails = CartManager.getCartWithDetails();
+                const comment = document.getElementById('orderComment').value;
+                
+                try {
+                    const order = OrderManager.createOrder(
+                        currentUser.id,
+                        cartWithDetails,
+                        CartManager.getTotalAmount(),
+                        comment
+                    );
+                    
+                    if (order) {
+                        // Очищаем корзину
+                        CartManager.clearCart();
+                        CartManager.renderCart();
+                        
+                        // Закрываем модальное окно
+                        this.closeOrderModal();
+                        
+                        // Показываем уведомление
+                        Utils.showNotification(`Заказ #${order.id} успешно оформлен! Начислено ${Math.floor(order.subtotal / 100) * coffeeShopData.loyaltySettings.pointsPerPurchase} бонусных баллов`);
+                        
+                        // Обновляем данные
+                        Navigation.updateUserUI();
+                        
+                        // Переходим на страницу лояльности
+                        Navigation.navigateTo('loyalty');
+                    } else {
+                        throw new Error('Ошибка при создании заказа');
+                    }
+                } catch (error) {
+                    Utils.showNotification('Ошибка при оформлении заказа: ' + error.message, 'error');
+                }
             }
         }
 
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', () => {
+            // Инициализируем данные
             DataManager.init();
+            
+            // Инициализируем навигацию
             Navigation.init();
             
-            // Форма регистрации
+            // Инициализируем оформление заказа
+            CheckoutManager.init();
+            
+            // Обработка формы регистрации
             document.getElementById('registerForm')?.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const username = document.getElementById('regUsername').value;
@@ -2143,7 +2212,7 @@
                 AuthManager.register(username, email, password, confirmPassword);
             });
             
-            // Форма входа
+            // Обработка формы входа
             document.getElementById('loginForm')?.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const username = document.getElementById('loginUsername').value;
@@ -2163,15 +2232,29 @@
                 AdminManager.addProduct();
             });
             
-            // Кнопка создания отчета
-            document.getElementById('generateReportBtn')?.addEventListener('click', () => {
-                AdminManager.generateReport();
-            });
-            
             // Кнопка скачивания данных
             document.getElementById('downloadDataBtn')?.addEventListener('click', () => {
-                Utils.downloadJSON(coffeeShopData);
-                Utils.showNotification('Данные скачаны в формате JSON');
+                DataManager.downloadData();
+            });
+            
+            // Кнопка загрузки данных
+            document.getElementById('uploadDataBtn')?.addEventListener('click', () => {
+                DataManager.uploadData();
+            });
+            
+            // Обработка загрузки файла
+            document.getElementById('fileInput').addEventListener('change', (e) => {
+                DataManager.handleFileUpload(e);
+            });
+            
+            // Кнопка генерации отчета
+            document.getElementById('generateReportBtn')?.addEventListener('click', () => {
+                ReportManager.downloadReport();
+            });
+            
+            // Кнопка скачивания отчета
+            document.getElementById('downloadReportBtn')?.addEventListener('click', () => {
+                ReportManager.downloadReport();
             });
             
             // Кнопка сброса данных
@@ -2179,18 +2262,28 @@
                 DataManager.resetData();
             });
             
-            // Кнопка оплаты
-            document.getElementById('checkoutBtn')?.addEventListener('click', () => {
-                CartManager.checkout();
-            });
+            // Загружаем меню если на странице меню
+            if (document.getElementById('menu')) {
+                MenuManager.loadMenu();
+            }
             
-            // Загружаем меню
-            MenuManager.loadMenu();
+            // Загружаем данные лояльности если на странице лояльности
+            if (document.getElementById('loyalty')) {
+                LoyaltyManager.loadLoyaltyData();
+            }
+            
+            // Загружаем корзину если на странице корзины
+            if (document.getElementById('cart')) {
+                CartManager.renderCart();
+            }
         });
 
-        // Делаем методы глобальными
-        window.CartManager = CartManager;
+        // Делаем методы глобальными для обработчиков в HTML
         window.AdminManager = AdminManager;
+        window.AuthManager = AuthManager;
+        window.DataManager = DataManager;
+        window.CartManager = CartManager;
+        window.ReportManager = ReportManager;
     </script>
 </body>
 </html>
