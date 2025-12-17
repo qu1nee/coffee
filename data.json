@@ -1,307 +1,189 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "username": "admin",
-      "password": "YWRtaW4xMjM=",
-      "email": "admin@coffee.com",
-      "role": "admin",
-      "loyaltyPoints": 520,
-      "discountLevel": 15,
-      "purchaseHistory": [
-        {
-          "date": "2024-01-15",
-          "amount": 1500,
-          "pointsAdded": 150
-        },
-        {
-          "date": "2024-01-20",
-          "amount": 800,
-          "pointsAdded": 80
-        },
-        {
-          "date": "2025-12-16",
-          "amount": 250,
-          "pointsAdded": 20
-        }
-      ],
-      "registrationDate": "2024-01-01"
-    },
-    {
-      "id": 2,
-      "username": "user1",
-      "password": "dXNlcjEyMw==",
-      "email": "user1@mail.com",
-      "role": "user",
-      "loyaltyPoints": 120,
-      "discountLevel": 5,
-      "purchaseHistory": [
-        {
-          "date": "2024-01-18",
-          "amount": 450,
-          "pointsAdded": 45
-        }
-      ],
-      "registrationDate": "2024-01-10"
-    },
-    {
-      "id": 3,
-      "username": "Коля",
-      "email": "kol@yandex.ru",
-      "password": "cXdlMTIz",
-      "role": "user",
-      "loyaltyPoints": 80,
-      "discountLevel": 0,
-      "purchaseHistory": [
-        {
-          "date": "2025-12-16",
-          "amount": 840,
-          "pointsAdded": 80
-        }
-      ],
-      "registrationDate": "2025-12-16"
-    },
-    {
-      "id": 4,
-      "username": "Надя",
-      "email": "nad@yandex.ru",
-      "password": "cXdlMTIz",
-      "role": "user",
-      "loyaltyPoints": 60,
-      "discountLevel": 0,
-      "purchaseHistory": [
-        {
-          "date": "2025-12-16",
-          "amount": 660,
-          "pointsAdded": 60
-        }
-      ],
-      "registrationDate": "2025-12-16"
-    },
-    {
-      "id": 5,
-      "username": "Ольга",
-      "email": "olg@yandex.ru",
-      "password": "cXdlMTIz",
-      "role": "user",
-      "loyaltyPoints": 30,
-      "discountLevel": 0,
-      "purchaseHistory": [
-        {
-          "date": "2025-12-16",
-          "amount": 320,
-          "pointsAdded": 30
-        }
-      ],
-      "registrationDate": "2025-12-16"
-    }
-  ],
   "products": [
     {
       "id": 1,
       "name": "Эспрессо",
-      "category": "coffee",
+      "type": "кофе",
       "price": 180,
-      "description": "Крепкий и насыщенный кофе из свежеобжаренных зерен арабики",
-      "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 100,
-      "available": true
+      "quantity": 100,
+      "description": "Классический крепкий кофе, приготовленный под давлением. Идеальный баланс горечи и насыщенности. Объем 30 мл.",
+      "icon": "fas fa-coffee",
+      "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
     },
     {
       "id": 2,
       "name": "Капучино",
-      "category": "coffee",
+      "type": "кофе",
       "price": 250,
-      "description": "Кофе с нежной молочной пенкой и легким ароматом ванили",
-      "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 84,
-      "available": true
+      "quantity": 80,
+      "description": "Кофе с молоком и воздушной молочной пенкой. Идеальное соотношение эспрессо, молока и пены. Объем 180 мл.",
+      "icon": "fas fa-mug-hot",
+      "image": "https://images.unsplash.com/photo-1570197788417-0f1d0b73e12d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
     },
     {
       "id": 3,
       "name": "Латте",
-      "category": "coffee",
+      "type": "кофе",
       "price": 280,
-      "description": "Нежный кофе с большим количеством вспененного молока",
-      "image": "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 67,
-      "available": true
+      "quantity": 75,
+      "description": "Нежный кофейный напиток с большим количеством молока и легкой пенкой. Объем 250 мл.",
+      "icon": "fas fa-coffee",
+      "image": "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
     },
     {
       "id": 4,
       "name": "Американо",
-      "category": "coffee",
+      "type": "кофе",
       "price": 200,
-      "description": "Классический черный кофе с горячей водой",
-      "image": "https://images.unsplash.com/photo-1551966786-c6e15354b8a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 95,
-      "available": true
+      "quantity": 90,
+      "description": "Эспрессо с добавлением горячей воды. Менее крепкий, но с насыщенным вкусом. Объем 120 мл.",
+      "icon": "fas fa-mug-hot",
+      "image": "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
     },
     {
       "id": 5,
-      "name": "Черный чай",
-      "category": "tea",
-      "price": 150,
-      "description": "Ароматный черный чай с бергамотом (Эрл Грей)",
-      "image": "https://images.unsplash.com/photo-1560343090-f0409e92791a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 120,
-      "available": true
+      "name": "Чизкейк Нью-Йорк",
+      "type": "десерт",
+      "price": 320,
+      "quantity": 20,
+      "description": "Классический чизкейк с нежной творожной основой и песочным коржом. Подается с ягодным соусом.",
+      "icon": "fas fa-cheese",
+      "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
     },
     {
       "id": 6,
-      "name": "Зеленый чай",
-      "category": "tea",
-      "price": 160,
-      "description": "Освежающий зеленый чай с жасмином",
-      "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 108,
-      "available": true
-    },
-    {
-      "id": 7,
-      "name": "Чизкейк Нью-Йорк",
-      "category": "desserts",
-      "price": 320,
-      "description": "Нежный сырный десерт с ягодным соусом и крошкой печенья",
-      "image": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 15,
-      "available": true
-    },
-    {
-      "id": 8,
-      "name": "Круассан",
-      "category": "desserts",
+      "name": "Круассан с шоколадом",
+      "type": "выпечка",
       "price": 180,
-      "description": "Свежая французская выпечка с шоколадом или сливочным кремом",
-      "image": "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 25,
-      "available": true
+      "quantity": 30,
+      "description": "Свежий слоеный круассан с начинкой из бельгийского шоколада. Идеально к утреннему кофе.",
+      "icon": "fas fa-bread-slice",
+      "image": "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Администратор",
+      "email": "admin@coffee.ru",
+      "password": "admin123",
+      "isAdmin": true,
+      "loyaltyPoints": 0,
+      "joinDate": "2023-01-01T00:00:00.000Z"
     },
     {
-      "id": 9,
-      "name": "Тирамису",
-      "category": "desserts",
-      "price": 350,
-      "description": "Итальянский десерт из печенья савоярди, кофе и сыра маскарпоне",
-      "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 12,
-      "available": true
+      "id": 2,
+      "name": "Иван Петров",
+      "email": "ivan@mail.ru",
+      "password": "123456",
+      "isAdmin": false,
+      "loyaltyPoints": 150,
+      "joinDate": "2023-05-15T10:30:00.000Z"
     },
     {
-      "id": 10,
-      "name": "Свежевыжатый сок",
-      "category": "other",
-      "price": 220,
-      "description": "Апельсиновый, яблочный или морковный сок, приготовленный при вас",
-      "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=200&q=80",
-      "stock": 37,
-      "available": true
+      "id": 3,
+      "name": "Мария Сидорова",
+      "email": "maria@yandex.ru",
+      "password": "qwerty",
+      "isAdmin": false,
+      "loyaltyPoints": 75,
+      "joinDate": "2023-06-20T14:45:00.000Z"
     }
   ],
   "orders": [
     {
       "id": 1,
       "userId": 2,
-      "date": "2024-01-18",
       "items": [
         {
-          "productId": 2,
-          "quantity": 1,
-          "price": 250
+          "id": 2,
+          "name": "Капучино",
+          "price": 250,
+          "quantity": 2,
+          "icon": "fas fa-mug-hot"
         },
         {
-          "productId": 7,
+          "id": 5,
+          "name": "Чизкейк Нью-Йорк",
+          "price": 320,
           "quantity": 1,
-          "price": 320
+          "icon": "fas fa-cheese"
         }
       ],
-      "total": 570,
+      "total": 820,
+      "pointsEarned": 41,
+      "date": "2023-10-15T09:30:00.000Z",
       "status": "completed"
     },
     {
       "id": 2,
-      "userId": 1,
-      "date": "2025-12-16",
+      "userId": 3,
       "items": [
         {
-          "productId": 2,
+          "id": 1,
+          "name": "Эспрессо",
+          "price": 180,
           "quantity": 1,
-          "price": 250
+          "icon": "fas fa-coffee"
+        },
+        {
+          "id": 6,
+          "name": "Круассан с шоколадом",
+          "price": 180,
+          "quantity": 2,
+          "icon": "fas fa-bread-slice"
         }
       ],
-      "total": 250,
+      "total": 540,
+      "pointsEarned": 27,
+      "date": "2023-10-16T11:15:00.000Z",
       "status": "completed"
     },
     {
       "id": 3,
-      "userId": 3,
-      "date": "2025-12-16",
+      "userId": 2,
       "items": [
         {
-          "productId": 3,
+          "id": 3,
+          "name": "Латте",
+          "price": 280,
           "quantity": 3,
-          "price": 280
+          "icon": "fas fa-coffee"
         }
       ],
       "total": 840,
-      "status": "completed"
-    },
-    {
-      "id": 4,
-      "userId": 4,
-      "date": "2025-12-16",
-      "items": [
-        {
-          "productId": 10,
-          "quantity": 3,
-          "price": 220
-        }
-      ],
-      "total": 660,
-      "status": "completed"
-    },
-    {
-      "id": 5,
-      "userId": 5,
-      "date": "2025-12-16",
-      "items": [
-        {
-          "productId": 6,
-          "quantity": 2,
-          "price": 160
-        }
-      ],
-      "total": 320,
+      "pointsEarned": 42,
+      "date": "2023-10-17T16:45:00.000Z",
       "status": "completed"
     }
   ],
   "loyaltySettings": {
-    "pointsPerPurchase": 10,
-    "discountLevels": [
+    "pointsPerPurchase": 5,
+    "levels": [
       {
-        "points": 1000,
-        "discount": 20,
-        "name": "Ветеран"
-      },
-      {
-        "points": 500,
-        "discount": 15,
-        "name": "Гурман"
-      },
-      {
-        "points": 300,
-        "discount": 10,
-        "name": "Знаток"
+        "points": 0,
+        "name": "Новичок",
+        "discount": 0
       },
       {
         "points": 100,
-        "discount": 5,
-        "name": "Любитель"
+        "name": "Любитель кофе",
+        "discount": 5
       },
       {
-        "points": 0,
-        "discount": 0,
-        "name": "Новичок"
+        "points": 300,
+        "name": "Кофеман",
+        "discount": 10
+      },
+      {
+        "points": 600,
+        "name": "Кофейный гурман",
+        "discount": 15
+      },
+      {
+        "points": 1000,
+        "name": "Кофейный сомелье",
+        "discount": 20
       }
     ]
   }
