@@ -5,7 +5,7 @@
       "name": "Эспрессо",
       "type": "кофе",
       "price": 180,
-      "quantity": 90,
+      "quantity": 100,
       "description": "Классический крепкий кофе, приготовленный под давлением. Идеальный баланс горечи и насыщенности. Объем 30 мл.",
       "icon": "fas fa-coffee",
       "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -15,7 +15,7 @@
       "name": "Капучино",
       "type": "кофе",
       "price": 250,
-      "quantity": 68,
+      "quantity": 80,
       "description": "Кофе с молоком и воздушной молочной пенкой. Идеальное соотношение эспрессо, молока и пены. Объем 180 мл.",
       "icon": "fas fa-mug-hot",
       "image": "https://images.unsplash.com/photo-1570197788417-0f1d0b73e12d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -25,7 +25,7 @@
       "name": "Латте",
       "type": "кофе",
       "price": 280,
-      "quantity": 70,
+      "quantity": 75,
       "description": "Нежный кофейный напиток с большим количеством молока и легкой пенкой. Объем 250 мл.",
       "icon": "fas fa-coffee",
       "image": "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -35,7 +35,7 @@
       "name": "Американо",
       "type": "кофе",
       "price": 200,
-      "quantity": 89,
+      "quantity": 90,
       "description": "Эспрессо с добавлением горячей воды. Менее крепкий, но с насыщенным вкусом. Объем 120 мл.",
       "icon": "fas fa-mug-hot",
       "image": "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -45,7 +45,7 @@
       "name": "Чизкейк Нью-Йорк",
       "type": "десерт",
       "price": 320,
-      "quantity": 19,
+      "quantity": 20,
       "description": "Классический чизкейк с нежной творожной основой и песочным коржом. Подается с ягодным соусом.",
       "icon": "fas fa-cheese",
       "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -55,7 +55,7 @@
       "name": "Круассан с шоколадом",
       "type": "выпечка",
       "price": 180,
-      "quantity": 29,
+      "quantity": 30,
       "description": "Свежий слоеный круассан с начинкой из бельгийского шоколада. Идеально к утреннему кофе.",
       "icon": "fas fa-bread-slice",
       "image": "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -91,39 +91,21 @@
     },
     {
       "id": 4,
-      "name": "Екатерина ",
-      "email": "ek@yandex.ru",
-      "password": "qwe123",
+      "name": "Алексей Кузнецов",
+      "email": "alex@mail.ru",
+      "password": "password",
       "isAdmin": false,
-      "loyaltyPoints": 150,
-      "joinDate": "2025-12-17T09:41:59.148Z"
+      "loyaltyPoints": 320,
+      "joinDate": "2023-07-10T09:15:00.000Z"
     },
     {
       "id": 5,
-      "name": "Егор",
-      "email": "eg@yandex.ru",
-      "password": "qwe123",
+      "name": "Елена Васнецова",
+      "email": "elena@gmail.com",
+      "password": "elena123",
       "isAdmin": false,
-      "loyaltyPoints": 90,
-      "joinDate": "2025-12-17T09:42:39.746Z"
-    },
-    {
-      "id": 6,
-      "name": "Настя",
-      "email": "nast@yandex.ru",
-      "password": "qwe123",
-      "isAdmin": false,
-      "loyaltyPoints": 35,
-      "joinDate": "2025-12-17T09:43:12.052Z"
-    },
-    {
-      "id": 7,
-      "name": "Олег",
-      "email": "oleg@yandex.ru",
-      "password": "qwe123",
-      "isAdmin": false,
-      "loyaltyPoints": 70,
-      "joinDate": "2025-12-17T09:43:34.487Z"
+      "loyaltyPoints": 680,
+      "joinDate": "2023-08-05T16:20:00.000Z"
     }
   ],
   "orders": [
@@ -197,16 +179,23 @@
       "userId": 4,
       "items": [
         {
-          "id": 2,
-          "name": "Капучино",
-          "price": 250,
-          "quantity": 12,
+          "id": 4,
+          "name": "Американо",
+          "price": 200,
+          "quantity": 2,
           "icon": "fas fa-mug-hot"
+        },
+        {
+          "id": 6,
+          "name": "Круассан с шоколадом",
+          "price": 180,
+          "quantity": 1,
+          "icon": "fas fa-bread-slice"
         }
       ],
-      "total": 3000,
-      "pointsEarned": 150,
-      "date": "2025-12-17T09:42:12.290Z",
+      "total": 580,
+      "pointsEarned": 29,
+      "date": "2023-10-18T14:20:00.000Z",
       "status": "completed"
     },
     {
@@ -214,64 +203,23 @@
       "userId": 5,
       "items": [
         {
-          "id": 1,
-          "name": "Эспрессо",
-          "price": 180,
-          "quantity": 10,
-          "icon": "fas fa-coffee"
-        }
-      ],
-      "total": 1800,
-      "pointsEarned": 90,
-      "date": "2025-12-17T09:42:47.312Z",
-      "status": "completed"
-    },
-    {
-      "id": 6,
-      "userId": 6,
-      "items": [
-        {
-          "id": 6,
-          "name": "Круассан с шоколадом",
-          "price": 180,
-          "quantity": 1,
-          "icon": "fas fa-bread-slice"
+          "id": 2,
+          "name": "Капучино",
+          "price": 250,
+          "quantity": 4,
+          "icon": "fas fa-mug-hot"
         },
         {
           "id": 5,
           "name": "Чизкейк Нью-Йорк",
           "price": 320,
-          "quantity": 1,
+          "quantity": 2,
           "icon": "fas fa-cheese"
-        },
-        {
-          "id": 4,
-          "name": "Американо",
-          "price": 200,
-          "quantity": 1,
-          "icon": "fas fa-mug-hot"
         }
       ],
-      "total": 700,
-      "pointsEarned": 35,
-      "date": "2025-12-17T09:43:22.080Z",
-      "status": "completed"
-    },
-    {
-      "id": 7,
-      "userId": 7,
-      "items": [
-        {
-          "id": 3,
-          "name": "Латте",
-          "price": 280,
-          "quantity": 5,
-          "icon": "fas fa-coffee"
-        }
-      ],
-      "total": 1400,
-      "pointsEarned": 70,
-      "date": "2025-12-17T09:43:38.414Z",
+      "total": 1640,
+      "pointsEarned": 82,
+      "date": "2023-10-19T12:10:00.000Z",
       "status": "completed"
     }
   ],
