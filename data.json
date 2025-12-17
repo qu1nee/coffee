@@ -5,7 +5,7 @@
       "name": "Эспрессо",
       "type": "кофе",
       "price": 200,
-      "quantity": 50,
+      "quantity": 42,
       "description": "Классический крепкий кофе, приготовленный под высоким давлением. Идеальный вариант для настоящих ценителей.",
       "icon": "fas fa-coffee",
       "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -15,7 +15,7 @@
       "name": "Капучино",
       "type": "кофе",
       "price": 280,
-      "quantity": 45,
+      "quantity": 42,
       "description": "Идеальное сочетание эспрессо, горячего молока и молочной пенки. Нежный и воздушный напиток.",
       "icon": "fas fa-mug-hot",
       "image": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -55,7 +55,7 @@
       "name": "Круассан",
       "type": "выпечка",
       "price": 180,
-      "quantity": 30,
+      "quantity": 26,
       "description": "Свежий слоеный круассан с хрустящей корочкой и нежной масляной текстурой.",
       "icon": "fas fa-bread-slice",
       "image": "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
@@ -111,21 +111,39 @@
     },
     {
       "id": 4,
-      "name": "Алексей Иванов",
-      "email": "alex@example.com",
-      "password": "user123",
+      "name": "Екатерина ",
+      "email": "ek@yandex.ru",
+      "password": "qwe123",
       "isAdmin": false,
-      "loyaltyPoints": 780,
-      "joinDate": "2023-07-10T09:15:00.000Z"
+      "loyaltyPoints": 40,
+      "joinDate": "2025-12-17T19:50:24.002Z"
     },
     {
       "id": 5,
-      "name": "Елена Смирнова",
-      "email": "elena@example.com",
-      "password": "user123",
+      "name": "Егор",
+      "email": "eg@yandex.ru",
+      "password": "qwe123",
       "isAdmin": false,
-      "loyaltyPoints": 950,
-      "joinDate": "2023-08-05T16:20:00.000Z"
+      "loyaltyPoints": 40,
+      "joinDate": "2025-12-17T19:51:29.989Z"
+    },
+    {
+      "id": 6,
+      "name": "Настя",
+      "email": "nast@yandex.ru",
+      "password": "qwe123",
+      "isAdmin": false,
+      "loyaltyPoints": 35,
+      "joinDate": "2025-12-17T19:51:45.176Z"
+    },
+    {
+      "id": 7,
+      "name": "Олег",
+      "email": "oleg@yandex.ru",
+      "password": "qwe123",
+      "isAdmin": false,
+      "loyaltyPoints": 40,
+      "joinDate": "2025-12-17T19:52:11.484Z"
     }
   ],
   "orders": [
@@ -133,8 +151,18 @@
       "id": 1,
       "userId": 2,
       "items": [
-        { "id": 1, "name": "Эспрессо", "price": 200, "quantity": 2 },
-        { "id": 5, "name": "Чизкейк Нью-Йорк", "price": 350, "quantity": 1 }
+        {
+          "id": 1,
+          "name": "Эспрессо",
+          "price": 200,
+          "quantity": 2
+        },
+        {
+          "id": 5,
+          "name": "Чизкейк Нью-Йорк",
+          "price": 350,
+          "quantity": 1
+        }
       ],
       "total": 750,
       "pointsEarned": 37,
@@ -145,8 +173,18 @@
       "id": 2,
       "userId": 3,
       "items": [
-        { "id": 3, "name": "Латте", "price": 320, "quantity": 1 },
-        { "id": 6, "name": "Круассан", "price": 180, "quantity": 2 }
+        {
+          "id": 3,
+          "name": "Латте",
+          "price": 320,
+          "quantity": 1
+        },
+        {
+          "id": 6,
+          "name": "Круассан",
+          "price": 180,
+          "quantity": 2
+        }
       ],
       "total": 680,
       "pointsEarned": 34,
@@ -157,8 +195,18 @@
       "id": 3,
       "userId": 2,
       "items": [
-        { "id": 2, "name": "Капучино", "price": 280, "quantity": 3 },
-        { "id": 8, "name": "Горячий шоколад", "price": 300, "quantity": 1 }
+        {
+          "id": 2,
+          "name": "Капучино",
+          "price": 280,
+          "quantity": 3
+        },
+        {
+          "id": 8,
+          "name": "Горячий шоколад",
+          "price": 300,
+          "quantity": 1
+        }
       ],
       "total": 1140,
       "pointsEarned": 57,
@@ -169,37 +217,104 @@
       "id": 4,
       "userId": 4,
       "items": [
-        { "id": 4, "name": "Американо", "price": 220, "quantity": 2 },
-        { "id": 7, "name": "Зеленый чай с жасмином", "price": 250, "quantity": 1 },
-        { "id": 6, "name": "Круассан", "price": 180, "quantity": 3 }
+        {
+          "id": 2,
+          "name": "Капучино",
+          "price": 280,
+          "quantity": 3,
+          "icon": "fas fa-mug-hot"
+        }
       ],
-      "total": 1310,
-      "pointsEarned": 65,
-      "date": "2023-10-20T14:10:00.000Z",
+      "total": 840,
+      "pointsEarned": 40,
+      "date": "2025-12-17T19:50:28.145Z",
       "status": "completed"
     },
     {
       "id": 5,
       "userId": 5,
       "items": [
-        { "id": 1, "name": "Эспрессо", "price": 200, "quantity": 1 },
-        { "id": 3, "name": "Латте", "price": 320, "quantity": 2 },
-        { "id": 5, "name": "Чизкейк Нью-Йорк", "price": 350, "quantity": 2 }
+        {
+          "id": 1,
+          "name": "Эспрессо",
+          "price": 200,
+          "quantity": 4,
+          "icon": "fas fa-coffee"
+        }
       ],
-      "total": 1540,
-      "pointsEarned": 77,
-      "date": "2023-10-25T11:45:00.000Z",
+      "total": 800,
+      "pointsEarned": 40,
+      "date": "2025-12-17T19:51:33.307Z",
+      "status": "completed"
+    },
+    {
+      "id": 6,
+      "userId": 6,
+      "items": [
+        {
+          "id": 6,
+          "name": "Круассан",
+          "price": 180,
+          "quantity": 4,
+          "icon": "fas fa-bread-slice"
+        }
+      ],
+      "total": 720,
+      "pointsEarned": 35,
+      "date": "2025-12-17T19:51:52.138Z",
+      "status": "completed"
+    },
+    {
+      "id": 7,
+      "userId": 7,
+      "items": [
+        {
+          "id": 1,
+          "name": "Эспрессо",
+          "price": 200,
+          "quantity": 4,
+          "icon": "fas fa-coffee"
+        }
+      ],
+      "total": 800,
+      "pointsEarned": 40,
+      "date": "2025-12-17T19:52:14.980Z",
       "status": "completed"
     }
   ],
   "loyaltySettings": {
     "pointsPerPurchase": 5,
     "levels": [
-      { "points": 0, "name": "Новичок", "discount": 0, "className": "level-beginner" },
-      { "points": 100, "name": "Постоянный клиент", "discount": 5, "className": "level-regular" },
-      { "points": 300, "name": "Любитель кофе", "discount": 10, "className": "level-enthusiast" },
-      { "points": 600, "name": "Кофейный эксперт", "discount": 15, "className": "level-expert" },
-      { "points": 1000, "name": "Кофейный гурман", "discount": 20, "className": "level-master" }
+      {
+        "points": 0,
+        "name": "Новичок",
+        "discount": 0,
+        "className": "level-beginner"
+      },
+      {
+        "points": 100,
+        "name": "Постоянный клиент",
+        "discount": 5,
+        "className": "level-regular"
+      },
+      {
+        "points": 300,
+        "name": "Любитель кофе",
+        "discount": 10,
+        "className": "level-enthusiast"
+      },
+      {
+        "points": 600,
+        "name": "Кофейный эксперт",
+        "discount": 15,
+        "className": "level-expert"
+      },
+      {
+        "points": 1000,
+        "name": "Кофейный гурман",
+        "discount": 20,
+        "className": "level-master"
+      }
     ]
   }
 }
