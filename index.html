@@ -1270,169 +1270,9 @@
             adminPassword: "admin123"
         };
 
-        // Инициализация базы данных
-        let coffeeShopDatabase = {
-            coffees: [
-                {
-                    id: 1,
-                    name: "Эспрессо",
-                    type: "кофе",
-                    price: 200,
-                    quantity: 50,
-                    description: "Классический крепкий кофе, приготовленный под высоким давлением. Идеальный вариант для настоящих ценителей.",
-                    icon: "fas fa-coffee",
-                    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                },
-                {
-                    id: 2,
-                    name: "Капучино",
-                    type: "кофе",
-                    price: 280,
-                    quantity: 45,
-                    description: "Идеальное сочетание эспрессо, горячего молока и молочной пенки. Нежный и воздушный напиток.",
-                    icon: "fas fa-mug-hot",
-                    image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                },
-                {
-                    id: 3,
-                    name: "Латте",
-                    type: "кофе",
-                    price: 320,
-                    quantity: 40,
-                    description: "Мягкий кофейный напиток на основе эспрессо с большим количеством молока и нежной пенкой.",
-                    icon: "fas fa-coffee",
-                    image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                },
-                {
-                    id: 4,
-                    name: "Американо",
-                    type: "кофе",
-                    price: 220,
-                    quantity: 55,
-                    description: "Эспрессо, разбавленный горячей водой. Идеальный выбор для тех, кто предпочитает менее крепкий кофе.",
-                    icon: "fas fa-mug-hot",
-                    image: "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                },
-                {
-                    id: 5,
-                    name: "Чизкейк Нью-Йорк",
-                    type: "десерт",
-                    price: 350,
-                    quantity: 15,
-                    description: "Классический нью-йоркский чизкейк с нежной творожной основой и ягодным соусом.",
-                    icon: "fas fa-cheese",
-                    image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                },
-                {
-                    id: 6,
-                    name: "Круассан",
-                    type: "выпечка",
-                    price: 180,
-                    quantity: 30,
-                    description: "Свежий слоеный круассан с хрустящей корочкой и нежной масляной текстурой.",
-                    icon: "fas fa-bread-slice",
-                    image: "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                },
-                {
-                    id: 7,
-                    name: "Зеленый чай с жасмином",
-                    type: "чай",
-                    price: 250,
-                    quantity: 40,
-                    description: "Ароматный зеленый чай с цветами жасмина. Освежающий и тонизирующий напиток.",
-                    icon: "fas fa-leaf",
-                    image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                },
-                {
-                    id: 8,
-                    name: "Горячий шоколад",
-                    type: "напиток",
-                    price: 300,
-                    quantity: 35,
-                    description: "Густой горячий шоколад с взбитыми сливками и тертым шоколадом. Идеальный напиток для холодного дня.",
-                    icon: "fas fa-hot-chocolate",
-                    image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                }
-            ],
-            users: [
-                {
-                    id: 1,
-                    name: "Администратор",
-                    email: "admin@cozycup.ru",
-                    password: "admin123",
-                    isAdmin: true,
-                    loyaltyPoints: 0,
-                    joinDate: "2023-01-01T00:00:00.000Z"
-                },
-                {
-                    id: 2,
-                    name: "Иван Петров",
-                    email: "ivan@example.com",
-                    password: "user123",
-                    isAdmin: false,
-                    loyaltyPoints: 150,
-                    joinDate: "2023-05-15T10:30:00.000Z"
-                },
-                {
-                    id: 3,
-                    name: "Мария Сидорова",
-                    email: "maria@example.com",
-                    password: "user123",
-                    isAdmin: false,
-                    loyaltyPoints: 420,
-                    joinDate: "2023-06-20T14:45:00.000Z"
-                }
-            ],
-            orders: [
-                {
-                    id: 1,
-                    userId: 2,
-                    items: [
-                        { id: 1, name: "Эспрессо", price: 200, quantity: 2 },
-                        { id: 5, name: "Чизкейк Нью-Йорк", price: 350, quantity: 1 }
-                    ],
-                    total: 750,
-                    pointsEarned: 37,
-                    date: "2023-10-05T12:30:00.000Z",
-                    status: "completed"
-                },
-                {
-                    id: 2,
-                    userId: 3,
-                    items: [
-                        { id: 3, name: "Латте", price: 320, quantity: 1 },
-                        { id: 6, name: "Круассан", price: 180, quantity: 2 }
-                    ],
-                    total: 680,
-                    pointsEarned: 34,
-                    date: "2023-10-10T15:45:00.000Z",
-                    status: "completed"
-                },
-                {
-                    id: 3,
-                    userId: 2,
-                    items: [
-                        { id: 2, name: "Капучино", price: 280, quantity: 3 },
-                        { id: 8, name: "Горячий шоколад", price: 300, quantity: 1 }
-                    ],
-                    total: 1140,
-                    pointsEarned: 57,
-                    date: "2023-10-15T09:20:00.000Z",
-                    status: "completed"
-                }
-            ],
-            loyaltySettings: {
-                pointsPerPurchase: 5,
-                levels: [
-                    { points: 0, name: "Новичок", discount: 0, className: "level-beginner" },
-                    { points: 100, name: "Постоянный клиент", discount: 5, className: "level-regular" },
-                    { points: 300, name: "Любитель кофе", discount: 10, className: "level-enthusiast" },
-                    { points: 600, name: "Кофейный эксперт", discount: 15, className: "level-expert" },
-                    { points: 1000, name: "Кофейный гурман", discount: 20, className: "level-master" }
-                ]
-            }
-        };
-
+        // Глобальная база данных (будет загружена из data.json)
+        let coffeeShopDatabase = null;
+        
         // Текущий пользователь и корзина
         let currentUser = null;
         let cart = [];
@@ -1442,6 +1282,72 @@
         
         // Переменная для отслеживания редактируемого товара
         let editingCoffeeId = null;
+
+        // Функция для загрузки данных из data.json
+        async function loadDataFromJson() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error('Не удалось загрузить data.json');
+                }
+                coffeeShopDatabase = await response.json();
+                console.log('Данные успешно загружены из data.json');
+                return true;
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+                // Если файл не найден, создаем базовую структуру
+                coffeeShopDatabase = {
+                    coffees: [],
+                    users: [],
+                    orders: [],
+                    loyaltySettings: {
+                        pointsPerPurchase: 5,
+                        levels: [
+                            { points: 0, name: "Новичок", discount: 0, className: "level-beginner" },
+                            { points: 100, name: "Постоянный клиент", discount: 5, className: "level-regular" },
+                            { points: 300, name: "Любитель кофе", discount: 10, className: "level-enthusiast" },
+                            { points: 600, name: "Кофейный эксперт", discount: 15, className: "level-expert" },
+                            { points: 1000, name: "Кофейный гурман", discount: 20, className: "level-master" }
+                        ]
+                    }
+                };
+                
+                // Добавляем администратора по умолчанию
+                coffeeShopDatabase.users.push({
+                    id: 1,
+                    name: "Администратор",
+                    email: "admin@cozycup.ru",
+                    password: "admin123",
+                    isAdmin: true,
+                    loyaltyPoints: 0,
+                    joinDate: new Date().toISOString()
+                });
+                
+                return false;
+            }
+        }
+
+        // Функция для сохранения данных в data.json (имитация через скачивание)
+        function saveDataToJson() {
+            if (!coffeeShopDatabase) {
+                showAlert('Нет данных для сохранения', 'error', 'adminAlert');
+                return;
+            }
+            
+            const dataStr = JSON.stringify(coffeeShopDatabase, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showAlert('Файл data.json скачан', 'success', 'adminAlert');
+        }
 
         // Функция для отображения уведомлений
         function showAlert(message, type, elementId = null) {
@@ -1459,6 +1365,11 @@
 
         // Функция для отображения карточек кофе
         function renderCoffeeCards() {
+            if (!coffeeShopDatabase || !coffeeShopDatabase.coffees) {
+                console.error('Нет данных о кофе');
+                return;
+            }
+            
             const coffeeGrid = document.getElementById('coffeeGrid');
             coffeeGrid.innerHTML = '';
             
@@ -1477,8 +1388,8 @@
                 
                 coffeeCard.innerHTML = `
                     <div class="coffee-image">
-                        <img src="${coffee.image}" alt="${coffee.name}">
-                        <div class="coffee-type-badge">${coffee.type}</div>
+                        ${coffee.image ? `<img src="${coffee.image}" alt="${coffee.name}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085';">` : `<i class="${coffee.icon || 'fas fa-coffee'}"></i>`}
+                        <div class="coffee-type-badge">${coffee.type || 'кофе'}</div>
                     </div>
                     <div class="coffee-info">
                         <div class="coffee-name">${coffee.name}</div>
@@ -1548,6 +1459,8 @@
 
         // Функция обновления количества товара
         function updateCoffeeQuantity(id, newQuantity) {
+            if (!coffeeShopDatabase) return;
+            
             const coffeeIndex = coffeeShopDatabase.coffees.findIndex(coffee => coffee.id === id);
             if (coffeeIndex !== -1) {
                 coffeeShopDatabase.coffees[coffeeIndex].quantity = newQuantity;
@@ -1558,6 +1471,8 @@
 
         // Функция удаления товара
         function deleteCoffee(id) {
+            if (!coffeeShopDatabase) return;
+            
             if (!confirm('Вы уверены, что хотите удалить этот товар?')) {
                 return;
             }
@@ -1573,6 +1488,8 @@
 
         // Функция открытия модального окна редактирования товара
         function openEditCoffeeModal(coffeeId) {
+            if (!coffeeShopDatabase) return;
+            
             const coffee = coffeeShopDatabase.coffees.find(c => c.id === coffeeId);
             if (!coffee) return;
             
@@ -1580,11 +1497,11 @@
             
             document.getElementById('editCoffeeId').value = coffee.id;
             document.getElementById('editCoffeeName').value = coffee.name;
-            document.getElementById('editCoffeeType').value = coffee.type;
+            document.getElementById('editCoffeeType').value = coffee.type || 'кофе';
             document.getElementById('editCoffeePrice').value = coffee.price;
             document.getElementById('editCoffeeQuantity').value = coffee.quantity;
             document.getElementById('editCoffeeDescription').value = coffee.description;
-            document.getElementById('editCoffeeIcon').value = coffee.icon;
+            document.getElementById('editCoffeeIcon').value = coffee.icon || 'fas fa-coffee';
             document.getElementById('editCoffeeImage').value = coffee.image || '';
             
             openModal('editCoffeeModal');
@@ -1592,6 +1509,8 @@
 
         // Функция сохранения изменений товара
         function saveEditedCoffee() {
+            if (!coffeeShopDatabase) return;
+            
             const id = parseInt(document.getElementById('editCoffeeId').value);
             const name = document.getElementById('editCoffeeName').value;
             const type = document.getElementById('editCoffeeType').value;
@@ -1632,6 +1551,8 @@
 
         // Функция добавления нового товара
         function addNewCoffee() {
+            if (!coffeeShopDatabase) return;
+            
             const name = document.getElementById('coffeeName').value;
             const type = document.getElementById('coffeeType').value;
             const price = parseInt(document.getElementById('coffeePrice').value);
@@ -1747,6 +1668,8 @@
 
         // Обновление статистики для администратора
         function updateAdminStats() {
+            if (!coffeeShopDatabase) return;
+            
             const totalUsers = coffeeShopDatabase.users.length;
             const totalPoints = coffeeShopDatabase.users.reduce((sum, user) => sum + (user.loyaltyPoints || 0), 0);
             const totalOrders = coffeeShopDatabase.orders.length;
@@ -1760,6 +1683,8 @@
 
         // Функции для работы с корзиной
         function addToCart(coffeeId, quantity) {
+            if (!coffeeShopDatabase) return;
+            
             const coffee = coffeeShopDatabase.coffees.find(c => c.id === coffeeId);
             if (!coffee) return;
             
@@ -1850,6 +1775,8 @@
 
         // Функции для работы с пользователями
         function login(email, password) {
+            if (!coffeeShopDatabase) return false;
+            
             const user = coffeeShopDatabase.users.find(u => u.email === email && u.password === password);
             
             if (!user) {
@@ -1873,6 +1800,8 @@
         }
 
         function register(name, email, password) {
+            if (!coffeeShopDatabase) return false;
+            
             const existingUser = coffeeShopDatabase.users.find(u => u.email === email);
             
             if (existingUser) {
@@ -1970,7 +1899,7 @@
         function renderLoyaltyCard() {
             const loyaltyCardSection = document.getElementById('loyaltyCardSection');
             
-            if (!currentUser || currentUser.isAdmin) return;
+            if (!currentUser || currentUser.isAdmin || !coffeeShopDatabase) return;
             
             const points = currentUser.loyaltyPoints || 0;
             const levels = coffeeShopDatabase.loyaltySettings.levels;
@@ -2012,6 +1941,11 @@
 
         // Функция оформления заказа
         function checkout() {
+            if (!coffeeShopDatabase) {
+                showAlert('Ошибка загрузки данных', 'error', 'cartAlert');
+                return;
+            }
+            
             if (!currentUser) {
                 showAlert('Для оформления заказа необходимо войти в систему', 'error', 'cartAlert');
                 closeModal('cartModal');
@@ -2082,6 +2016,8 @@
 
         // Функция отображения таблицы пользователей
         function renderUsersTable() {
+            if (!coffeeShopDatabase) return;
+            
             const usersTableBody = document.getElementById('usersTableBody');
             usersTableBody.innerHTML = '';
             
@@ -2128,6 +2064,11 @@
 
         // Функция формирования отчета по продажам
         function generateSalesReport() {
+            if (!coffeeShopDatabase) {
+                showAlert('Нет данных для формирования отчета', 'error', 'adminAlert');
+                return;
+            }
+            
             const reportPeriod = document.getElementById('reportPeriod').value;
             const reportType = document.getElementById('reportType').value;
             const reportResults = document.getElementById('reportResults');
@@ -2412,25 +2353,20 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // Сохранение данных в файл data.json
-        function saveDataToJson() {
-            const dataStr = JSON.stringify(coffeeShopDatabase, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'data.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showAlert('Файл data.json скачан', 'success', 'adminAlert');
-        }
-
         // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Показываем сообщение о загрузке
+            showAlert('Загрузка данных из data.json...', 'info');
+            
+            // Загружаем данные из data.json
+            const loaded = await loadDataFromJson();
+            
+            if (loaded) {
+                showAlert('Данные успешно загружены из data.json', 'success');
+            } else {
+                showAlert('Не удалось загрузить data.json. Используются базовые данные.', 'error');
+            }
+            
             // Рендерим карточки кофе
             renderCoffeeCards();
             
