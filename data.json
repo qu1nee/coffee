@@ -8,7 +8,7 @@
       "quantity": 42,
       "description": "Классический крепкий кофе, приготовленный под высоким давлением. Идеальный вариант для настоящих ценителей.",
       "icon": "fas fa-coffee",
-      "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://chillesta.ru/wp-content/uploads/2025/06/cup-coffee-with-word-latte-it.jpg"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "quantity": 42,
       "description": "Идеальное сочетание эспрессо, горячего молока и молочной пенки. Нежный и воздушный напиток.",
       "icon": "fas fa-mug-hot",
-      "image": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://s11.stc.all.kpcdn.net/family/wp-content/uploads/2025/11/8-luchshih-reczeptov-kofe-kapuchino-osnovnoe-foto.jpg"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "quantity": 40,
       "description": "Мягкий кофейный напиток на основе эспрессо с большим количеством молока и нежной пенкой.",
       "icon": "fas fa-coffee",
-      "image": "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://stockmeier-food.ru/uploads/posts/2021-11/1636961735_aromatizator-kofe-latte.jpg"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "quantity": 55,
       "description": "Эспрессо, разбавленный горячей водой. Идеальный выбор для тех, кто предпочитает менее крепкий кофе.",
       "icon": "fas fa-mug-hot",
-      "image": "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://i.pinimg.com/originals/51/3c/aa/513caaee093ae4e2af2e41135082c9a6.jpg"
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "quantity": 15,
       "description": "Классический нью-йоркский чизкейк с нежной творожной основой и ягодным соусом.",
       "icon": "fas fa-cheese",
-      "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://crazybrothers.ru/wp-content/uploads/Chizkejk-Nju-Jork-1.jpg"
     },
     {
       "id": 6,
@@ -58,17 +58,17 @@
       "quantity": 26,
       "description": "Свежий слоеный круассан с хрустящей корочкой и нежной масляной текстурой.",
       "icon": "fas fa-bread-slice",
-      "image": "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1FVnQZ.img?w=1000&h=564&m=4&q=31"
     },
     {
       "id": 7,
       "name": "Зеленый чай с жасмином",
       "type": "чай",
-      "price": 250,
+      "price": 350,
       "quantity": 40,
       "description": "Ароматный зеленый чай с цветами жасмина. Освежающий и тонизирующий напиток.",
       "icon": "fas fa-leaf",
-      "image": "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://avatars.mds.yandex.net/get-mpic/4012682/img_id5901137050384813470.png/orig"
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "quantity": 35,
       "description": "Густой горячий шоколад с взбитыми сливками и тертым шоколадом. Идеальный напиток для холодного дня.",
       "icon": "fas fa-hot-chocolate",
-      "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+      "image": "https://s.yimg.com/ny/api/res/1.2/9_kLUZIKQmQqFyMbEX00dg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD02NzU7Y2Y9d2VicA--/https://media.zenfs.com/en-US/homerun/delish_597/010b6306e9d57092c78d399ac5780672"
     }
   ],
   "users": [
