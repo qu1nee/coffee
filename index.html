@@ -90,12 +90,13 @@
             font-size: 22px;
             color: white;
             cursor: pointer;
+            padding: 5px;
         }
 
         .cart-count {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -5px;
+            right: -5px;
             background-color: #d84315;
             color: white;
             font-size: 12px;
@@ -190,7 +191,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
         }
 
         .coffee-image i {
@@ -269,6 +269,7 @@
             border: 1px solid #ddd;
             border-radius: 6px;
             font-size: 16px;
+            cursor: pointer;
         }
 
         .buy-btn {
@@ -433,6 +434,7 @@
             font-size: 24px;
             cursor: pointer;
             color: #666;
+            line-height: 1;
         }
 
         .close-btn:hover {
@@ -527,7 +529,7 @@
             margin-top: 10px;
         }
 
-        .add-btn, .save-btn, .export-btn, .import-btn, .report-btn, .users-btn {
+        .add-btn, .save-btn, .report-btn, .users-btn {
             background-color: #8d6e63;
             color: white;
             border: none;
@@ -541,14 +543,6 @@
 
         .save-btn {
             background-color: #1976d2;
-        }
-
-        .export-btn {
-            background-color: #ff9800;
-        }
-
-        .import-btn {
-            background-color: #9c27b0;
         }
 
         .report-btn {
@@ -565,14 +559,6 @@
 
         .save-btn:hover {
             background-color: #1565c0;
-        }
-
-        .export-btn:hover {
-            background-color: #f57c00;
-        }
-
-        .import-btn:hover {
-            background-color: #7b1fa2;
         }
 
         .report-btn:hover {
@@ -606,6 +592,14 @@
         .cart-item-price {
             color: #a1887f;
             font-weight: 600;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #d32f2f;
+            cursor: pointer;
+            font-size: 16px;
         }
 
         .cart-total {
@@ -701,27 +695,6 @@
             font-size: 12px;
             margin-left: 10px;
             display: none;
-        }
-
-        .db-status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #efebe9;
-            border-radius: 6px;
-        }
-
-        .status-indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #4caf50;
-        }
-
-        .status-indicator.offline {
-            background-color: #f44336;
         }
 
         /* Секция "О нас" */
@@ -1017,11 +990,6 @@
             <h2>Панель управления кофейней</h2>
             
             <div class="alert" id="adminAlert"></div>
-            
-            <div class="db-status" id="dbStatus">
-                <div class="status-indicator" id="dbStatusIndicator"></div>
-                <span id="dbStatusText">Подключение к базе данных...</span>
-            </div>
             
             <div class="admin-form">
                 <div class="form-group">
@@ -1507,13 +1475,9 @@
                     quantityOptions += `<option value="${i}">${i} шт.</option>`;
                 }
                 
-                // Проверяем, есть ли изображение
-                const hasImage = coffee.image && coffee.image.trim() !== '';
-                
                 coffeeCard.innerHTML = `
                     <div class="coffee-image">
-                        ${hasImage ? `<img src="${coffee.image}" alt="${coffee.name}" onerror="this.style.display='none';">` : ''}
-                        <i class="${coffee.icon}" ${hasImage ? 'style="display:none;"' : ''}></i>
+                        <img src="${coffee.image}" alt="${coffee.name}">
                         <div class="coffee-type-badge">${coffee.type}</div>
                     </div>
                     <div class="coffee-info">
@@ -1576,27 +1540,6 @@
                 deleteBtn.addEventListener('click', () => {
                     deleteCoffee(coffee.id);
                 });
-                
-                // Если есть изображение, скрываем иконку после загрузки изображения
-                if (hasImage) {
-                    const img = coffeeCard.querySelector('.coffee-image img');
-                    const icon = coffeeCard.querySelector('.coffee-image i');
-                    
-                    img.onload = function() {
-                        icon.style.display = 'none';
-                        // Если изображение загружено успешно, делаем фоном изображение
-                        coffeeCard.querySelector('.coffee-image').style.backgroundImage = `url('${coffee.image}')`;
-                        coffeeCard.querySelector('.coffee-image').style.backgroundSize = 'cover';
-                        coffeeCard.querySelector('.coffee-image').style.backgroundPosition = 'center';
-                        img.style.display = 'none';
-                    };
-                    
-                    img.onerror = function() {
-                        // Если изображение не загрузилось, показываем иконку
-                        icon.style.display = 'flex';
-                        coffeeCard.querySelector('.coffee-image').style.backgroundImage = 'none';
-                    };
-                }
             });
             
             // Показываем/скрываем элементы управления администратора
@@ -1610,7 +1553,6 @@
                 coffeeShopDatabase.coffees[coffeeIndex].quantity = newQuantity;
                 renderCoffeeCards();
                 showAlert(`Количество товара "${coffeeShopDatabase.coffees[coffeeIndex].name}" обновлено до ${newQuantity} шт.`, 'success');
-                saveDatabaseToLocalStorage();
             }
         }
 
@@ -1626,7 +1568,6 @@
                 coffeeShopDatabase.coffees.splice(coffeeIndex, 1);
                 renderCoffeeCards();
                 showAlert(`Товар "${coffeeName}" удален`, 'success');
-                saveDatabaseToLocalStorage();
             }
         }
 
@@ -1686,7 +1627,6 @@
                 renderCoffeeCards();
                 closeModal('editCoffeeModal');
                 showAlert(`Товар "${name}" успешно обновлен!`, 'success');
-                saveDatabaseToLocalStorage();
             }
         }
 
@@ -1736,7 +1676,6 @@
             document.getElementById('coffeeImage').value = '';
             
             showAlert(`Товар "${name}" успешно добавлен!`, 'success', 'adminAlert');
-            saveDatabaseToLocalStorage();
         }
 
         // Включение/выключение режима администратора
@@ -1764,7 +1703,6 @@
                 
                 // Обновляем статистику
                 updateAdminStats();
-                updateDBStatus();
                 
                 adminControls.forEach(control => {
                     control.style.display = 'block';
@@ -1820,23 +1758,6 @@
             document.getElementById('totalSales').textContent = totalSales;
         }
 
-        // Обновление статуса базы данных
-        function updateDBStatus() {
-            const statusIndicator = document.getElementById('dbStatusIndicator');
-            const statusText = document.getElementById('dbStatusText');
-            
-            // Проверяем, есть ли сохраненные данные
-            const hasLocalData = localStorage.getItem('coffeeShopDatabase') !== null;
-            
-            if (hasLocalData) {
-                statusIndicator.className = 'status-indicator';
-                statusText.textContent = 'Данные сохранены локально';
-            } else {
-                statusIndicator.className = 'status-indicator offline';
-                statusText.textContent = 'Локальные данные не найдены';
-            }
-        }
-
         // Функции для работы с корзиной
         function addToCart(coffeeId, quantity) {
             const coffee = coffeeShopDatabase.coffees.find(c => c.id === coffeeId);
@@ -1868,7 +1789,6 @@
             
             updateCartCount();
             showAlert(`Добавлено ${quantity} шт. "${coffee.name}" в корзину`, 'success');
-            saveCart();
         }
 
         function updateCartCount() {
@@ -1919,14 +1839,12 @@
             cart.splice(index, 1);
             updateCartCount();
             renderCart();
-            saveCart();
         }
 
         function clearCart() {
             cart = [];
             updateCartCount();
             renderCart();
-            saveCart();
             showAlert('Корзина очищена', 'success', 'cartAlert');
         }
 
@@ -1948,7 +1866,6 @@
             };
             
             updateUserUI();
-            saveDatabaseToLocalStorage();
             showAlert(`Добро пожаловать, ${user.name}!`, 'success');
             
             closeModal('loginModal');
@@ -1987,7 +1904,6 @@
             };
             
             updateUserUI();
-            saveDatabaseToLocalStorage();
             showAlert(`Регистрация успешна! Добро пожаловать, ${name}!`, 'success');
             closeModal('registerModal');
             return true;
@@ -2002,7 +1918,6 @@
             currentUser = null;
             updateUserUI();
             showAlert('Вы вышли из системы', 'success');
-            saveDatabaseToLocalStorage();
         }
 
         function updateUserUI() {
@@ -2161,7 +2076,6 @@
                 renderUsersTable();
             }
             
-            saveDatabaseToLocalStorage();
             showAlert(`Заказ №${orderId} успешно оформлен! Начислено ${pointsEarned} бонусных баллов.`, 'success', 'cartAlert');
             closeModal('cartModal');
         }
@@ -2498,67 +2412,6 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // Сохранение данных в localStorage
-        function saveDatabaseToLocalStorage() {
-            localStorage.setItem('coffeeShopDatabase', JSON.stringify(coffeeShopDatabase));
-            if (currentUser) {
-                localStorage.setItem('coffeeShopCurrentUser', JSON.stringify(currentUser));
-            }
-        }
-
-        function saveCart() {
-            localStorage.setItem('coffeeShopCart', JSON.stringify(cart));
-        }
-
-        // Загрузка данных из localStorage
-        function loadDatabaseFromLocalStorage() {
-            const savedData = localStorage.getItem('coffeeShopDatabase');
-            const savedCart = localStorage.getItem('coffeeShopCart');
-            const savedUser = localStorage.getItem('coffeeShopCurrentUser');
-            
-            if (savedData) {
-                coffeeShopDatabase = JSON.parse(savedData);
-            }
-            
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCartCount();
-            }
-            
-            if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                updateUserUI();
-            }
-        }
-
-        // Загрузка данных из файла data.json
-        async function loadDataFromJson() {
-            try {
-                const response = await fetch('data.json');
-                if (response.ok) {
-                    const fileData = await response.json();
-                    
-                    // Обновляем базу данных из файла
-                    coffeeShopDatabase.coffees = fileData.coffees || coffeeShopDatabase.coffees;
-                    coffeeShopDatabase.users = fileData.users || coffeeShopDatabase.users;
-                    coffeeShopDatabase.orders = fileData.orders || coffeeShopDatabase.orders;
-                    coffeeShopDatabase.loyaltySettings = fileData.loyaltySettings || coffeeShopDatabase.loyaltySettings;
-                    
-                    renderCoffeeCards();
-                    saveDatabaseToLocalStorage();
-                    showAlert('Данные загружены из файла data.json', 'success', 'adminAlert');
-                    updateDBStatus();
-                    return true;
-                } else {
-                    throw new Error('Файл data.json не найден');
-                }
-            } catch (error) {
-                console.log('Файл data.json не найден, используются локальные данные');
-                loadDatabaseFromLocalStorage();
-                return false;
-            }
-        }
-
         // Сохранение данных в файл data.json
         function saveDataToJson() {
             const dataStr = JSON.stringify(coffeeShopDatabase, null, 2);
@@ -2573,69 +2426,17 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
-            showAlert('Файл data.json скачан. Загрузите его в корневую папку репозитория.', 'success', 'adminAlert');
-        }
-
-        // Экспорт данных в файл
-        function exportData() {
-            const dataStr = JSON.stringify(coffeeShopDatabase, null, 2);
-            const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-            
-            const exportFileDefaultName = 'coffeeShopData.json';
-            
-            const linkElement = document.createElement('a');
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-            linkElement.click();
-            
-            showAlert('Данные экспортированы в файл', 'success', 'adminAlert');
-        }
-
-        // Импорт данных из файла
-        function importData() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            
-            input.onchange = function(event) {
-                const file = event.target.files[0];
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    try {
-                        const importedData = JSON.parse(e.target.result);
-                        coffeeShopDatabase = importedData;
-                        renderCoffeeCards();
-                        saveDatabaseToLocalStorage();
-                        showAlert('Данные успешно импортированы!', 'success', 'adminAlert');
-                        if (isAdminModeActive) {
-                            updateAdminStats();
-                            renderUsersTable();
-                        }
-                    } catch (error) {
-                        showAlert('Ошибка при импорте данных. Проверьте формат файла.', 'error', 'adminAlert');
-                    }
-                };
-                
-                reader.readAsText(file);
-            };
-            
-            input.click();
+            showAlert('Файл data.json скачан', 'success', 'adminAlert');
         }
 
         // Инициализация при загрузке страницы
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Пытаемся загрузить данные из data.json
-            await loadDataFromJson();
-            
+        document.addEventListener('DOMContentLoaded', () => {
             // Рендерим карточки кофе
             renderCoffeeCards();
             
             // Настройка обработчиков событий
             document.getElementById('addCoffeeBtn').addEventListener('click', addNewCoffee);
             document.getElementById('saveDataBtn').addEventListener('click', saveDataToJson);
-            document.getElementById('exportDataBtn').addEventListener('click', exportData);
-            document.getElementById('importDataBtn').addEventListener('click', importData);
             document.getElementById('adminModeBtn').addEventListener('click', toggleAdminMode);
             
             // Обработчики для отчетов
@@ -2739,13 +2540,10 @@
             // Обновляем UI пользователя
             updateUserUI();
             
-            // Информационное сообщение при первом запуске
-            if (!localStorage.getItem('coffeeShopFirstVisit')) {
-                setTimeout(() => {
-                    showAlert('Добро пожаловать в кофейню "Уютная Чашка"! Для входа как администратор используйте: admin@cozycup.ru / admin123', 'info');
-                }, 1000);
-                localStorage.setItem('coffeeShopFirstVisit', 'true');
-            }
+            // Информационное сообщение
+            setTimeout(() => {
+                showAlert('Добро пожаловать в кофейню "Уютная Чашка"! Для входа как администратор используйте: admin@cozycup.ru / admin123', 'info');
+            }, 1000);
         });
     </script>
 </body>
