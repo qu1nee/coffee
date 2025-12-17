@@ -6,7 +6,6 @@
     <title>Кофейня "Уютная Чашка"</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Стили для светлого кофейного дизайна */
         * {
             margin: 0;
             padding: 0;
@@ -30,7 +29,6 @@
             background-color: var(--coffee-cream);
             color: var(--coffee-dark);
             line-height: 1.6;
-            min-height: 100vh;
         }
 
         .container {
@@ -39,7 +37,6 @@
             padding: 0 20px;
         }
 
-        /* Шапка */
         header {
             background: linear-gradient(135deg, var(--coffee-white) 0%, var(--coffee-light) 100%);
             box-shadow: 0 2px 20px rgba(139, 69, 19, 0.1);
@@ -73,16 +70,6 @@
             color: var(--coffee-mocha);
         }
 
-        .admin-indicator {
-            background: var(--coffee-gold);
-            color: var(--coffee-white);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            display: none;
-        }
-
-        /* Навигация */
         .nav-links {
             display: flex;
             align-items: center;
@@ -116,10 +103,6 @@
             font-weight: 500;
         }
 
-        .user-icon {
-            color: var(--coffee-brown);
-        }
-
         .cart-icon {
             position: relative;
             cursor: pointer;
@@ -142,7 +125,6 @@
             font-size: 0.8rem;
         }
 
-        /* Кнопки */
         button {
             padding: 10px 20px;
             border: none;
@@ -152,15 +134,13 @@
             transition: all 0.3s ease;
         }
 
-        .login-toggle,
-        .register-toggle {
+        .login-toggle {
             background-color: transparent;
             color: var(--coffee-brown);
             border: 2px solid var(--coffee-beige);
         }
 
-        .login-toggle:hover,
-        .register-toggle:hover {
+        .login-toggle:hover {
             background-color: var(--coffee-beige);
         }
 
@@ -178,12 +158,10 @@
             color: var(--coffee-white);
         }
 
-        .admin-mode-btn:hover,
-        .admin-mode-btn.active {
+        .admin-mode-btn:hover {
             background-color: var(--coffee-mocha);
         }
 
-        /* Основной контент */
         main {
             padding: 40px 0;
         }
@@ -205,7 +183,6 @@
             margin: 10px auto;
         }
 
-        /* Сетка кофе */
         .coffee-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -325,7 +302,6 @@
             opacity: 0.9;
         }
 
-        /* Панель администратора */
         .admin-panel {
             background: var(--coffee-white);
             border-radius: 15px;
@@ -389,324 +365,40 @@
             background-color: #e74c3c;
         }
 
-        .sync-status {
-            margin-left: auto;
-            color: var(--coffee-brown);
-            font-size: 0.9rem;
-        }
-
-        .sync-icon {
-            margin-right: 5px;
-        }
-
-        .admin-form {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group label {
-            color: var(--coffee-mocha);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 12px 15px;
-            border: 1px solid var(--coffee-beige);
-            border-radius: 8px;
-            background: var(--coffee-white);
-            color: var(--coffee-dark);
-            font-size: 1rem;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--coffee-gold);
-            box-shadow: 0 0 0 3px rgba(212, 167, 106, 0.1);
-        }
-
-        .form-buttons-admin {
-            grid-column: 1 / -1;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .add-btn {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-        }
-
-        .save-btn {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-        }
-
-        .export-btn {
-            background: linear-gradient(135deg, var(--coffee-gold), var(--coffee-mocha));
-            color: white;
-        }
-
-        .import-btn {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
-            color: white;
-        }
-
-        .report-btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            color: white;
-        }
-
-        .refresh-btn {
-            background: linear-gradient(135deg, #1abc9c, #16a085);
-            color: white;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--coffee-gold), var(--coffee-mocha));
-            color: white;
-        }
-
-        .cancel-btn {
-            background: var(--coffee-light);
-            color: var(--coffee-dark);
-        }
-
-        .clear-btn {
-            background: var(--coffee-light);
-            color: var(--coffee-dark);
-        }
-
-        .checkout-btn {
-            background: linear-gradient(135deg, var(--coffee-gold), var(--coffee-mocha));
-            color: white;
-        }
-
-        /* Список пользователей */
-        .users-list {
-            background: var(--coffee-cream);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            border: 1px solid var(--coffee-light);
+        .admin-controls {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--coffee-light);
             display: none;
         }
 
-        .users-list h3 {
+        .admin-controls h3 {
             color: var(--coffee-mocha);
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .users-table-container {
-            overflow-x: auto;
-        }
-
-        .users-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--coffee-white);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .users-table th {
-            background: linear-gradient(135deg, var(--coffee-light), var(--coffee-beige));
-            color: var(--coffee-mocha);
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .users-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--coffee-light);
-            color: var(--coffee-dark);
-        }
-
-        .users-table tr:hover {
-            background-color: rgba(212, 167, 106, 0.05);
-        }
-
-        .level-badge {
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .level-novice {
-            background: #ecf0f1;
-            color: #7f8c8d;
-        }
-
-        .level-lover {
-            background: #d5f4e6;
-            color: #27ae60;
-        }
-
-        .level-coffeeman {
-            background: #ffeaa7;
-            color: #f39c12;
-        }
-
-        .level-gourmet {
-            background: #fab1a0;
-            color: #e74c3c;
-        }
-
-        .level-sommelier {
-            background: #a29bfe;
-            color: #6c5ce7;
-        }
-
-        /* Отчет по продажам */
-        .sales-report {
-            background: var(--coffee-cream);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            border: 1px solid var(--coffee-light);
-            display: none;
-        }
-
-        .report-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .report-filters {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .report-summary {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .summary-card {
-            background: var(--coffee-white);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid var(--coffee-light);
-        }
-
-        .summary-card h4 {
-            color: var(--coffee-mocha);
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-        }
-
-        .summary-card p {
-            color: var(--coffee-brown);
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .report-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--coffee-white);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .report-table th {
-            background: linear-gradient(135deg, var(--coffee-light), var(--coffee-beige));
-            color: var(--coffee-mocha);
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .report-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--coffee-light);
-            color: var(--coffee-dark);
-        }
-
-        /* Карта лояльности */
-        .loyalty-card {
-            background: linear-gradient(135deg, var(--coffee-white), var(--coffee-light));
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            border: 2px solid var(--coffee-gold);
-            box-shadow: 0 5px 20px rgba(212, 167, 106, 0.2);
-        }
-
-        .loyalty-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .loyalty-title {
-            font-size: 1.5rem;
-            color: var(--coffee-mocha);
-            font-weight: 600;
-        }
-
-        .loyalty-points {
-            background: var(--coffee-gold);
-            color: var(--coffee-white);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: 600;
+            margin-bottom: 15px;
             font-size: 1.2rem;
         }
 
-        .loyalty-progress {
-            height: 10px;
-            background: var(--coffee-light);
-            border-radius: 5px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .loyalty-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--coffee-gold), var(--coffee-mocha));
-            border-radius: 5px;
-            transition: width 0.5s ease;
-        }
-
-        .loyalty-info {
+        .quantity-adjust {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            color: var(--coffee-dark);
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
-        /* Модальные окна */
+        .quantity-input {
+            width: 100px;
+            padding: 8px 12px;
+            border: 1px solid var(--coffee-beige);
+            border-radius: 8px;
+        }
+
+        .update-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -769,9 +461,7 @@
             font-weight: 500;
         }
 
-        .form-group-modal input,
-        .form-group-modal textarea,
-        .form-group-modal select {
+        .form-group-modal input {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid var(--coffee-beige);
@@ -788,7 +478,6 @@
             margin-top: 25px;
         }
 
-        /* Корзина */
         .cart-items {
             max-height: 300px;
             overflow-y: auto;
@@ -846,7 +535,16 @@
             justify-content: space-between;
         }
 
-        /* О кофейне */
+        .checkout-btn {
+            background: linear-gradient(135deg, var(--coffee-gold), var(--coffee-mocha));
+            color: white;
+        }
+
+        .clear-btn {
+            background: var(--coffee-light);
+            color: var(--coffee-dark);
+        }
+
         .about-section {
             background: linear-gradient(135deg, var(--coffee-white), var(--coffee-cream));
             border-radius: 15px;
@@ -893,16 +591,6 @@
             width: 20px;
         }
 
-        .contact-info a {
-            color: var(--coffee-brown);
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* Футер */
         footer {
             background: linear-gradient(135deg, var(--coffee-light), var(--coffee-beige));
             padding: 30px 0;
@@ -940,61 +628,41 @@
             font-size: 0.9rem;
         }
 
-        /* Элементы управления администратора */
-        .admin-controls {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--coffee-light);
-            display: none;
+        .submit-btn {
+            background: linear-gradient(135deg, var(--coffee-gold), var(--coffee-mocha));
+            color: white;
         }
 
-        .admin-controls h3 {
-            color: var(--coffee-mocha);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
+        .cancel-btn {
+            background: var(--coffee-light);
+            color: var(--coffee-dark);
         }
 
-        .quantity-adjust {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .quantity-input {
-            width: 100px;
-            padding: 8px 12px;
-            border: 1px solid var(--coffee-beige);
-            border-radius: 8px;
-        }
-
-        .update-btn {
+        .save-btn {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
-            padding: 8px 15px;
-            font-size: 0.9rem;
         }
 
-        .admin-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .edit-btn {
-            background: linear-gradient(135deg, #f1c40f, #f39c12);
+        .add-btn {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
             color: white;
-            padding: 8px 15px;
-            font-size: 0.9rem;
         }
 
-        .delete-btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        .export-btn {
+            background: linear-gradient(135deg, var(--coffee-gold), var(--coffee-mocha));
             color: white;
-            padding: 8px 15px;
-            font-size: 0.9rem;
         }
 
-        /* Адаптивность */
+        .import-btn {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -1010,28 +678,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .admin-form {
-                grid-template-columns: 1fr;
-            }
-            
             .about-content {
                 grid-template-columns: 1fr;
-            }
-            
-            .form-buttons-admin {
-                flex-direction: column;
-            }
-            
-            .form-buttons-admin button {
-                width: 100%;
-            }
-            
-            .report-filters {
-                grid-template-columns: 1fr;
-            }
-            
-            .report-summary {
-                grid-template-columns: repeat(2, 1fr);
             }
             
             .cart-buttons {
@@ -1046,20 +694,18 @@
     </style>
 </head>
 <body>
-    <!-- Шапка -->
     <header>
         <div class="container header-container">
             <div class="logo">
                 <i class="fas fa-coffee"></i>
                 <h1>Кофейня "Уютная Чашка"</h1>
-                <div class="admin-indicator" id="adminIndicator">Администратор</div>
             </div>
             <nav class="nav-links">
                 <a href="#" class="active">Меню</a>
                 <a href="#about">О кофейне</a>
                 
                 <div class="user-info" id="userInfo" style="display: none;">
-                    <i class="fas fa-user user-icon"></i>
+                    <i class="fas fa-user"></i>
                     <span id="userName"></span>
                 </div>
                 
@@ -1071,200 +717,71 @@
                 <button class="admin-mode-btn" id="adminModeBtn" style="display: none;">Режим админа</button>
                 
                 <button class="login-toggle" id="loginToggle">Войти</button>
-                <button class="register-toggle" id="registerToggle">Регистрация</button>
                 <button class="logout-btn" id="logoutBtn" style="display: none;">Выйти</button>
             </nav>
         </div>
     </header>
 
-    <!-- Основное содержимое -->
     <main class="container">
-        <!-- Каталог кофе -->
         <section id="catalog">
             <h2 class="section-title">Наше кофейное меню</h2>
             <div class="coffee-grid" id="coffeeGrid">
-                <!-- Кофейные карточки будут сгенерированы JavaScript -->
+                <!-- Кофейные карточки будут здесь -->
             </div>
         </section>
 
-        <!-- О кофейне -->
         <section id="about" class="about-section">
             <div class="about-content">
                 <div class="about-text">
                     <h3>Добро пожаловать в кофейню "Уютная Чашка"!</h3>
-                    <p>Мы — уютная кофейня, где каждый глоток кофе превращается в момент наслаждения. Наша миссия — создавать идеальный кофе для каждого клиента, используя только лучшие сорта зерен и мастерство наших бариста.</p>
-                    <p>В нашем меню вы найдете классические эспрессо, капучино, латте, а также авторские напитки и сезонные предложения. Мы тщательно отбираем поставщиков кофейных зерен, чтобы гарантировать непревзойденное качество и вкус.</p>
-                    <p>Присоединяйтесь к нашему кофейному клубу и получайте бонусы за каждую покупку!</p>
+                    <p>Мы — уютная кофейня, где каждый глоток кофе превращается в момент наслаждения.</p>
+                    <p>В нашем меню вы найдете классические эспрессо, капучино, латте, а также авторские напитки.</p>
                 </div>
                 <div class="contact-info">
                     <h4>Контакты</h4>
                     <p><i class="fas fa-map-marker-alt"></i> Адрес: г. Москва, ул. Кофейная, д. 7</p>
                     <p><i class="fas fa-phone"></i> Телефон: <a href="tel:+79999876543">+7 (999) 987-65-43</a></p>
-                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@uyutnaya-chashka.ru">info@uyutnaya-chashka.ru</a></p>
                     <p><i class="fas fa-clock"></i> Время работы: ежедневно с 8:00 до 22:00</p>
-                    <p><i class="fas fa-mug-hot"></i> Кофе с собой: закажите заранее по телефону</p>
                 </div>
             </div>
         </section>
 
-        <!-- Панель администратора -->
         <section class="admin-panel" id="adminPanel">
-            <h2>Панель управления кофейней</h2>
+            <h2>Панель управления</h2>
             
             <div class="alert" id="adminAlert"></div>
             
             <div class="db-status" id="dbStatus">
                 <div class="status-indicator" id="dbStatusIndicator"></div>
                 <span id="dbStatusText">Подключение к базе данных...</span>
-                <span class="sync-status" id="syncStatus">
-                    <i class="fas fa-sync-alt sync-icon"></i> Синхронизировано
-                </span>
             </div>
             
-            <div class="admin-form">
-                <div class="form-group">
-                    <label for="coffeeName">Название напитка:</label>
-                    <input type="text" id="coffeeName" placeholder="Например, Капучино классический">
+            <div class="admin-controls" id="adminControls">
+                <h3>Управление товаром</h3>
+                <div class="quantity-adjust">
+                    <input type="number" class="quantity-input" id="adminQuantityInput" min="0" step="1">
+                    <button class="update-btn" id="adminUpdateBtn">Обновить количество</button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="coffeeType">Тип напитка:</label>
-                    <select id="coffeeType">
-                        <option value="кофе">Кофе</option>
-                        <option value="чай">Чай</option>
-                        <option value="десерт">Десерт</option>
-                        <option value="выпечка">Выпечка</option>
-                        <option value="холодный напиток">Холодный напиток</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="coffeePrice">Цена (руб.):</label>
-                    <input type="number" id="coffeePrice" min="0" step="10" value="250">
-                </div>
-                
-                <div class="form-group">
-                    <label for="coffeeQuantity">Количество порций:</label>
-                    <input type="number" id="coffeeQuantity" min="0" step="1" value="50">
-                </div>
-                
-                <div class="form-group">
-                    <label for="coffeeDescription">Описание:</label>
-                    <textarea id="coffeeDescription" placeholder="Опишите вкус, состав и особенности напитка..." rows="4"></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="coffeeIcon">Иконка (FontAwesome):</label>
-                    <input type="text" id="coffeeIcon" value="fas fa-mug-hot" placeholder="fas fa-coffee">
-                </div>
-                
-                <div class="form-group">
-                    <label for="coffeeImage">URL изображения:</label>
-                    <input type="text" id="coffeeImage" placeholder="https://example.com/coffee-image.jpg">
-                    <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">Пример: https://images.unsplash.com/photo-1509042239860-f550ce710b93</small>
-                </div>
-                
-                <div class="form-buttons-admin">
-                    <button class="add-btn" id="addCoffeeBtn">Добавить новый напиток</button>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
                     <button class="save-btn" id="saveDataBtn">Сохранить в data.json</button>
                     <button class="export-btn" id="exportDataBtn">Экспорт данных</button>
                     <button class="import-btn" id="importDataBtn">Импорт данных</button>
-                    <button class="report-btn" id="showReportBtn">Отчет по продажам</button>
                     <button class="refresh-btn" id="refreshDataBtn">Обновить данные</button>
                 </div>
             </div>
-            
-            <!-- Список пользователей -->
-            <div class="users-list" id="usersListSection" style="display: none;">
-                <h3>Зарегистрированные пользователи <button class="refresh-btn" id="refreshUsersBtn">Обновить</button></h3>
-                <div class="users-table-container">
-                    <table class="users-table" id="usersTable">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Имя</th>
-                                <th>Email</th>
-                                <th>Дата регистрации</th>
-                                <th>Баллы</th>
-                                <th>Уровень</th>
-                                <th>Статус</th>
-                            </tr>
-                        </thead>
-                        <tbody id="usersTableBody">
-                            <!-- Данные пользователей будут здесь -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- Отчет по продажам -->
-            <div class="sales-report" id="salesReportSection" style="display: none;">
-                <div class="report-header">
-                    <h3>Отчет по продажам</h3>
-                    <button class="report-btn" id="exportReportBtn">Экспорт отчета (TXT)</button>
-                </div>
-                
-                <div class="report-filters">
-                    <div class="filter-group">
-                        <label for="reportPeriod">Период:</label>
-                        <select id="reportPeriod">
-                            <option value="today">Сегодня</option>
-                            <option value="week">Эта неделя</option>
-                            <option value="month">Этот месяц</option>
-                            <option value="quarter">Этот квартал</option>
-                            <option value="year">Этот год</option>
-                            <option value="all">Все время</option>
-                            <option value="custom">Произвольный период</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group" id="customDates" style="display: none;">
-                        <label for="startDate">С:</label>
-                        <input type="date" id="startDate">
-                        <label for="endDate">По:</label>
-                        <input type="date" id="endDate">
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="reportType">Тип отчета:</label>
-                        <select id="reportType">
-                            <option value="summary">Сводка</option>
-                            <option value="detailed">Подробный</option>
-                            <option value="products">По товарам</option>
-                            <option value="users">По клиентам</option>
-                        </select>
-                    </div>
-                    
-                    <button class="submit-btn" id="generateReportBtn">Сформировать отчет</button>
-                </div>
-                
-                <div class="report-summary" id="reportSummary">
-                    <!-- Сводная статистика будет здесь -->
-                </div>
-                
-                <div id="reportContent">
-                    <!-- Содержимое отчета будет здесь -->
-                </div>
-            </div>
-            
-            <!-- Статистика лояльности -->
-            <div class="loyalty-card" id="adminLoyaltySection" style="display: none;">
-                <h3>Статистика системы лояльности</h3>
-                <p>Всего зарегистрированных клиентов: <span id="totalUsers">0</span></p>
-                <p>Всего начислено бонусных баллов: <span id="totalPoints">0</span></p>
-                <p>Всего оформлено заказов: <span id="totalOrders">0</span></p>
-                <p>Общая сумма всех заказов: <span id="totalSales">0</span> руб.</p>
-            </div>
         </section>
-        
-        <!-- Карта лояльности пользователя -->
-        <div id="loyaltyCardSection" style="display: none;">
-            <!-- Карта лояльности будет отображаться здесь для пользователей -->
-        </div>
     </main>
 
-    <!-- Модальные окна -->
-    <!-- Модальное окно входа -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#about">Контакты</a>
+                <a href="#about">О кофейне</a>
+            </div>
+            <p class="copyright">© 2023 Кофейня "Уютная Чашка". Все права защищены.</p>
+        </div>
+    </footer>
+
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1289,40 +806,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно регистрации -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Регистрация</h3>
-                <button class="close-btn" id="closeRegister">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="alert" id="registerAlert"></div>
-                <div class="form-group-modal">
-                    <label for="registerName">Имя:</label>
-                    <input type="text" id="registerName" placeholder="Ваше имя">
-                </div>
-                <div class="form-group-modal">
-                    <label for="registerEmail">Email:</label>
-                    <input type="email" id="registerEmail" placeholder="Ваш email">
-                </div>
-                <div class="form-group-modal">
-                    <label for="registerPassword">Пароль:</label>
-                    <input type="password" id="registerPassword" placeholder="Ваш пароль">
-                </div>
-                <div class="form-group-modal">
-                    <label for="registerConfirmPassword">Подтвердите пароль:</label>
-                    <input type="password" id="registerConfirmPassword" placeholder="Повторите пароль">
-                </div>
-                <div class="modal-footer">
-                    <button class="cancel-btn" id="cancelRegister">Отмена</button>
-                    <button class="submit-btn" id="registerSubmit">Зарегистрироваться</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Модальное окно корзины -->
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1346,89 +829,42 @@
         </div>
     </div>
 
-    <!-- Модальное окно редактирования товара -->
-    <div class="modal" id="editCoffeeModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Редактировать товар</h3>
-                <button class="close-btn" id="closeEditCoffee">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="alert" id="editCoffeeAlert"></div>
-                <input type="hidden" id="editCoffeeId">
-                <div class="form-group-modal">
-                    <label for="editCoffeeName">Название напитка:</label>
-                    <input type="text" id="editCoffeeName" placeholder="Например, Капучино классический">
-                </div>
-                <div class="form-group-modal">
-                    <label for="editCoffeeType">Тип напитка:</label>
-                    <select id="editCoffeeType">
-                        <option value="кофе">Кофе</option>
-                        <option value="чай">Чай</option>
-                        <option value="десерт">Десерт</option>
-                        <option value="выпечка">Выпечка</option>
-                        <option value="холодный напиток">Холодный напиток</option>
-                    </select>
-                </div>
-                <div class="form-group-modal">
-                    <label for="editCoffeePrice">Цена (руб.):</label>
-                    <input type="number" id="editCoffeePrice" min="0" step="10" value="250">
-                </div>
-                <div class="form-group-modal">
-                    <label for="editCoffeeQuantity">Количество порций:</label>
-                    <input type="number" id="editCoffeeQuantity" min="0" step="1" value="50">
-                </div>
-                <div class="form-group-modal">
-                    <label for="editCoffeeDescription">Описание:</label>
-                    <textarea id="editCoffeeDescription" placeholder="Опишите вкус, состав и особенности напитка..." rows="4"></textarea>
-                </div>
-                <div class="form-group-modal">
-                    <label for="editCoffeeIcon">Иконка (FontAwesome):</label>
-                    <input type="text" id="editCoffeeIcon" value="fas fa-mug-hot" placeholder="fas fa-coffee">
-                </div>
-                <div class="form-group-modal">
-                    <label for="editCoffeeImage">URL изображения:</label>
-                    <input type="text" id="editCoffeeImage" placeholder="https://example.com/coffee-image.jpg">
-                </div>
-                <div class="modal-footer">
-                    <button class="cancel-btn" id="cancelEditCoffeeBtn">Отмена</button>
-                    <button class="submit-btn" id="saveEditCoffeeBtn">Сохранить изменения</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Футер -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="#about">Контакты</a>
-                <a href="#">Доставка и оплата</a>
-                <a href="#about">О кофейне</a>
-                <a href="#loyaltyCardSection">Программа лояльности</a>
-            </div>
-            <p class="copyright">© 2023 Кофейня "Уютная Чашка". Все права защищены.</p>
-        </div>
-    </footer>
-
     <script>
-        // База данных кофейни - загружается из data.json
+        // База данных кофейни
         let coffeeShopDatabase = {
             products: [],
-            users: [],
+            users: [
+                {
+                    id: 1,
+                    name: "Администратор",
+                    email: "admin@coffee.ru",
+                    password: "admin123",
+                    isAdmin: true,
+                    loyaltyPoints: 0,
+                    joinDate: "2023-01-01T00:00:00.000Z"
+                }
+            ],
             orders: [],
-            loyaltySettings: {}
+            loyaltySettings: {
+                pointsPerPurchase: 5,
+                levels: [
+                    { points: 0, name: "Новичок", discount: 0 },
+                    { points: 100, name: "Любитель кофе", discount: 5 },
+                    { points: 300, name: "Кофеман", discount: 10 },
+                    { points: 600, name: "Кофейный гурман", discount: 15 },
+                    { points: 1000, name: "Кофейный сомелье", discount: 20 }
+                ]
+            }
         };
 
         // Текущий пользователь
         let currentUser = null;
         let cart = [];
         let isAdminModeActive = false;
-        let editingProductId = null;
-        let isSyncing = false;
+        let currentEditingProductId = null;
         const DATA_JSON_URL = 'data.json';
 
-        // Функция для отображения уведомлений
+        // Функции
         function showAlert(message, type, elementId = null) {
             const alert = elementId ? document.getElementById(elementId) : document.getElementById('adminAlert');
             if (alert) {
@@ -1447,55 +883,31 @@
             try {
                 const response = await fetch(DATA_JSON_URL + '?t=' + new Date().getTime());
                 if (response.ok) {
-                    coffeeShopDatabase = await response.json();
+                    const data = await response.json();
+                    
+                    // Сохраняем данные о пользователях и настройках
+                    coffeeShopDatabase.users = data.users || coffeeShopDatabase.users;
+                    coffeeShopDatabase.orders = data.orders || [];
+                    coffeeShopDatabase.loyaltySettings = data.loyaltySettings || coffeeShopDatabase.loyaltySettings;
+                    
+                    // Объединяем продукты
+                    if (data.products && data.products.length > 0) {
+                        coffeeShopDatabase.products = data.products;
+                    }
+                    
                     renderCoffeeCards();
                     updateDBStatus();
                     
-                    // Обновляем текущего пользователя из общей базы
-                    if (currentUser) {
-                        const updatedUser = coffeeShopDatabase.users.find(u => u.id === currentUser.id);
-                        if (updatedUser) {
-                            currentUser.loyaltyPoints = updatedUser.loyaltyPoints;
-                            updateUserUI();
-                            renderLoyaltyCard();
-                        }
-                    }
-                    
-                    if (isAdminModeActive) {
-                        updateAdminStats();
-                        renderUsersList();
-                    }
-                    
-                    showAlert('Данные загружены из файла data.json', 'success', 'adminAlert');
+                    showAlert('Данные загружены из базы', 'success', 'adminAlert');
                     return true;
                 } else {
                     throw new Error('Файл data.json не найден');
                 }
             } catch (error) {
-                console.error('Ошибка загрузки данных:', error);
-                showAlert('Ошибка загрузки данных. Проверьте наличие файла data.json', 'error', 'adminAlert');
+                console.error('Ошибка загрузки:', error);
+                showAlert('Используются стандартные данные', 'info', 'adminAlert');
                 return false;
             }
-        }
-
-        // Сохранение данных в data.json (скачивание файла)
-        function saveDataToJson() {
-            // Обновляем данные перед сохранением
-            // Все изменения уже в coffeeShopDatabase
-            
-            const dataStr = JSON.stringify(coffeeShopDatabase, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'data.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showAlert('Файл data.json скачан с изменениями. Загрузите его на GitHub для обновления базы данных.', 'success', 'adminAlert');
         }
 
         // Рендеринг кофейных карточек
@@ -1516,12 +928,10 @@
                     quantityOptions += `<option value="${i}">${i} шт.</option>`;
                 }
                 
-                const hasImage = product.image && product.image.trim() !== '';
-                
                 coffeeCard.innerHTML = `
                     <div class="coffee-image">
-                        ${hasImage ? `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none';">` : ''}
-                        <i class="${product.icon}" ${hasImage ? 'style="display:none;"' : ''}></i>
+                        ${product.image ? `<img src="${product.image}" alt="${product.name}" onerror="this.style.display='none';">` : ''}
+                        <i class="${product.icon || 'fas fa-coffee'}" ${product.image ? 'style="display:none;"' : ''}></i>
                         <div class="coffee-type-badge">${product.type}</div>
                     </div>
                     <div class="coffee-info">
@@ -1538,23 +948,12 @@
                             </select>
                             <button class="buy-btn" data-id="${product.id}">В корзину</button>
                         </div>
-                        <div class="admin-controls">
-                            <h3>Управление товаром</h3>
-                            <div class="quantity-adjust">
-                                <input type="number" class="quantity-input" value="${product.quantity}" min="0" step="1">
-                                <button class="update-btn" data-id="${product.id}">Обновить количество</button>
-                            </div>
-                            <div class="admin-buttons">
-                                <button class="edit-btn" data-id="${product.id}">Редактировать товар</button>
-                                <button class="delete-btn" data-id="${product.id}">Удалить товар</button>
-                            </div>
-                        </div>
                     </div>
                 `;
                 
                 coffeeGrid.appendChild(coffeeCard);
                 
-                // Обработчики событий для обычных пользователей
+                // Обработчики событий
                 const buyBtn = coffeeCard.querySelector('.buy-btn');
                 buyBtn.addEventListener('click', () => {
                     const quantitySelect = coffeeCard.querySelector(`#quantitySelect${product.id}`);
@@ -1562,339 +961,43 @@
                     addToCart(product.id, quantity);
                 });
                 
-                // Обработчики событий для администратора
+                // Для администратора
                 if (isAdminModeActive && currentUser && currentUser.isAdmin) {
-                    const updateBtn = coffeeCard.querySelector('.update-btn');
-                    const quantityInput = coffeeCard.querySelector('.quantity-input');
-                    const editBtn = coffeeCard.querySelector('.edit-btn');
-                    const deleteBtn = coffeeCard.querySelector('.delete-btn');
-                    
-                    updateBtn.addEventListener('click', () => {
-                        const newQuantity = parseInt(quantityInput.value);
-                        if (!isNaN(newQuantity) && newQuantity >= 0) {
-                            updateProductQuantity(product.id, newQuantity);
-                        } else {
-                            showAlert('Пожалуйста, введите корректное количество', 'error');
-                        }
-                    });
-                    
-                    editBtn.addEventListener('click', () => {
-                        openEditProductModal(product.id);
-                    });
-                    
-                    deleteBtn.addEventListener('click', () => {
-                        deleteProduct(product.id);
+                    coffeeCard.querySelector('.buy-btn').addEventListener('click', (e) => {
+                        e.preventDefault();
+                        currentEditingProductId = product.id;
+                        document.getElementById('adminQuantityInput').value = product.quantity;
+                        showAlert(`Выбрано: ${product.name}. Введите новое количество.`, 'info', 'adminAlert');
                     });
                 }
-                
-                // Обработка изображений
-                if (hasImage) {
-                    const img = coffeeCard.querySelector('.coffee-image img');
-                    const icon = coffeeCard.querySelector('.coffee-image i');
-                    
-                    img.onload = function() {
-                        icon.style.display = 'none';
-                    };
-                    
-                    img.onerror = function() {
-                        icon.style.display = 'flex';
-                    };
-                }
-            });
-            
-            updateAdminControlsVisibility();
-        }
-
-        // Обновление видимости элементов управления администратора
-        function updateAdminControlsVisibility() {
-            const adminControls = document.querySelectorAll('.admin-controls');
-            
-            if (isAdminModeActive && currentUser && currentUser.isAdmin) {
-                adminControls.forEach(control => {
-                    control.style.display = 'block';
-                });
-            } else {
-                adminControls.forEach(control => {
-                    control.style.display = 'none';
-                });
-            }
-        }
-
-        // Обновление количества товара
-        function updateProductQuantity(id, newQuantity) {
-            const productIndex = coffeeShopDatabase.products.findIndex(product => product.id === id);
-            if (productIndex !== -1) {
-                coffeeShopDatabase.products[productIndex].quantity = newQuantity;
-                renderCoffeeCards();
-                showAlert(`Количество "${coffeeShopDatabase.products[productIndex].name}" обновлено до ${newQuantity} шт.`, 'success');
-            }
-        }
-
-        // Удаление товара
-        function deleteProduct(id) {
-            if (!confirm('Вы уверены, что хотите удалить этот товар?')) return;
-            
-            const productIndex = coffeeShopDatabase.products.findIndex(product => product.id === id);
-            if (productIndex !== -1) {
-                const productName = coffeeShopDatabase.products[productIndex].name;
-                coffeeShopDatabase.products.splice(productIndex, 1);
-                renderCoffeeCards();
-                showAlert(`Товар "${productName}" удален`, 'success');
-            }
-        }
-
-        // Открытие модального окна редактирования товара
-        function openEditProductModal(productId) {
-            const product = coffeeShopDatabase.products.find(p => p.id === productId);
-            if (!product) return;
-            
-            editingProductId = productId;
-            
-            document.getElementById('editCoffeeId').value = product.id;
-            document.getElementById('editCoffeeName').value = product.name;
-            document.getElementById('editCoffeeType').value = product.type;
-            document.getElementById('editCoffeePrice').value = product.price;
-            document.getElementById('editCoffeeQuantity').value = product.quantity;
-            document.getElementById('editCoffeeDescription').value = product.description;
-            document.getElementById('editCoffeeIcon').value = product.icon;
-            document.getElementById('editCoffeeImage').value = product.image || '';
-            
-            openModal('editCoffeeModal');
-        }
-
-        // Сохранение отредактированного товара
-        function saveEditedProduct() {
-            const id = parseInt(document.getElementById('editCoffeeId').value);
-            const name = document.getElementById('editCoffeeName').value;
-            const type = document.getElementById('editCoffeeType').value;
-            const price = parseInt(document.getElementById('editCoffeePrice').value);
-            const quantity = parseInt(document.getElementById('editCoffeeQuantity').value);
-            const description = document.getElementById('editCoffeeDescription').value;
-            const icon = document.getElementById('editCoffeeIcon').value;
-            const image = document.getElementById('editCoffeeImage').value;
-            
-            if (!name || !description) {
-                showAlert('Пожалуйста, заполните все обязательные поля', 'error', 'editCoffeeAlert');
-                return;
-            }
-            
-            if (price <= 0 || quantity < 0) {
-                showAlert('Цена и количество должны быть положительными числами', 'error', 'editCoffeeAlert');
-                return;
-            }
-            
-            const productIndex = coffeeShopDatabase.products.findIndex(product => product.id === id);
-            if (productIndex !== -1) {
-                coffeeShopDatabase.products[productIndex] = {
-                    id,
-                    name,
-                    type,
-                    price,
-                    quantity,
-                    description,
-                    icon: icon || 'fas fa-mug-hot',
-                    image: image || ''
-                };
-                
-                renderCoffeeCards();
-                closeModal('editCoffeeModal');
-                showAlert(`Товар "${name}" успешно обновлен!`, 'success');
-            }
-        }
-
-        // Добавление нового товара
-        function addNewProduct() {
-            const name = document.getElementById('coffeeName').value;
-            const type = document.getElementById('coffeeType').value;
-            const price = parseInt(document.getElementById('coffeePrice').value);
-            const quantity = parseInt(document.getElementById('coffeeQuantity').value);
-            const description = document.getElementById('coffeeDescription').value;
-            const icon = document.getElementById('coffeeIcon').value;
-            const image = document.getElementById('coffeeImage').value;
-            
-            if (!name || !description) {
-                showAlert('Пожалуйста, заполните все обязательные поля', 'error', 'adminAlert');
-                return;
-            }
-            
-            if (price <= 0 || quantity < 0) {
-                showAlert('Цена и количество должны быть положительными числами', 'error', 'adminAlert');
-                return;
-            }
-            
-            const newId = coffeeShopDatabase.products.length > 0 
-                ? Math.max(...coffeeShopDatabase.products.map(product => product.id)) + 1 
-                : 1;
-            
-            const newProduct = {
-                id: newId,
-                name,
-                type,
-                price,
-                quantity,
-                description,
-                icon: icon || 'fas fa-mug-hot',
-                image: image || ''
-            };
-            
-            coffeeShopDatabase.products.push(newProduct);
-            renderCoffeeCards();
-            
-            document.getElementById('coffeeName').value = '';
-            document.getElementById('coffeeDescription').value = '';
-            document.getElementById('coffeePrice').value = 250;
-            document.getElementById('coffeeQuantity').value = 50;
-            document.getElementById('coffeeIcon').value = 'fas fa-mug-hot';
-            document.getElementById('coffeeImage').value = '';
-            
-            showAlert(`"${name}" успешно добавлен в меню!`, 'success', 'adminAlert');
-        }
-
-        // Переключение режима администратора
-        function toggleAdminMode() {
-            if (!currentUser || !currentUser.isAdmin) {
-                showAlert('Только администраторы могут управлять кофейней', 'error');
-                return;
-            }
-            
-            const adminPanel = document.getElementById('adminPanel');
-            const adminIndicator = document.getElementById('adminIndicator');
-            const adminLoyaltySection = document.getElementById('adminLoyaltySection');
-            const adminModeBtn = document.getElementById('adminModeBtn');
-            const usersListSection = document.getElementById('usersListSection');
-            const salesReportSection = document.getElementById('salesReportSection');
-            
-            if (!isAdminModeActive) {
-                isAdminModeActive = true;
-                adminPanel.style.display = 'block';
-                adminIndicator.style.display = 'inline-block';
-                adminLoyaltySection.style.display = 'block';
-                usersListSection.style.display = 'block';
-                adminModeBtn.classList.add('active');
-                adminModeBtn.textContent = 'Режим админа (вкл)';
-                salesReportSection.style.display = 'none';
-                
-                updateAdminStats();
-                updateDBStatus();
-                renderUsersList();
-                updateAdminControlsVisibility();
-                
-                showAlert('Режим управления кофейней включен', 'success');
-            } else {
-                isAdminModeActive = false;
-                adminPanel.style.display = 'none';
-                adminIndicator.style.display = 'none';
-                adminLoyaltySection.style.display = 'none';
-                usersListSection.style.display = 'none';
-                adminModeBtn.classList.remove('active');
-                adminModeBtn.textContent = 'Режим админа';
-                salesReportSection.style.display = 'none';
-                
-                updateAdminControlsVisibility();
-                showAlert('Режим управления кофейней выключен', 'success');
-            }
-        }
-
-        // Обновление статистики для администратора
-        function updateAdminStats() {
-            const totalUsers = coffeeShopDatabase.users.length;
-            const totalPoints = coffeeShopDatabase.users.reduce((sum, user) => sum + user.loyaltyPoints, 0);
-            const totalOrders = coffeeShopDatabase.orders.length;
-            const totalSales = coffeeShopDatabase.orders.reduce((sum, order) => sum + order.total, 0);
-            
-            document.getElementById('totalUsers').textContent = totalUsers;
-            document.getElementById('totalPoints').textContent = totalPoints;
-            document.getElementById('totalOrders').textContent = totalOrders;
-            document.getElementById('totalSales').textContent = totalSales;
-        }
-
-        // Обновление статуса базы данных
-        function updateDBStatus() {
-            const statusIndicator = document.getElementById('dbStatusIndicator');
-            const statusText = document.getElementById('dbStatusText');
-            
-            if (coffeeShopDatabase && coffeeShopDatabase.products && coffeeShopDatabase.products.length > 0) {
-                statusIndicator.className = 'status-indicator';
-                statusText.textContent = 'База данных загружена';
-            } else {
-                statusIndicator.className = 'status-indicator offline';
-                statusText.textContent = 'База данных не загружена';
-            }
-        }
-
-        // Рендеринг списка пользователей
-        function renderUsersList() {
-            const usersTableBody = document.getElementById('usersTableBody');
-            usersTableBody.innerHTML = '';
-            
-            coffeeShopDatabase.users.forEach(user => {
-                const levels = coffeeShopDatabase.loyaltySettings.levels;
-                let userLevel = levels[0];
-                let levelClass = 'level-novice';
-                
-                for (let i = levels.length - 1; i >= 0; i--) {
-                    if (user.loyaltyPoints >= levels[i].points) {
-                        userLevel = levels[i];
-                        break;
-                    }
-                }
-                
-                switch(userLevel.name) {
-                    case 'Новичок': levelClass = 'level-novice'; break;
-                    case 'Любитель кофе': levelClass = 'level-lover'; break;
-                    case 'Кофеман': levelClass = 'level-coffeeman'; break;
-                    case 'Кофейный гурман': levelClass = 'level-gourmet'; break;
-                    case 'Кофейный сомелье': levelClass = 'level-sommelier'; break;
-                }
-                
-                const joinDate = user.joinDate ? new Date(user.joinDate).toLocaleDateString('ru-RU') : 'Не указано';
-                
-                const userRow = document.createElement('tr');
-                userRow.innerHTML = `
-                    <td>${user.id}</td>
-                    <td>${user.name} ${user.isAdmin ? '<span style="color:#d32f2f;font-size:12px;">(админ)</span>' : ''}</td>
-                    <td>${user.email}</td>
-                    <td>${joinDate}</td>
-                    <td>${user.loyaltyPoints || 0}</td>
-                    <td><span class="level-badge ${levelClass}">${userLevel.name}</span></td>
-                    <td>${user.isAdmin ? 'Администратор' : 'Клиент'}</td>
-                `;
-                
-                usersTableBody.appendChild(userRow);
             });
         }
 
-        // Работа с корзиной
+        // Добавление в корзину
         function addToCart(productId, quantity) {
             const product = coffeeShopDatabase.products.find(p => p.id === productId);
             if (!product) return;
             
             if (product.quantity < quantity) {
-                showAlert(`Извините, в наличии только ${product.quantity} порций`, 'error');
+                showAlert(`В наличии только ${product.quantity} порций`, 'error');
                 return;
             }
             
             const existingItemIndex = cart.findIndex(item => item.id === productId);
             
             if (existingItemIndex >= 0) {
-                const newQuantity = cart[existingItemIndex].quantity + quantity;
-                if (newQuantity > product.quantity) {
-                    showAlert(`Нельзя добавить больше ${product.quantity} порций`, 'error');
-                    return;
-                }
-                cart[existingItemIndex].quantity = newQuantity;
+                cart[existingItemIndex].quantity += quantity;
             } else {
                 cart.push({
                     id: product.id,
                     name: product.name,
                     price: product.price,
-                    quantity: quantity,
-                    icon: product.icon
+                    quantity: quantity
                 });
             }
             
             updateCartCount();
-            showAlert(`Добавлено ${quantity} порц. "${product.name}" в корзину`, 'success');
+            showAlert(`Добавлено ${quantity} шт. "${product.name}"`, 'success');
         }
 
         function updateCartCount() {
@@ -1956,7 +1059,7 @@
         // Оформление заказа
         function checkout() {
             if (!currentUser) {
-                showAlert('Для оформления заказа необходимо войти в систему', 'error', 'cartAlert');
+                showAlert('Для заказа войдите в систему', 'error', 'cartAlert');
                 closeModal('cartModal');
                 openModal('loginModal');
                 return;
@@ -1967,11 +1070,11 @@
                 return;
             }
             
-            // Проверяем наличие товаров
+            // Проверка наличия
             for (const item of cart) {
                 const product = coffeeShopDatabase.products.find(p => p.id === item.id);
                 if (!product || product.quantity < item.quantity) {
-                    showAlert(`Товар "${item.name}" закончился или его количество изменилось`, 'error', 'cartAlert');
+                    showAlert(`"${item.name}" закончился`, 'error', 'cartAlert');
                     renderCoffeeCards();
                     renderCart();
                     return;
@@ -1997,7 +1100,7 @@
             
             coffeeShopDatabase.orders.push(order);
             
-            // Обновляем количество товаров
+            // Обновляем количество
             for (const item of cart) {
                 const productIndex = coffeeShopDatabase.products.findIndex(p => p.id === item.id);
                 if (productIndex !== -1) {
@@ -2005,24 +1108,16 @@
                 }
             }
             
-            // Обновляем баллы пользователя
+            // Обновляем баллы
             const userIndex = coffeeShopDatabase.users.findIndex(u => u.id === currentUser.id);
             if (userIndex !== -1) {
                 coffeeShopDatabase.users[userIndex].loyaltyPoints += pointsEarned;
                 currentUser.loyaltyPoints += pointsEarned;
             }
             
-            // Обновляем интерфейс
             clearCart();
             renderCoffeeCards();
-            renderLoyaltyCard();
-            
-            if (isAdminModeActive) {
-                updateAdminStats();
-                renderUsersList();
-            }
-            
-            showAlert(`Заказ №${orderId} успешно оформлен! Начислено ${pointsEarned} бонусных баллов.`, 'success', 'cartAlert');
+            showAlert(`Заказ №${orderId} оформлен! +${pointsEarned} баллов`, 'success', 'cartAlert');
             closeModal('cartModal');
         }
 
@@ -2049,135 +1144,197 @@
             return true;
         }
 
-        function register(name, email, password) {
-            const existingUser = coffeeShopDatabase.users.find(u => u.email === email);
-            
-            if (existingUser) {
-                showAlert('Пользователь с таким email уже существует', 'error', 'registerAlert');
-                return false;
-            }
-            
-            const newId = coffeeShopDatabase.users.length > 0 
-                ? Math.max(...coffeeShopDatabase.users.map(u => u.id)) + 1 
-                : 1;
-            
-            const newUser = {
-                id: newId,
-                name,
-                email,
-                password,
-                isAdmin: false,
-                loyaltyPoints: 0,
-                joinDate: new Date().toISOString()
-            };
-            
-            coffeeShopDatabase.users.push(newUser);
-            currentUser = {
-                id: newUser.id,
-                name: newUser.name,
-                email: newUser.email,
-                isAdmin: newUser.isAdmin,
-                loyaltyPoints: newUser.loyaltyPoints
-            };
-            
-            updateUserUI();
-            showAlert(`Регистрация успешна! Добро пожаловать, ${name}!`, 'success');
-            closeModal('registerModal');
-            return true;
-        }
-
         function logout() {
             if (isAdminModeActive) toggleAdminMode();
-            
             currentUser = null;
             cart = [];
             updateUserUI();
             updateCartCount();
-            showAlert('Вы вышли из системы', 'success');
+            showAlert('Вы вышли', 'success');
         }
 
         function updateUserUI() {
             const userInfo = document.getElementById('userInfo');
             const userName = document.getElementById('userName');
             const loginToggle = document.getElementById('loginToggle');
-            const registerToggle = document.getElementById('registerToggle');
             const logoutBtn = document.getElementById('logoutBtn');
-            const loyaltyCardSection = document.getElementById('loyaltyCardSection');
-            const adminIndicator = document.getElementById('adminIndicator');
             const adminModeBtn = document.getElementById('adminModeBtn');
             
             if (currentUser) {
                 userInfo.style.display = 'flex';
                 userName.textContent = currentUser.name;
                 loginToggle.style.display = 'none';
-                registerToggle.style.display = 'none';
                 logoutBtn.style.display = 'block';
                 
                 if (currentUser.isAdmin) {
                     adminModeBtn.style.display = 'block';
-                    loyaltyCardSection.style.display = 'none';
-                    adminIndicator.style.display = 'none';
                 } else {
                     adminModeBtn.style.display = 'none';
-                    renderLoyaltyCard();
-                    loyaltyCardSection.style.display = 'block';
-                    adminIndicator.style.display = 'none';
                 }
             } else {
                 userInfo.style.display = 'none';
                 loginToggle.style.display = 'block';
-                registerToggle.style.display = 'block';
                 logoutBtn.style.display = 'none';
-                loyaltyCardSection.style.display = 'none';
-                adminIndicator.style.display = 'none';
                 adminModeBtn.style.display = 'none';
             }
             
             updateAdminControlsVisibility();
         }
 
-        // Карта лояльности
-        function renderLoyaltyCard() {
-            const loyaltyCardSection = document.getElementById('loyaltyCardSection');
-            
-            if (!currentUser || currentUser.isAdmin) return;
-            
-            const points = currentUser.loyaltyPoints || 0;
-            const levels = coffeeShopDatabase.loyaltySettings.levels;
-            
-            let currentLevel = levels[0];
-            let nextLevel = levels[1];
-            
-            for (let i = levels.length - 1; i >= 0; i--) {
-                if (points >= levels[i].points) {
-                    currentLevel = levels[i];
-                    nextLevel = i < levels.length - 1 ? levels[i + 1] : null;
-                    break;
-                }
+        // Администратор
+        function toggleAdminMode() {
+            if (!currentUser || !currentUser.isAdmin) {
+                showAlert('Только администраторы', 'error');
+                return;
             }
             
-            const progress = nextLevel 
-                ? Math.min(100, ((points - currentLevel.points) / (nextLevel.points - currentLevel.points)) * 100)
-                : 100;
+            const adminPanel = document.getElementById('adminPanel');
+            const adminControls = document.getElementById('adminControls');
             
-            loyaltyCardSection.innerHTML = `
-                <div class="loyalty-card">
-                    <div class="loyalty-header">
-                        <div class="loyalty-title">Карта лояльности</div>
-                        <div class="loyalty-points">${points} баллов</div>
-                    </div>
-                    <div class="loyalty-progress">
-                        <div class="loyalty-progress-bar" style="width: ${progress}%"></div>
-                    </div>
-                    <div class="loyalty-info">
-                        <div>Текущий уровень: ${currentLevel.name}</div>
-                        <div>Скидка: ${currentLevel.discount}%</div>
-                    </div>
-                    <div class="loyalty-info">
-                        <div>${nextLevel ? `До уровня "${nextLevel.name}": ${nextLevel.points - points} баллов` : 'Вы достигли максимального уровня!'}</div>
-                    </div>
-                </div>
-            `;
+            if (!isAdminModeActive) {
+                isAdminModeActive = true;
+                adminPanel.style.display = 'block';
+                adminControls.style.display = 'block';
+                showAlert('Режим админа включен', 'success');
+            } else {
+                isAdminModeActive = false;
+                adminPanel.style.display = 'none';
+                adminControls.style.display = 'none';
+                showAlert('Режим админа выключен', 'success');
+            }
+        }
+
+        function updateAdminControlsVisibility() {
+            if (isAdminModeActive && currentUser && currentUser.isAdmin) {
+                document.querySelectorAll('.admin-controls').forEach(control => {
+                    control.style.display = 'block';
+                });
+            } else {
+                document.querySelectorAll('.admin-controls').forEach(control => {
+                    control.style.display = 'none';
+                });
+            }
+        }
+
+        function updateProductQuantity() {
+            if (!currentEditingProductId) {
+                showAlert('Выберите товар', 'error', 'adminAlert');
+                return;
+            }
+            
+            const quantityInput = document.getElementById('adminQuantityInput');
+            const newQuantity = parseInt(quantityInput.value);
+            
+            if (isNaN(newQuantity) || newQuantity < 0) {
+                showAlert('Введите корректное количество', 'error', 'adminAlert');
+                return;
+            }
+            
+            const productIndex = coffeeShopDatabase.products.findIndex(p => p.id === currentEditingProductId);
+            if (productIndex !== -1) {
+                coffeeShopDatabase.products[productIndex].quantity = newQuantity;
+                renderCoffeeCards();
+                showAlert(`Количество обновлено до ${newQuantity}`, 'success', 'adminAlert');
+            }
+        }
+
+        // Сохранение данных
+        function saveDataToJson() {
+            if (!currentUser || !currentUser.isAdmin) {
+                showAlert('Только администраторы', 'error', 'adminAlert');
+                return;
+            }
+            
+            const dataStr = JSON.stringify(coffeeShopDatabase, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showAlert('Файл data.json скачан', 'success', 'adminAlert');
+        }
+
+        function exportData() {
+            saveDataToJson();
+        }
+
+        function importData() {
+            if (!currentUser || !currentUser.isAdmin) {
+                showAlert('Только администраторы', 'error', 'adminAlert');
+                return;
+            }
+            
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = async function(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        
+                        if (!confirm('Импортировать данные? Существующие данные будут перезаписаны.')) {
+                            return;
+                        }
+                        
+                        coffeeShopDatabase = importedData;
+                        
+                        // Сохраняем администратора
+                        const adminExists = coffeeShopDatabase.users.find(u => u.email === 'admin@coffee.ru');
+                        if (!adminExists) {
+                            coffeeShopDatabase.users.push({
+                                id: 1,
+                                name: "Администратор",
+                                email: "admin@coffee.ru",
+                                password: "admin123",
+                                isAdmin: true,
+                                loyaltyPoints: 0,
+                                joinDate: "2023-01-01T00:00:00.000Z"
+                            });
+                        }
+                        
+                        renderCoffeeCards();
+                        
+                        if (currentUser) {
+                            const updatedUser = coffeeShopDatabase.users.find(u => u.id === currentUser.id);
+                            if (updatedUser) {
+                                currentUser.loyaltyPoints = updatedUser.loyaltyPoints;
+                                updateUserUI();
+                            }
+                        }
+                        
+                        showAlert('Данные импортированы', 'success', 'adminAlert');
+                    } catch (error) {
+                        showAlert('Ошибка при импорте', 'error', 'adminAlert');
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        function updateDBStatus() {
+            const statusIndicator = document.getElementById('dbStatusIndicator');
+            const statusText = document.getElementById('dbStatusText');
+            
+            if (coffeeShopDatabase && coffeeShopDatabase.products && coffeeShopDatabase.products.length > 0) {
+                statusIndicator.className = 'status-indicator';
+                statusText.textContent = 'База данных загружена';
+            } else {
+                statusIndicator.className = 'status-indicator offline';
+                statusText.textContent = 'База данных не загружена';
+            }
         }
 
         // Модальные окна
@@ -2189,391 +1346,55 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // Экспорт данных в JSON файл (альтернативный формат)
-        function exportData() {
-            const dataStr = JSON.stringify(coffeeShopDatabase, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'coffeeShopData.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showAlert('Файл coffeeShopData.json скачан', 'success', 'adminAlert');
-        }
-
-        // Импорт данных из JSON файла
-        function importData() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            
-            input.onchange = function(event) {
-                const file = event.target.files[0];
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    try {
-                        const importedData = JSON.parse(e.target.result);
-                        coffeeShopDatabase = importedData;
-                        renderCoffeeCards();
-                        showAlert('Данные успешно импортированы!', 'success', 'adminAlert');
-                        
-                        if (isAdminModeActive) {
-                            updateAdminStats();
-                            renderUsersList();
-                        }
-                        
-                        if (currentUser) {
-                            const updatedUser = coffeeShopDatabase.users.find(u => u.id === currentUser.id);
-                            if (updatedUser) {
-                                currentUser.loyaltyPoints = updatedUser.loyaltyPoints;
-                                updateUserUI();
-                                renderLoyaltyCard();
-                            }
-                        }
-                    } catch (error) {
-                        showAlert('Ошибка при импорте данных. Проверьте формат файла.', 'error', 'adminAlert');
-                    }
-                };
-                
-                reader.readAsText(file);
-            };
-            
-            input.click();
-        }
-
-        // Отчет по продажам
-        function showSalesReport() {
-            const reportSection = document.getElementById('salesReportSection');
-            const usersListSection = document.getElementById('usersListSection');
-            const adminLoyaltySection = document.getElementById('adminLoyaltySection');
-            
-            reportSection.style.display = 'block';
-            usersListSection.style.display = 'none';
-            adminLoyaltySection.style.display = 'none';
-            generateSalesReport();
-        }
-
-        function generateSalesReport() {
-            const period = document.getElementById('reportPeriod').value;
-            const reportType = document.getElementById('reportType').value;
-            const reportContent = document.getElementById('reportContent');
-            const reportSummary = document.getElementById('reportSummary');
-            
-            let startDate, endDate;
-            const now = new Date();
-            
-            switch(period) {
-                case 'today':
-                    startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                    endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-                    break;
-                case 'week':
-                    const day = now.getDay();
-                    const diff = now.getDate() - day + (day === 0 ? -6 : 1);
-                    startDate = new Date(now.getFullYear(), now.getMonth(), diff);
-                    endDate = new Date(now.getFullYear(), now.getMonth(), diff + 7);
-                    break;
-                case 'month':
-                    startDate = new Date(now.getFullYear(), now.getMonth(), 1);
-                    endDate = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-                    break;
-                case 'quarter':
-                    const quarter = Math.floor(now.getMonth() / 3);
-                    startDate = new Date(now.getFullYear(), quarter * 3, 1);
-                    endDate = new Date(now.getFullYear(), (quarter + 1) * 3, 1);
-                    break;
-                case 'year':
-                    startDate = new Date(now.getFullYear(), 0, 1);
-                    endDate = new Date(now.getFullYear() + 1, 0, 1);
-                    break;
-                case 'all':
-                    startDate = new Date(0);
-                    endDate = new Date(now.getFullYear() + 10, 0, 1);
-                    break;
-                case 'custom':
-                    const startInput = document.getElementById('startDate').value;
-                    const endInput = document.getElementById('endDate').value;
-                    if (!startInput || !endInput) {
-                        showAlert('Выберите даты для произвольного периода', 'error', 'adminAlert');
-                        return;
-                    }
-                    startDate = new Date(startInput);
-                    endDate = new Date(endInput);
-                    endDate.setDate(endDate.getDate() + 1);
-                    break;
-            }
-            
-            const filteredOrders = coffeeShopDatabase.orders.filter(order => {
-                const orderDate = new Date(order.date);
-                return orderDate >= startDate && orderDate < endDate;
-            });
-            
-            const totalOrders = filteredOrders.length;
-            const totalRevenue = filteredOrders.reduce((sum, order) => sum + order.total, 0);
-            const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
-            
-            const productSales = {};
-            filteredOrders.forEach(order => {
-                order.items.forEach(item => {
-                    if (!productSales[item.id]) {
-                        productSales[item.id] = {
-                            name: item.name,
-                            quantity: 0,
-                            revenue: 0
-                        };
-                    }
-                    productSales[item.id].quantity += item.quantity;
-                    productSales[item.id].revenue += item.price * item.quantity;
-                });
-            });
-            
-            const customerOrders = {};
-            filteredOrders.forEach(order => {
-                if (!customerOrders[order.userId]) {
-                    customerOrders[order.userId] = {
-                        orderCount: 0,
-                        totalSpent: 0,
-                        customerName: coffeeShopDatabase.users.find(u => u.id === order.userId)?.name || `Клиент #${order.userId}`
-                    };
-                }
-                customerOrders[order.userId].orderCount++;
-                customerOrders[order.userId].totalSpent += order.total;
-            });
-            
-            reportSummary.innerHTML = `
-                <div class="summary-card">
-                    <h4>Заказы</h4>
-                    <p>${totalOrders}</p>
-                </div>
-                <div class="summary-card">
-                    <h4>Выручка</h4>
-                    <p>${totalRevenue.toFixed(2)} руб.</p>
-                </div>
-                <div class="summary-card">
-                    <h4>Средний чек</h4>
-                    <p>${avgOrderValue.toFixed(2)} руб.</p>
-                </div>
-                <div class="summary-card">
-                    <h4>Товаров продано</h4>
-                    <p>${Object.values(productSales).reduce((sum, product) => sum + product.quantity, 0)}</p>
-                </div>
-            `;
-            
-            let reportHTML = '';
-            
-            switch(reportType) {
-                case 'summary':
-                    reportHTML = `
-                        <div class="chart-container">
-                            <h4>Статистика продаж</h4>
-                            <div class="chart-placeholder" style="padding:20px;background:white;border-radius:10px;text-align:center;">
-                                Отчет по продажам сформирован. Для экспорта нажмите кнопку "Экспорт отчета (TXT)"
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'detailed':
-                    reportHTML = `
-                        <h4>Детализация заказов</h4>
-                        <table class="report-table">
-                            <thead>
-                                <tr>
-                                    <th>ID заказа</th>
-                                    <th>Дата</th>
-                                    <th>Клиент</th>
-                                    <th>Товаров</th>
-                                    <th>Сумма</th>
-                                    <th>Баллы</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${filteredOrders.map(order => {
-                                    const user = coffeeShopDatabase.users.find(u => u.id === order.userId);
-                                    return `
-                                        <tr>
-                                            <td>#${order.id}</td>
-                                            <td>${new Date(order.date).toLocaleDateString('ru-RU')}</td>
-                                            <td>${user ? user.name : 'Неизвестный'}</td>
-                                            <td>${order.items.reduce((sum, item) => sum + item.quantity, 0)}</td>
-                                            <td>${order.total} руб.</td>
-                                            <td>${order.pointsEarned}</td>
-                                        </tr>
-                                    `;
-                                }).join('')}
-                            </tbody>
-                        </table>
-                    `;
-                    break;
-                    
-                case 'products':
-                    const sortedProducts = Object.values(productSales).sort((a, b) => b.revenue - a.revenue);
-                    reportHTML = `
-                        <h4>Продажи по товарам</h4>
-                        <table class="report-table">
-                            <thead>
-                                <tr>
-                                    <th>Товар</th>
-                                    <th>Количество</th>
-                                    <th>Выручка</th>
-                                    <th>Доля</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${sortedProducts.map(product => {
-                                    const share = totalRevenue > 0 ? (product.revenue / totalRevenue * 100).toFixed(1) : 0;
-                                    return `
-                                        <tr>
-                                            <td>${product.name}</td>
-                                            <td>${product.quantity}</td>
-                                            <td>${product.revenue.toFixed(2)} руб.</td>
-                                            <td>${share}%</td>
-                                        </tr>
-                                    `;
-                                }).join('')}
-                            </tbody>
-                        </table>
-                    `;
-                    break;
-                    
-                case 'users':
-                    const sortedCustomers = Object.values(customerOrders).sort((a, b) => b.totalSpent - a.totalSpent);
-                    reportHTML = `
-                        <h4>Активные клиенты</h4>
-                        <table class="report-table">
-                            <thead>
-                                <tr>
-                                    <th>Клиент</th>
-                                    <th>Заказов</th>
-                                    <th>Потрачено</th>
-                                    <th>Средний чек</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${sortedCustomers.map(customer => {
-                                    const avg = customer.orderCount > 0 ? customer.totalSpent / customer.orderCount : 0;
-                                    return `
-                                        <tr>
-                                            <td>${customer.customerName}</td>
-                                            <td>${customer.orderCount}</td>
-                                            <td>${customer.totalSpent.toFixed(2)} руб.</td>
-                                            <td>${avg.toFixed(2)} руб.</td>
-                                        </tr>
-                                    `;
-                                }).join('')}
-                            </tbody>
-                        </table>
-                    `;
-                    break;
-            }
-            
-            reportContent.innerHTML = reportHTML;
-        }
-
-        function exportReportToTxt() {
-            const period = document.getElementById('reportPeriod').value;
-            const reportType = document.getElementById('reportType').value;
-            
-            let reportText = '='.repeat(50) + '\n';
-            reportText += 'ОТЧЕТ ПО ПРОДАЖАМ - КОФЕЙНЯ "УЮТНАЯ ЧАШКА"\n';
-            reportText += '='.repeat(50) + '\n\n';
-            
-            reportText += `Дата формирования: ${new Date().toLocaleDateString('ru-RU')} ${new Date().toLocaleTimeString('ru-RU')}\n`;
-            reportText += `Период: ${document.getElementById('reportPeriod').options[document.getElementById('reportPeriod').selectedIndex].text}\n`;
-            reportText += `Тип отчета: ${document.getElementById('reportType').options[document.getElementById('reportType').selectedIndex].text}\n\n`;
-            
-            const summaryCards = document.querySelectorAll('.summary-card');
-            if (summaryCards.length > 0) {
-                reportText += 'СВОДНАЯ СТАТИСТИКА:\n';
-                reportText += '-'.repeat(30) + '\n';
-                
-                summaryCards.forEach(card => {
-                    const title = card.querySelector('h4').textContent;
-                    const value = card.querySelector('p').textContent;
-                    reportText += `${title}: ${value}\n`;
-                });
-                reportText += '\n';
-            }
-            
-            const reportContent = document.getElementById('reportContent');
-            const tables = reportContent.querySelectorAll('table');
-            
-            tables.forEach((table, index) => {
-                const headers = [];
-                table.querySelectorAll('th').forEach(th => {
-                    headers.push(th.textContent.trim());
-                });
-                
-                reportText += headers.join(' | ') + '\n';
-                reportText += '-'.repeat(headers.join(' | ').length) + '\n';
-                
-                table.querySelectorAll('tbody tr').forEach(tr => {
-                    const rowData = [];
-                    tr.querySelectorAll('td').forEach(td => {
-                        rowData.push(td.textContent.trim());
-                    });
-                    reportText += rowData.join(' | ') + '\n';
-                });
-                
-                reportText += '\n';
-            });
-            
-            reportText += '='.repeat(50) + '\n';
-            reportText += 'КОНЕЦ ОТЧЕТА\n';
-            reportText += '='.repeat(50) + '\n';
-            
-            const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            
-            const a = document.createElement('a');
-            a.href = url;
-            const fileName = `sales_report_${new Date().toISOString().split('T')[0]}_${period}_${reportType}.txt`;
-            a.download = fileName;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showAlert('Отчет экспортирован в формате TXT', 'success', 'adminAlert');
-        }
-
-        // Инициализация при загрузке страницы
+        // Инициализация
         document.addEventListener('DOMContentLoaded', async () => {
-            // Загружаем данные из data.json
             await loadDataFromJson();
             
-            // Обработчики событий
-            document.getElementById('addCoffeeBtn').addEventListener('click', addNewProduct);
+            // Изначальные данные, если файл не загрузился
+            if (coffeeShopDatabase.products.length === 0) {
+                coffeeShopDatabase.products = [
+                    {
+                        id: 1,
+                        name: "Эспрессо",
+                        type: "кофе",
+                        price: 180,
+                        quantity: 100,
+                        description: "Классический крепкий кофе",
+                        icon: "fas fa-coffee",
+                        image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                    },
+                    {
+                        id: 2,
+                        name: "Капучино",
+                        type: "кофе",
+                        price: 250,
+                        quantity: 80,
+                        description: "Кофе с молоком и пенкой",
+                        icon: "fas fa-mug-hot",
+                        image: "https://images.unsplash.com/photo-1570197788417-0f1d0b73e12d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                    },
+                    {
+                        id: 3,
+                        name: "Латте",
+                        type: "кофе",
+                        price: 280,
+                        quantity: 75,
+                        description: "Нежный кофе с молоком",
+                        icon: "fas fa-coffee",
+                        image: "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                    }
+                ];
+                renderCoffeeCards();
+            }
+            
+            // Обработчики
+            document.getElementById('adminUpdateBtn').addEventListener('click', updateProductQuantity);
             document.getElementById('saveDataBtn').addEventListener('click', saveDataToJson);
             document.getElementById('exportDataBtn').addEventListener('click', exportData);
             document.getElementById('importDataBtn').addEventListener('click', importData);
             document.getElementById('adminModeBtn').addEventListener('click', toggleAdminMode);
-            document.getElementById('showReportBtn').addEventListener('click', showSalesReport);
-            document.getElementById('generateReportBtn').addEventListener('click', generateSalesReport);
-            document.getElementById('exportReportBtn').addEventListener('click', exportReportToTxt);
             document.getElementById('refreshDataBtn').addEventListener('click', loadDataFromJson);
-            document.getElementById('refreshUsersBtn').addEventListener('click', renderUsersList);
             
-            document.getElementById('saveEditCoffeeBtn').addEventListener('click', saveEditedProduct);
-            document.getElementById('cancelEditCoffeeBtn').addEventListener('click', () => closeModal('editCoffeeModal'));
-            document.getElementById('closeEditCoffee').addEventListener('click', () => closeModal('editCoffeeModal'));
-            
-            document.getElementById('reportPeriod').addEventListener('change', function() {
-                const customDates = document.getElementById('customDates');
-                if (this.value === 'custom') {
-                    customDates.style.display = 'flex';
-                } else {
-                    customDates.style.display = 'none';
-                }
-            });
-            
-            // Модальные окна
             document.getElementById('loginToggle').addEventListener('click', () => openModal('loginModal'));
             document.getElementById('closeLogin').addEventListener('click', () => closeModal('loginModal'));
             document.getElementById('cancelLogin').addEventListener('click', () => closeModal('loginModal'));
@@ -2581,28 +1402,6 @@
                 const email = document.getElementById('loginEmail').value;
                 const password = document.getElementById('loginPassword').value;
                 login(email, password);
-            });
-            
-            document.getElementById('registerToggle').addEventListener('click', () => openModal('registerModal'));
-            document.getElementById('closeRegister').addEventListener('click', () => closeModal('registerModal'));
-            document.getElementById('cancelRegister').addEventListener('click', () => closeModal('registerModal'));
-            document.getElementById('registerSubmit').addEventListener('click', () => {
-                const name = document.getElementById('registerName').value;
-                const email = document.getElementById('registerEmail').value;
-                const password = document.getElementById('registerPassword').value;
-                const confirmPassword = document.getElementById('registerConfirmPassword').value;
-                
-                if (password !== confirmPassword) {
-                    showAlert('Пароли не совпадают', 'error', 'registerAlert');
-                    return;
-                }
-                
-                if (password.length < 6) {
-                    showAlert('Пароль должен содержать минимум 6 символов', 'error', 'registerAlert');
-                    return;
-                }
-                
-                register(name, email, password);
             });
             
             document.getElementById('logoutBtn').addEventListener('click', logout);
@@ -2621,11 +1420,6 @@
                     e.preventDefault();
                     toggleAdminMode();
                 }
-                
-                if (e.altKey && e.key === 'a' && !currentUser) {
-                    e.preventDefault();
-                    login('admin@coffee.ru', 'admin123');
-                }
             });
             
             // Закрытие модальных окон
@@ -2635,20 +1429,7 @@
                 }
             });
             
-            // Периодическое обновление данных (если файл изменится)
-            setInterval(async () => {
-                if (!isSyncing) {
-                    await loadDataFromJson();
-                }
-            }, 30000);
-            
-            // Приветственное сообщение
-            if (!sessionStorage.getItem('welcomeShown')) {
-                setTimeout(() => {
-                    showAlert('Добро пожаловать в кофейню "Уютная Чашка"! Для входа как администратор используйте: admin@coffee.ru / admin123', 'info');
-                }, 1000);
-                sessionStorage.setItem('welcomeShown', 'true');
-            }
+            showAlert('Добро пожаловать в кофейню!', 'info');
         });
     </script>
 </body>
