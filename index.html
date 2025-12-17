@@ -1498,24 +1498,6 @@
             showAlert('Файл data.json скачан с изменениями. Загрузите его на GitHub для обновления базы данных.', 'success', 'adminAlert');
         }
 
-        // Обновление данных в памяти (без localStorage)
-        function updateLocalData() {
-            // Теперь данные хранятся только в памяти и будут сохранены в файл
-            // Эмуляция синхронизации с сервером
-            if (isSyncing) return;
-            
-            isSyncing = true;
-            const syncStatus = document.getElementById('syncStatus');
-            syncStatus.innerHTML = '<i class="fas fa-sync-alt sync-icon"></i> Синхронизация...';
-            
-            setTimeout(() => {
-                syncStatus.innerHTML = '✓ Данные обновлены в памяти';
-                syncStatus.className = 'sync-status';
-                isSyncing = false;
-                showAlert('Изменения сохранены в памяти. Для сохранения в файл используйте "Сохранить в data.json"', 'success', 'adminAlert');
-            }, 500);
-        }
-
         // Рендеринг кофейных карточек
         function renderCoffeeCards() {
             const coffeeGrid = document.getElementById('coffeeGrid');
@@ -1643,7 +1625,6 @@
             const productIndex = coffeeShopDatabase.products.findIndex(product => product.id === id);
             if (productIndex !== -1) {
                 coffeeShopDatabase.products[productIndex].quantity = newQuantity;
-                updateLocalData();
                 renderCoffeeCards();
                 showAlert(`Количество "${coffeeShopDatabase.products[productIndex].name}" обновлено до ${newQuantity} шт.`, 'success');
             }
@@ -1657,7 +1638,6 @@
             if (productIndex !== -1) {
                 const productName = coffeeShopDatabase.products[productIndex].name;
                 coffeeShopDatabase.products.splice(productIndex, 1);
-                updateLocalData();
                 renderCoffeeCards();
                 showAlert(`Товар "${productName}" удален`, 'success');
             }
@@ -1716,7 +1696,6 @@
                     image: image || ''
                 };
                 
-                updateLocalData();
                 renderCoffeeCards();
                 closeModal('editCoffeeModal');
                 showAlert(`Товар "${name}" успешно обновлен!`, 'success');
@@ -1759,7 +1738,6 @@
             };
             
             coffeeShopDatabase.products.push(newProduct);
-            updateLocalData();
             renderCoffeeCards();
             
             document.getElementById('coffeeName').value = '';
@@ -1917,9 +1895,6 @@
             
             updateCartCount();
             showAlert(`Добавлено ${quantity} порц. "${product.name}" в корзину`, 'success');
-            
-            // Сохраняем корзину в localStorage (только корзина сохраняется)
-            localStorage.setItem('coffeeShopCart', JSON.stringify(cart));
         }
 
         function updateCartCount() {
@@ -1969,14 +1944,12 @@
             cart.splice(index, 1);
             updateCartCount();
             renderCart();
-            localStorage.setItem('coffeeShopCart', JSON.stringify(cart));
         }
 
         function clearCart() {
             cart = [];
             updateCartCount();
             renderCart();
-            localStorage.removeItem('coffeeShopCart');
             showAlert('Корзина очищена', 'success', 'cartAlert');
         }
 
@@ -2039,8 +2012,7 @@
                 currentUser.loyaltyPoints += pointsEarned;
             }
             
-            // Сохраняем изменения в памяти
-            updateLocalData();
+            // Обновляем интерфейс
             clearCart();
             renderCoffeeCards();
             renderLoyaltyCard();
@@ -2070,13 +2042,6 @@
                 isAdmin: user.isAdmin,
                 loyaltyPoints: user.loyaltyPoints || 0
             };
-            
-            // Загружаем корзину пользователя из localStorage
-            const savedCart = localStorage.getItem('coffeeShopCart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCartCount();
-            }
             
             updateUserUI();
             showAlert(`Добро пожаловать, ${user.name}!`, 'success');
@@ -2115,7 +2080,6 @@
                 loyaltyPoints: newUser.loyaltyPoints
             };
             
-            updateLocalData(); // Сохраняем изменения в памяти
             updateUserUI();
             showAlert(`Регистрация успешна! Добро пожаловать, ${name}!`, 'success');
             closeModal('registerModal');
@@ -2256,7 +2220,6 @@
                     try {
                         const importedData = JSON.parse(e.target.result);
                         coffeeShopDatabase = importedData;
-                        updateLocalData();
                         renderCoffeeCards();
                         showAlert('Данные успешно импортированы!', 'success', 'adminAlert');
                         
@@ -2584,18 +2547,6 @@
         document.addEventListener('DOMContentLoaded', async () => {
             // Загружаем данные из data.json
             await loadDataFromJson();
-            
-            // Загружаем корзину из localStorage (только корзина)
-            const savedCart = localStorage.getItem('coffeeShopCart');
-            if (savedCart) {
-                try {
-                    cart = JSON.parse(savedCart);
-                    updateCartCount();
-                } catch (e) {
-                    console.error('Ошибка загрузки корзины:', e);
-                    cart = [];
-                }
-            }
             
             // Обработчики событий
             document.getElementById('addCoffeeBtn').addEventListener('click', addNewProduct);
